@@ -4,15 +4,17 @@
 name: Deploy to GitHub Pages
 
 on:
-  # 推送到 main 分支时，仅网页相关文件变更才触发
+  # 推送到 main 分支時，網頁相關檔案變更即觸發
   push:
     branches: ["main"]
     paths:
       - 'index.html'
       - 'viewer.html'
+      - 'usage_guide.html'
       - 'examples/**'
+      - 'docs/**'
       - '.github/workflows/deploy-pages.yml'
-  # 允许手动触发（不受路径限制）
+  # 允許手動觸發（不受路徑限制）
   workflow_dispatch:
 
 # 设置 GITHUB_TOKEN 权限
