@@ -51,53 +51,167 @@
             nav_next: "Next slide (→)",
             nav_last: "Last slide (End)",
             nav_counter: "{current} / {total}",
-            nav_empty: "— / —"
+            nav_empty: "— / —",
+            help_header: "Help & NotebookLM Guide",
+            help_tab_editor: "SVG Editor Guide",
+            help_tab_nblm: "NotebookLM Integration",
+            help_sec_editor_content: `
+                <h3>Selecting Elements</h3>
+                <ul>
+                    <li>Click directly on any text, background shape, or decorative vector element in the slide to select it.</li>
+                    <li>Alternatively, <strong>click and drag</strong> on the blank background to use box/rubber-band selection to select multiple elements.</li>
+                </ul>
+                <h3>Multi-select Operations</h3>
+                <ul>
+                    <li>Hold <code>Ctrl</code> or <code>Cmd</code> and click elements to add/remove them from the selection.</li>
+                    <li>Box-select multiple elements to batch edit their instructions.</li>
+                </ul>
+                <h3>Adding Styling Annotations</h3>
+                <ul>
+                    <li>After selecting element(s), describe your styling instructions in the text area on the right (e.g. <em>"Change background color to Slate 800, change text to Royal Blue, and increase font-size to 28px"</em>).</li>
+                    <li>Click <strong>Add annotation</strong> to attach the instructions to the selected elements.</li>
+                </ul>
+                <h3>Saving & Applying Annotations</h3>
+                <ul>
+                    <li>Once you are done annotating, click <strong>Submit annotations</strong> in the bottom-right corner to save them to the project directory on disk.</li>
+                    <li>Return to the AI chat interface and say: <strong>"Apply my annotations"</strong> or <strong>"套用我的標註"</strong>. The AI will read your annotations and automatically rebuild the slides!</li>
+                </ul>
+                <div class="help-tip-box">
+                    <strong>Keyboard Shortcuts:</strong>
+                    <ul>
+                        <li><code>←</code> / <code>→</code> : Navigate between slides</li>
+                        <li><code>Ctrl + A</code> : Select all elements on the slide</li>
+                        <li><code>Esc</code> : Clear the current selection</li>
+                    </ul>
+                </div>
+            `,
+            help_sec_nblm_content: `
+                <h3>NotebookLM Seamless Integration</h3>
+                <p>PPT Master supports end-to-end integration with Google <strong>NotebookLM</strong>. This allows synchronizing structural slides with dual-speaker audio overview podcasts.</p>
+                
+                <h3>Step 1: Export from NotebookLM</h3>
+                <ul>
+                    <li>Export the <strong>Study Guide</strong> as a Markdown file (e.g., <code>study_guide.md</code>).</li>
+                    <li>Download the <strong>Audio Overview</strong> as an MP3 file (e.g., <code>podcast.mp3</code>).</li>
+                    <li>Copy/export the full <strong>Transcript</strong> as a TXT file (e.g., <code>transcript.txt</code>).</li>
+                </ul>
+
+                <h3>Step 2: Initialize & Sync (Phase A)</h3>
+                <p>Put the exported files in your project directory and run the initialization command in PowerShell:</p>
+                <pre><code>python skills/ppt-master/scripts/notebooklm_pipeline.py --source projects/mock_notebook/study_guide.md --podcast projects/mock_notebook/audio_overview.mp3 --transcript projects/mock_notebook/transcript.txt --project my_deck --phase setup</code></pre>
+                <p>This splits the podcast audio into topic-based segments, aligns them with text timestamps, and generates a structured <strong>Consulting Card (2x2 Grid)</strong> placeholder SVG deck.</p>
+
+                <h3>Step 3: Refine Design in SVG Editor</h3>
+                <p>Open the slide deck in this editor. Select elements, enter design adjustments, and save. The preview server updates automatically.</p>
+
+                <h3>Step 4: Compile & Export PPTX (Phase B)</h3>
+                <p>When design refinement is complete, compile the high-fidelity SVG assets and integrate sliced audio directly into native PowerPoint DrawingML slides:</p>
+                <pre><code>python skills/ppt-master/scripts/notebooklm_pipeline.py --project my_deck --phase export</code></pre>
+                <p>Your fully editable PowerPoint slide deck will be outputted under the project's <code>exports/</code> directory, complete with embedded slide-synced audio tracks!</p>
+            `
         },
         zh: {
-            page_title: "PPT Master - 实时预览",
-            panel_slides: "幻灯片",
-            panel_annotations: "标注",
-            placeholder_select_slide: "在左侧选择一张幻灯片开始",
-            label_selected_element: "已选元素",
-            empty_selected_element: "点击幻灯片中的元素进行选择",
-            label_edit_instruction: "修改说明",
-            placeholder_annotation: "描述希望 AI 如何修改该元素……",
-            placeholder_annotation_multi: "描述希望如何修改所选 {count} 个元素……",
-            btn_add_annotation: "添加标注",
-            label_annotations_on_slide: "本页标注",
-            btn_submit_annotations: "提交标注",
-            btn_exit_preview: "退出预览",
-            modal_submit: "提交",
+            page_title: "PPT Master - 即時預覽",
+            panel_slides: "投影片",
+            panel_annotations: "標註",
+            placeholder_select_slide: "在左側選擇一張投影片開始",
+            label_selected_element: "已選元素",
+            empty_selected_element: "點擊投影片中的元素進行選擇",
+            label_edit_instruction: "修改說明",
+            placeholder_annotation: "描述希望 AI 如何修改該元素……",
+            placeholder_annotation_multi: "描述希望如何修改所選 {count} 個元素……",
+            btn_add_annotation: "新增標註",
+            label_annotations_on_slide: "本頁標註",
+            btn_submit_annotations: "提交標註",
+            btn_exit_preview: "退出預覽",
+            modal_submit: "確認",
             modal_cancel: "取消",
-            empty_waiting_slides: "正在等待生成幻灯片……",
-            empty_no_slides: "未找到幻灯片",
-            placeholder_live_ready: "实时预览已就绪,生成的幻灯片会在这里出现。",
-            placeholder_slide_writing: "幻灯片仍在写入,等待下次刷新……",
-            empty_annotations: "暂无标注",
-            tooltip_remove_annotation: "删除标注",
-            multi_selected: "已选 {count} 个元素",
+            empty_waiting_slides: "正在等待生成投影片……",
+            empty_no_slides: "未找到投影片",
+            placeholder_live_ready: "即時預覽已就緒，生成的投影片會在這裡出現。",
+            placeholder_slide_writing: "投影片仍在寫入，等待下次刷新……",
+            empty_annotations: "暫無標註",
+            tooltip_remove_annotation: "刪除標註",
+            multi_selected: "已選 {count} 個元素",
             multi_mixed: "混合",
-            err_load_slides: "加载幻灯片失败:",
-            err_load_slide: "加载幻灯片失败:",
-            err_add_annotation: "添加标注失败:",
-            err_remove_annotation: "删除标注失败:",
-            err_save: "保存失败:",
-            err_empty_svg: "幻灯片已加载但画布为空。SVG 可能损坏或缺少根 <svg> 元素。",
-            warn_icon_inline: "{count} 个图标渲染失败:{names}",
-            slide_error_tooltip: "该幻灯片解析失败:",
-            reload_banner: "当前页已在磁盘上更新,点此重新加载。",
-            modal_confirm_submit: "确认将标注保存到磁盘?\n\n预览服务会继续运行。需要关闭时请点击退出预览。",
-            modal_success_submit: "标注已保存。\n\n请回到对话窗口并告诉 AI 应用这些标注(例如\"应用我的标注\")。预览服务仍在运行。",
-            modal_confirm_exit: "退出预览并停止本地服务?\n\n未保存的标注将被丢弃。",
-            modal_success_exit: "预览已停止。\n\n可以关闭本标签页并回到对话窗口。",
-            modal_stopping: "正在停止预览服务……",
-            lang_toggle_title: "切换语言",
-            nav_first: "第一页 (Home)",
-            nav_prev: "上一页 (←)",
-            nav_next: "下一页 (→)",
-            nav_last: "末页 (End)",
+            err_load_slides: "載入投影片失敗:",
+            err_load_slide: "載入投影片失敗:",
+            err_add_annotation: "新增標註失敗:",
+            err_remove_annotation: "刪除標註失敗:",
+            err_save: "儲存失敗:",
+            err_empty_svg: "投影片已載入但畫布為空。SVG 可能損壞或缺少根 <svg> 元素。",
+            warn_icon_inline: "{count} 個圖示渲染失敗:{names}",
+            slide_error_tooltip: "該投影片解析失敗:",
+            reload_banner: "當前頁已在磁碟上更新，點此重新載入。",
+            modal_confirm_submit: "確認將標註儲存到磁碟？\n\n預覽服務會繼續運行。需要關閉時請點擊退出預覽。",
+            modal_success_submit: "標註已儲存。\n\n請回到對話視窗並告訴 AI 套用這些標註(例如「套用我的標註」)。預覽服務仍在運行。",
+            modal_confirm_exit: "退出預覽並停止本地服務？\n\n未儲存的標註將被丟棄。",
+            modal_success_exit: "預覽已停止。\n\n可以關閉本分頁並回到對話視窗。",
+            modal_stopping: "正在停止預覽服務……",
+            lang_toggle_title: "切換語言",
+            nav_first: "第一頁 (Home)",
+            nav_prev: "上一頁 (←)",
+            nav_next: "下一頁 (→)",
+            nav_last: "末頁 (End)",
             nav_counter: "{current} / {total}",
-            nav_empty: "— / —"
+            nav_empty: "— / —",
+            help_header: "使用說明與 NotebookLM 聯動指南",
+            help_tab_editor: "編輯器使用說明",
+            help_tab_nblm: "NotebookLM 聯動指南",
+            help_sec_editor_content: `
+                <h3>選擇投影片元素</h3>
+                <ul>
+                    <li>直接在投影片中點擊任何文字、背景形狀、或向量裝飾元素即可選中它。</li>
+                    <li>您也可以在空白區域<strong>按下並拖曳滑鼠左鍵</strong>進行框選（Rubber-band Selection），一次選中多個元素。</li>
+                </ul>
+                <h3>多選操作</h3>
+                <ul>
+                    <li>按住鍵盤 <code>Ctrl</code> 或 <code>Cmd</code> 鍵並點擊元素，可以實現多選中的“加選”或“減選”。</li>
+                    <li>通過框選，可以方便地對一整組相關的元素進行批次新增修改說明。</li>
+                </ul>
+                <h3>新增視覺修改標註</h3>
+                <ul>
+                    <li>選中元素後，在右側面板的“修改說明”文字框中詳細描述您希望 AI 如何調整該元素（例如：<em>“將該背景圓角矩形改為品牌藍，標題文字字體加粗並放大到 28px”</em>）。</li>
+                    <li>點擊 <strong>Add annotation</strong>（新增標註）按鈕以將其綁定到當前選中的元素上。</li>
+                </ul>
+                <h3>儲存並提交 AI 套用</h3>
+                <ul>
+                    <li>標註完成後，點擊右下角的 <strong>Submit annotations</strong>（提交標註）將修改說明持久化儲存到磁碟上。</li>
+                    <li><strong>核心聯動：</strong>回到 AI 聊天對話框，向 AI 助理發送：<strong>“套用我的標註”</strong> 或 <strong>“Apply my annotations”</strong>。AI 助理會自動重構底層 SVG 並在幾秒鐘內完成高保真重繪！</li>
+                </ul>
+                <div class="help-tip-box">
+                    <strong>常用快捷鍵提示：</strong>
+                    <ul>
+                        <li>鍵盤 <code>←</code> / <code>→</code>：快速切換上一張/下一張投影片</li>
+                        <li>鍵盤 <code>Ctrl + A</code>：快速選中當前頁的所有元素</li>
+                        <li>鍵盤 <code>Esc</code>：快速清除當前元素的選中狀態</li>
+                    </ul>
+                </div>
+            `,
+            help_sec_nblm_content: `
+                <h3>NotebookLM 深度流水線整合</h3>
+                <p>PPT Master 獨家支援與 Google <strong>NotebookLM</strong> 的端到端整合，可將結構化大綱與雙人對話 Podcast 音軌自動切片、時間戳錨點完全對齊。</p>
+                
+                <h3>步驟 1：匯出 NotebookLM 素材</h3>
+                <ul>
+                    <li>將 NotebookLM 產生的 <strong>Study Guide（學習指南）</strong> 匯出為 Markdown 格式。</li>
+                    <li>下載對應的 <strong>Audio Overview（對話 Podcast）</strong> MP3 音檔。</li>
+                    <li>複製或匯出完整的 <strong>Transcript（對話文本）</strong> 為 TXT 檔案。</li>
+                </ul>
+
+                <h3>步驟 2：運行初始化與音軌同步 (Phase A)</h3>
+                <p>在專案目錄下打開 PowerShell 執行以下指令以建立專案並切分音訊：</p>
+                <pre><code>python skills/ppt-master/scripts/notebooklm_pipeline.py --source projects/mock_notebook/study_guide.md --podcast projects/mock_notebook/audio_overview.mp3 --transcript projects/mock_notebook/transcript.txt --project my_deck --phase setup</code></pre>
+                <p>系統會自動將 Markdown 解析為<strong>諮詢卡片風格 (Consulting Box 2x2 矩陣)</strong> 大綱，並依據對談時間戳產生對齊的 placeholder 投影片骨架與音訊物理切片。</p>
+
+                <h3>步驟 3：可視化微調與設計標註</h3>
+                <p>在當前 SVG 編輯器中載入該專案。直接用滑鼠點選有瑕疵或需優化的元素，填寫標註並點擊保存。</p>
+
+                <h3>步驟 4：定稿與 DrawingML 編譯匯出 (Phase B)</h3>
+                <p>精修與標註完成後，在命令列執行編譯定稿指令：</p>
+                <pre><code>python skills/ppt-master/scripts/notebooklm_pipeline.py --project my_deck --phase export</code></pre>
+                <p>大功告成！高保真、完全可二次編輯的 PowerPoint 原生 <code>.pptx</code> 將生成在專案的 <code>exports/</code> 目錄下，且雙人對談的音軌切片已同步原生嵌入投影片中！</p>
+            `
         }
     };
 
@@ -124,7 +238,7 @@
     }
 
     function applyI18n() {
-        document.documentElement.setAttribute("lang", LANG === "zh" ? "zh-CN" : "en");
+        document.documentElement.setAttribute("lang", LANG === "zh" ? "zh-TW" : "en");
         document.title = t("page_title");
         document.querySelectorAll("[data-i18n]").forEach(function (el) {
             el.textContent = t(el.getAttribute("data-i18n"));
@@ -136,6 +250,12 @@
             el.title = t(el.getAttribute("data-i18n-title"));
         });
         updateNavLabel();
+
+        // Dynamically inject the help modal sections
+        var helpSecEditor = document.getElementById("help-sec-editor");
+        var helpSecNblm = document.getElementById("help-sec-nblm");
+        if (helpSecEditor) helpSecEditor.innerHTML = t("help_sec_editor_content");
+        if (helpSecNblm) helpSecNblm.innerHTML = t("help_sec_nblm_content");
     }
 
     function setLang(lang) {
@@ -170,6 +290,13 @@
     var modalConfirm      = document.getElementById("modal-confirm");
     var modalCancel       = document.getElementById("modal-cancel");
     var elementPropsEl    = document.getElementById("element-props");
+    var btnHelp           = document.getElementById("btn-help");
+    var helpOverlay       = document.getElementById("help-overlay");
+    var btnHelpClose      = document.getElementById("btn-help-close");
+    var helpTabBtnEditor  = document.getElementById("help-tab-btn-editor");
+    var helpTabBtnNblm    = document.getElementById("help-tab-btn-nblm");
+    var helpSecEditor     = document.getElementById("help-sec-editor");
+    var helpSecNblm       = document.getElementById("help-sec-nblm");
 
     var navFirstBtn       = document.getElementById("nav-first");
     var navPrevBtn        = document.getElementById("nav-prev");
@@ -350,6 +477,24 @@
                 svgPlaceholder.style.display = "none";
                 svgContent.style.display = "block";
                 svgContent.innerHTML = sanitizeSvg(data.content);
+
+                // Dynamically adjust container size to prevent tiny/collapsed preview
+                var rootSvg = svgContent.querySelector("svg");
+                if (rootSvg) {
+                    var viewBox = rootSvg.getAttribute("viewBox");
+                    if (viewBox) {
+                        var parts = viewBox.trim().split(/\s+/);
+                        if (parts.length === 4) {
+                            var w = parseFloat(parts[2]);
+                            var h = parseFloat(parts[3]);
+                            if (!isNaN(w) && !isNaN(h) && h > 0) {
+                                var ratio = w / h;
+                                svgContent.style.aspectRatio = w + " / " + h;
+                                svgContent.style.width = "calc((100vh - 120px) * " + ratio + ")";
+                            }
+                        }
+                    }
+                }
 
                 // Empty-canvas guard: surface a clear error if the SVG parsed
                 // to nothing renderable (issue #115's silent-blank scenario).
@@ -1173,8 +1318,48 @@
     }
 
     // ================================================================
+    //  Help Modal
+    // ================================================================
+    function initHelpModal() {
+        if (!btnHelp || !helpOverlay) return;
+
+        btnHelp.addEventListener("click", function () {
+            helpOverlay.style.display = "flex";
+        });
+
+        if (btnHelpClose) {
+            btnHelpClose.addEventListener("click", function () {
+                helpOverlay.style.display = "none";
+            });
+        }
+
+        helpOverlay.addEventListener("click", function (e) {
+            if (e.target === helpOverlay) {
+                helpOverlay.style.display = "none";
+            }
+        });
+
+        if (helpTabBtnEditor && helpTabBtnNblm && helpSecEditor && helpSecNblm) {
+            helpTabBtnEditor.addEventListener("click", function () {
+                helpTabBtnEditor.classList.add("active");
+                helpTabBtnNblm.classList.remove("active");
+                helpSecEditor.classList.add("active");
+                helpSecNblm.classList.remove("active");
+            });
+
+            helpTabBtnNblm.addEventListener("click", function () {
+                helpTabBtnNblm.classList.add("active");
+                helpTabBtnEditor.classList.remove("active");
+                helpSecNblm.classList.add("active");
+                helpSecEditor.classList.remove("active");
+            });
+        }
+    }
+
+    // ================================================================
     //  Boot
     // ================================================================
+    initHelpModal();
     applyI18n();
     var langToggleBtn = document.getElementById("btn-lang-toggle");
     if (langToggleBtn) {

@@ -65,7 +65,7 @@ def extract_leading_number(text: str) -> int | None:
         return int(m.group(1))
 
     # 第X页/张
-    m = re.match(r'^第\s*(\d{1,3})\s*[页张]', text_lower)
+    m = re.match(r'^第\s*(\d{1,3})\s*[页张頁張]', text_lower)
     if m:
         return int(m.group(1))
 

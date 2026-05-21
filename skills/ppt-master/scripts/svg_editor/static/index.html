@@ -30,6 +30,7 @@
             </div>
         </div>
         <div id="panel-right">
+            <button id="btn-help" class="btn-help" title="Help / NotebookLM Guide">?</button>
             <button id="btn-lang-toggle" class="btn-lang-toggle" title="Switch language">中</button>
             <div class="panel-header" data-i18n="panel_annotations">Annotations</div>
             <div id="selection-info">
@@ -49,6 +50,26 @@
             <div id="preview-actions">
                 <button id="btn-save" class="btn-save" data-i18n="btn_submit_annotations">Submit annotations</button>
                 <button id="btn-exit-preview" class="btn-exit-preview" data-i18n="btn_exit_preview">Exit preview</button>
+            </div>
+        </div>
+    </div>
+    <div id="help-overlay" style="display:none;">
+        <div id="help-modal">
+            <button id="btn-help-close" class="help-close-btn" aria-label="Close help">&times;</button>
+            <div class="help-header">
+                <span data-i18n="help_header">Help & NotebookLM Guide</span>
+            </div>
+            <div class="help-tabs">
+                <button class="help-tab-btn active" id="help-tab-btn-editor" data-i18n="help_tab_editor">SVG Editor Guide</button>
+                <button class="help-tab-btn" id="help-tab-btn-nblm" data-i18n="help_tab_nblm">NotebookLM Integration</button>
+            </div>
+            <div class="help-body">
+                <div class="help-section active" id="help-sec-editor">
+                    <!-- Loaded dynamically via i18n in app.js -->
+                </div>
+                <div class="help-section" id="help-sec-nblm">
+                    <!-- Loaded dynamically via i18n in app.js -->
+                </div>
             </div>
         </div>
     </div>

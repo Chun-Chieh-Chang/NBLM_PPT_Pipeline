@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NBLM PPT Pipeline - 專案工作台</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    /* Tabs styling */
+    .pipeline-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+    
+    .tab-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background-color: var(--surface);
+      color: var(--secondary-text);
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .tab-btn:hover {
+      color: var(--primary-text);
+      background-color: var(--surface-hover);
+    }
+    
+    .tab-btn.active {
+      background-color: var(--accent);
+      color: #FFFFFF;
+      border-color: var(--accent);
+    }
+    
+    .pipeline-panel {
+      display: none;
+    }
+    
+    .pipeline-panel.active {
+      display: block;
+    }
+    
+    .prompt-box {
+      background-color: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 12px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--primary-text);
+      position: relative;
+    }
+    
+    .prompt-copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--accent);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .prompt-copy-btn:hover {
+      background-color: var(--accent);
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Injected Navigation Bar -->
+  <div id="navbar-container"></div>
+
+  <!-- Main Container -->
+  <main class="container">
+    
+    <!-- Workspace Header & Breadcrumbs -->
+    <div style="margin-bottom: 32px;">
+      <div style="display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--secondary-text); margin-bottom: 8px;">
+        <a href="/">儀表板</a>
+        <span>/</span>
+        <span id="breadcrumb-project" style="color: var(--primary-text); font-weight: 500;">專案工作台</span>
+      </div>
+      
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <h1 id="project-title" style="font-family: var(--font-title); font-size: 28px; font-weight: 800;">載入中...</h1>
+          <p id="project-subtitle" style="color: var(--secondary-text); font-family: var(--font-mono); font-size: 13px; margin-top: 4px;">--</p>
+        </div>
+        
+        <div style="display: flex; gap: 12px;">
+          <!-- SVG editor external link -->
+          <a id="svg-editor-link" href="#" target="_blank" class="btn btn-secondary">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            編輯投影片 (SVG Editor)
+          </a>
+          
+          <button id="btn-download-pptx" class="btn btn-primary" onclick="downloadLatestPPTX()" disabled>
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            下載簡報 PPTX
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workspace Layout Grid -->
+    <div class="project-workspace">
+      
+      <!-- Left Column: Pipeline controls -->
+      <div class="main-column">
+        
+        <!-- Pipeline Switch Tabs -->
+        <div class="pipeline-tabs">
+          <button class="tab-btn active" onclick="switchPipeline('standard')">標準簡報流水線 (Standard Pipeline)</button>
+          <button class="tab-btn" onclick="switchPipeline('notebooklm')">NotebookLM 語音對齊流水線 (NotebookLM Sync)</button>
+        </div>
+
+        <!-- 1. STANDARD PIPELINE PANEL -->
+        <div id="panel-standard" class="pipeline-panel active card timeline-card">
+          <h2 style="font-family: var(--font-title); font-size: 20px; font-weight: 700; margin-bottom: 8px;">標準簡報流水線</h2>
+          <p style="color: var(--secondary-text); font-size: 13px; margin-bottom: 24px;">逐步執行，將您的想法轉為高保真 PowerPoint 簡報。</p>
+          
+          <!-- Guidance and Auto-Run controls for Standard Pipeline -->
+          <div id="guidance-card-standard" class="guidance-box" style="margin-bottom: 24px;">
+            <div class="guidance-icon">💡</div>
+            <div class="guidance-body">
+              <div class="guidance-title">系統引導與操作建議 (Smart Guidance)</div>
+              <div class="guidance-desc" id="guidance-text-standard">正在讀取專案狀態中，請稍候...</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+            <button id="btn-auto-standard" class="btn btn-primary" onclick="startAutoStandardPipeline()" style="background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%); border: none;">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              ✨ 一鍵自動生成簡報 (One-Click Auto Pipeline)
+            </button>
+            <button id="btn-reset-standard" class="btn btn-secondary" onclick="refreshProjectInfo()">重新整理</button>
+          </div>
+
+          
+          <div class="step-timeline">
+            
+            <!-- Step 1: Initialize (Done automatically) -->
+            <div class="step-node completed">
+              <div class="step-indicator">1</div>
+              <div class="step-content">
+                <div class="step-title-row">
+                  <span class="step-name">初始化專案</span>
+                  <span class="badge badge-exported">已完成</span>
+                </div>
+                <p class="step-desc">已成功建立簡報專案與對應目錄架構。</p>
+              </div>
+            </div>
+
+            <!-- Step 2: Import sources -->
+            <div class="step-node active" id="step-node-import">
+              <div class="step-indicator">2</div>
+              <div class="step-content">
+                <div class="step-title-row">
+                  <span class="step-name">上傳簡報素材 (Sources)</span>
+                  <span id="badge-step-import" class="badge">待執行</span>
+                </div>
+                <p class="step-desc">拖曳簡報素材或貼上您的原始檔案（PDF、DOCX、Markdown、TXT 格式）。</p>
+                
+                <div style="margin-top: 16px;">
+                  <div class="dropzone" id="upload-dropzone">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                    <span class="dropzone-text">拖曳簡報素材至此區塊，或點擊以瀏覽檔案</span>
+                    <span class="dropzone-sub">支援 PDF, DOCX, XLSX, TXT, MD, MP3 (音訊)</span>
+                    <input type="file" id="file-uploader" style="display: none;" multiple>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Split Outline -->
+            <div class="step-node" id="step-node-split">
+              <div class="step-indicator">3</div>
+              <div class="step-content">
+                <div class="step-title-row">
+                  <span class="step-name">分割大綱與投影片結構</span>
+                  <span id="badge-step-split" class="badge">待執行</span>
+                </div>
+                <p class="step-desc">執行後端程式，將總體大綱設計（total.md）分割至各張投影片 note 中。</p>
+                <div class="step-control">
+                  <button class="btn btn-primary btn-sm" onclick="runPipelineStep('split')">執行大綱切割</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: AI Image Gen (Consulting Prompt copy helper) -->
+            <div class="step-node" id="step-node-image">
+              <div class="step-indicator">4</div>
+              <div class="step-content">
+                <div class="step-title-row">
+                  <span class="step-name">AI 配圖生成與註冊 (AI Image Generator)</span>
+                  <span id="badge-step-image" class="badge">待執行</span>
+                </div>
+                <p class="step-desc">此步驟由 AI 與後端腳本共同合作。請在 AI 聊天視窗中呼叫配圖指令，並在後端一鍵繪圖。</p>
+                
+                <div class="prompt-box">
+                  <button class="prompt-copy-btn" onclick="copyAIPrompt()">複製 AI 任務 Prompt</button>
+                  <strong style="color: var(--accent); display: block; margin-bottom: 4px;">投影片架構設計（對話指令）：</strong>
+                  "請擔任資深諮詢顧問，檢視專案中 sources 下的檔案，並根據 Consulting Box 風格設計 total.md 大綱配置，為每一張投影片撰寫高階論點與配圖配置..."
+                </div>
+                
+                <div class="step-control">
+                  <button class="btn btn-primary" onclick="runPipelineStep('image_gen')">一鍵執行 AI 批量繪圖</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5: SVG Finalize -->
+            <div class="step-node" id="step-node-finalize">
+              <div class="step-indicator">5</div>
+              <div class="step-content">
+                <div class="step-title-row">
+                  <span class="step-name">SVG 定稿後製優化 (Finalize SVGs)</span>
+                  <span id="badge-step-finalize" class="badge">待執行</span>
+                </div>
+                <p class="step-desc">打平 SVG 字體、提取內嵌 Icon，並為 DrawingML 可編輯形狀做好準備。</p>
+                <div class="step-control">
+                  <button class="btn btn-primary" onclick="runPipelineStep('finalize')">執行定稿編譯</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6: Compile PPTX -->
+            <div class="step-node" id="step-node-export">
+              <div class="step-indicator">6</div>
+              <div class="step-content">
+                <div class="step-title-row">
+                  <span class="step-name">匯出可編輯 DrawingML PowerPoint (Compile PPTX)</span>
+                  <span id="badge-step-export" class="badge">待執行</span>
+                </div>
+                <p class="step-desc">將排版好的向量 SVG 與旁白音軌，一鍵轉為原生 editable PPTX 格式簡報！</p>
+                <div class="step-control">
+                  <button class="btn btn-primary" onclick="runPipelineStep('export')">一鍵編譯匯出 PPTX</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 2. NOTEBOOKLM SYNC PIPELINE PANEL -->
+        <div id="panel-notebooklm" class="pipeline-panel card timeline-card">
+          <h2 style="font-family: var(--font-title); font-size: 20px; font-weight: 700; margin-bottom: 8px;">NotebookLM 語音對齊流水線</h2>
+          <p style="color: var(--secondary-text); font-size: 13px; margin-bottom: 24px;">將 NotebookLM 匯出的 Study Guide 與 FAQ，和雙人對話 Podcast MP3 完美對齊並自動前置雙位數簡報編號。</p>
+          
+          <!-- Guidance and Auto-Run controls for NotebookLM Pipeline -->
+          <div id="guidance-card-notebooklm" class="guidance-box" style="margin-bottom: 24px;">
+            <div class="guidance-icon">💡</div>
+            <div class="guidance-body">
+              <div class="guidance-title">系統引導與操作建議 (Smart Guidance)</div>
+              <div class="guidance-desc" id="guidance-text-notebooklm">正在讀取專案狀態中，請稍候...</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+            <button id="btn-auto-notebooklm" class="btn btn-primary" onclick="startAutoNotebookLMPipeline()" style="background: linear-gradient(135deg, var(--success) 0%, var(--accent) 100%); border: none;">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              ✨ 一鍵自動對齊與匯出 (One-Click Sync & Export)
+            </button>
+            <button id="btn-reset-notebooklm" class="btn btn-secondary" onclick="refreshProjectInfo()">重新整理</button>
+          </div>
+
+          
+          <div class="notebooklm-workflow" style="margin-bottom: 24px;">
+            <h3 style="font-size: 15px; font-weight: 600; margin-bottom: 16px; color: var(--accent);">設定素材對齊源</h3>
+            
+            <div class="form-group">
+              <label class="form-label" for="nblm-source">NotebookLM 來源檔案 (Markdown 筆記/匯出大綱)</label>
+              <select id="nblm-source" class="form-select">
+                <option value="">-- 請先上傳檔案 (MD 格式) --</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="nblm-podcast">NotebookLM 語音對話 (Podcast MP3 音訊) (選填)</label>
+              <select id="nblm-podcast" class="form-select">
+                <option value="">-- 請上傳音訊或留空 --</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="nblm-transcript">Podcast 語句文本 (Transcript TXT 字幕檔) (選填)</label>
+              <select id="nblm-transcript" class="form-select">
+                <option value="">-- 請上傳字幕或留空 (自動按權重估計) --</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="step-timeline">
+            
+            <!-- Setup Step -->
+            <div class="step-node active" id="step-node-nblm-setup">
+              <div class="step-indicator">A</div>
+              <div class="step-content">
+                <div class="step-title-row">
+                  <span class="step-name">Phase A: 解析對齊與架構初始化</span>
+                  <span id="badge-step-nblm-setup" class="badge">待執行</span>
+                </div>
+                <p class="step-desc">自動轉換 NotebookLM 排版、切片 Podcast 音軌、生成動畫 timing 時間，並產出 mock PPT 向量大綱。</p>
+                <div class="step-control">
+                  <button class="btn btn-primary" onclick="runNotebookLMPipeline('setup')">執行 Phase A 流水線</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Export Step -->
+            <div class="step-node" id="step-node-nblm-export">
+              <div class="step-indicator">B</div>
+              <div class="step-content">
+                <div class="step-title-row">
+                  <span class="step-name">Phase B: 整合 SVG 向量並打包 PPTX</span>
+                  <span id="badge-step-nblm-export" class="badge">待執行</span>
+                </div>
+                <p class="step-desc">在您利用 SVG Editor 調校好投影片視覺後，一鍵將向量字體後製，並合併語音編譯為 DrawingML PPTX 檔。</p>
+                <div class="step-control">
+                  <button class="btn btn-primary" onclick="runNotebookLMPipeline('export')">執行 Phase B 匯出打包</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Live Console & File list -->
+      <div class="sidebar-column">
+        
+        <!-- Live Log terminal console -->
+        <div class="card console-card">
+          <div class="console-header">
+            <h3 style="font-family: var(--font-title); font-size: 16px; font-weight: 700; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
+              <span id="terminal-pulse" class="status-dot" style="background-color: var(--secondary-text); width: 8px; height: 8px;"></span>
+              即時執行終端機 (Live Log)
+            </h3>
+            <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 13px; min-height: 28px;" onclick="clearConsole()">清除紀錄</button>
+          </div>
+          <div class="console-terminal" id="console-terminal">
+[SYSTEM] 專案工作台已就緒。
+[SYSTEM] 請在左側執行步驟以查看實時日誌...
+          </div>
+        </div>
+
+        <!-- Project Uploaded sources list -->
+        <div class="card">
+          <h3 style="font-family: var(--font-title); font-size: 16px; font-weight: 700; margin-bottom: 4px;">專案素材檔案 (Sources)</h3>
+          <p style="color: var(--secondary-text); font-size: 13px; margin-bottom: 12px;">已載入的原始檔案清單：</p>
+          <ul id="source-list" class="item-list">
+            <li style="text-align: center; padding: 16px; color: var(--secondary-text); font-size: 13px;">無素材，請在步驟 2 上傳檔案</li>
+          </ul>
+        </div>
+
+        <!-- Compiled slides output list -->
+        <div class="card">
+          <h3 style="font-family: var(--font-title); font-size: 16px; font-weight: 700; margin-bottom: 4px;">匯出簡報 (Exports)</h3>
+          <p style="color: var(--secondary-text); font-size: 13px; margin-bottom: 12px;">最終生成的 PowerPoint 可下載清單：</p>
+          <ul id="export-list" class="item-list">
+            <li style="text-align: center; padding: 16px; color: var(--secondary-text); font-size: 13px;">尚未進行 PPTX 匯出編譯</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>NBLM PPT Pipeline © 2026 PPT Master Engine & SkillsBuilder Developer. All rights reserved.</p>
+  </footer>
+
+  <!-- Premium Dynamic Guidance Modal -->
+  <div id="guidance-modal" class="guidance-modal">
+    <div class="guidance-modal-content">
+      <div class="guidance-modal-header">
+        <div class="guidance-modal-icon" id="guidance-modal-icon">💡</div>
+        <h2 class="guidance-modal-title" id="guidance-modal-title">智慧操作引導</h2>
+      </div>
+      <div class="guidance-modal-body" id="guidance-modal-body">
+        <!-- Content gets injected dynamically -->
+      </div>
+      <div class="guidance-modal-footer" id="guidance-modal-footer">
+        <!-- Buttons get injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/shared.js"></script>
+  <script src="/static/js/pipeline.js"></script>
+  <script src="/static/js/uploader.js"></script>
+</body>
+</html>
+
