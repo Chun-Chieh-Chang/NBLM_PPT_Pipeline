@@ -207,6 +207,10 @@ def get_project_info(project_path: str) -> Dict:
         info['svg_count'] = len(svg_files)
         info['svg_files'] = [f.name for f in svg_files]
 
+    # Check if svg_final exists and count final SVG files to verify if finalized
+    svg_final = project_path / 'svg_final'
+    info['has_finalize'] = svg_final.exists() and len(list(svg_final.glob('*.svg'))) > 0
+
     # Get canvas format details
     if info['format'] in CANVAS_FORMATS:
         info['canvas_info'] = CANVAS_FORMATS[info['format']]

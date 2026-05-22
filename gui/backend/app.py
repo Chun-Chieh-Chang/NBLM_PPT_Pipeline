@@ -103,10 +103,10 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 @app.after_request
 def add_header(r):
-    if request.path.startswith('/api/'):
-        r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-        r.headers["Pragma"] = "no-cache"
-        r.headers["Expires"] = "0"
+    # Disable caching globally for development to ensure prompt updates of HTML, JS, CSS and APIs
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
     return r
 
 # Configuration
@@ -140,6 +140,29 @@ def mask_api_key(key, val):
         return f"{val[:4]}...{val[-4:]}"
     return val
 
+def locate_project_path(name):
+    """
+    Locate a project directory in PROJECTS_DIR using a case-insensitive fallback strategy.
+    Returns the resolved Path object.
+    """
+    project_path = PROJECTS_DIR / name
+    if project_path.exists():
+        return project_path.resolve()
+        
+    target_name_lower = name.lower()
+    if PROJECTS_DIR.exists():
+        matched_dirs = [item for item in PROJECTS_DIR.iterdir() if item.is_dir() and item.name.lower() == target_name_lower]
+        if matched_dirs:
+            return matched_dirs[0].resolve()
+            
+        matches = sorted(PROJECTS_DIR.glob(f"{name}_*"), key=lambda x: x.name.lower())
+        if not matches:
+            matches = sorted([item for item in PROJECTS_DIR.iterdir() if item.is_dir() and item.name.lower().startswith(target_name_lower + "_")], key=lambda x: x.name.lower())
+        if matches:
+            return matches[-1].resolve()
+            
+    return project_path
+
 # HTML Page Routes
 @app.route('/favicon.ico')
 def route_favicon():
@@ -158,12 +181,8 @@ def route_project(name):
 def route_project_edit(name):
     global active_editor_process, active_editor_project
     
-    # Locate project directory
-    project_path = PROJECTS_DIR / name
-    if not project_path.exists():
-        matches = sorted(PROJECTS_DIR.glob(f"{name}_*"))
-        if matches:
-            project_path = matches[-1]
+    # Locate project directory (case-insensitive fallback)
+    project_path = locate_project_path(name)
             
     if not project_path.exists():
         return "Project not found", 404
@@ -209,16 +228,26 @@ def route_project_edit(name):
     ]
     
     try:
+        # Setup logs directory and capture server outputs to resolve blackbox failures
+        logs_dir = root_dir / "logs"
+        logs_dir.mkdir(exist_ok=True)
+        log_file = open(logs_dir / "svg_editor.log", "a", encoding="utf-8")
+        
         active_editor_process = subprocess.Popen(
             cmd,
             cwd=str(root_dir),
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
+            stdout=log_file,
+            stderr=log_file
         )
         active_editor_project = project_name
         
-        # Wait for server to boot up
+        # Wait for server to boot up and safely close parent log handle
         time.sleep(1.0)
+        try:
+            log_file.close()
+        except Exception:
+            pass
+            
         return redirect("http://127.0.0.1:5050/")
     except Exception as e:
         return f"Failed to start SVG Editor server: {str(e)}", 500
@@ -328,11 +357,7 @@ def api_projects_create():
 
 @app.route('/api/projects/<name>', methods=['DELETE'])
 def api_projects_delete(name):
-    project_path = PROJECTS_DIR / name
-    if not project_path.exists():
-        matches = sorted(PROJECTS_DIR.glob(f"{name}_*"))
-        if matches:
-            project_path = matches[-1]
+    project_path = locate_project_path(name)
             
     if not project_path.exists():
         # If the project folder already does not exist, treat it as successfully deleted (idempotent DELETE)
@@ -368,12 +393,7 @@ def api_projects_delete(name):
 @app.route('/api/projects/<name>/info', methods=['GET'])
 def api_project_info(name):
     # Locate project directory
-    project_path = PROJECTS_DIR / name
-    if not project_path.exists():
-        # Fallback: check if matches prefix
-        matches = sorted(PROJECTS_DIR.glob(f"{name}_*"))
-        if matches:
-            project_path = matches[-1]
+    project_path = locate_project_path(name)
             
     if not project_path.exists():
         return jsonify({'error': 'Project not found'}), 404
@@ -423,12 +443,7 @@ def api_project_info(name):
 
 @app.route('/api/projects/<name>/upload', methods=['POST'])
 def api_project_upload(name):
-    project_path = PROJECTS_DIR / name
-    if not project_path.exists():
-        # Fallback
-        matches = sorted(PROJECTS_DIR.glob(f"{name}_*"))
-        if matches:
-            project_path = matches[-1]
+    project_path = locate_project_path(name)
             
     if not project_path.exists():
         return jsonify({'error': 'Project not found'}), 404
@@ -464,11 +479,7 @@ def secure_filename_local(name):
 
 @app.route('/api/projects/<name>/export', methods=['GET'])
 def api_project_download_pptx(name):
-    project_path = PROJECTS_DIR / name
-    if not project_path.exists():
-        matches = sorted(PROJECTS_DIR.glob(f"{name}_*"))
-        if matches:
-            project_path = matches[-1]
+    project_path = locate_project_path(name)
             
     if not project_path.exists():
         return jsonify({'error': 'Project not found'}), 404
@@ -489,11 +500,7 @@ def api_project_download_pptx(name):
 @app.route('/api/projects/<name>/run/<step>', methods=['GET', 'POST'])
 def api_project_run_step(name, step):
     rebuild = request.args.get('rebuild', '').lower() == 'true'
-    project_path = PROJECTS_DIR / name
-    if not project_path.exists():
-        matches = sorted(PROJECTS_DIR.glob(f"{name}_*"))
-        if matches:
-            project_path = matches[-1]
+    project_path = locate_project_path(name)
             
     if not project_path.exists():
         return jsonify({'error': 'Project not found'}), 404
@@ -848,6 +855,9 @@ def api_project_run_step(name, step):
                 
         except Exception as e:
             yield "data: [EXCEPTION] Failed to launch subprocess: {}\n\n".format(str(e))
+        finally:
+            # Give a brief moment for the socket to flush all data cleanly to the client before closing
+            time.sleep(0.5)
             
     return Response(generate_events(), mimetype='text/event-stream', headers={
         'Cache-Control': 'no-cache',

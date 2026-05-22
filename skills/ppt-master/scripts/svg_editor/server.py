@@ -197,7 +197,8 @@ def create_app(
     images_dir = project_path / 'images'
     assets_dir = project_path / 'assets'
 
-    app = Flask(__name__, static_folder='static', static_url_path='/static')
+    static_abs_path = Path(__file__).resolve().parent / "static"
+    app = Flask(__name__, static_folder=str(static_abs_path), static_url_path='/static')
     app.config['PROJECT_PATH'] = project_path
     app.config['SVG_DIR'] = svg_dir
     app.config['LIVE_MODE'] = live

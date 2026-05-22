@@ -208,8 +208,8 @@ function updateTimelineNodes(info) {
   // Step 5: SVG Finalize
   const finalizeNode = document.getElementById('step-node-finalize');
   const finalizeBadge = document.getElementById('badge-step-finalize');
-  // If finalized svg has been processed (we check if exports exists or svg_count > 0)
-  if (info.svg_count > 0 && info.export_files && info.export_files.length > 0) {
+  // If finalized svg has been processed (we check info.has_finalize)
+  if (info.has_finalize) {
     finalizeNode.className = "step-node completed";
     finalizeBadge.className = "badge badge-exported";
     finalizeBadge.innerText = "優化完成";
@@ -384,10 +384,10 @@ function runPipelineStep(step) {
       logToTerminal(data, 'system');
     } else if (data.startsWith('[SUCCESS]')) {
       logToTerminal(data, 'success');
-      finishStepRun(true);
+      finishStepRun(true, step);
     } else if (data.startsWith('[ERROR]') || data.startsWith('[EXCEPTION]')) {
       logToTerminal(data, 'error');
-      finishStepRun(false);
+      finishStepRun(false, step);
     } else {
       // Normal logs
       logToTerminal(data);
@@ -397,7 +397,7 @@ function runPipelineStep(step) {
   eventSource.onerror = (err) => {
     console.error('SSE connection error:', err);
     logToTerminal('[SYSTEM ERROR] 即時日誌通道異常中斷。', 'error');
-    finishStepRun(false);
+    finishStepRun(false, step);
   };
 }
 
@@ -442,10 +442,10 @@ function runNotebookLMPipeline(phase) {
       logToTerminal(data, 'system');
     } else if (data.startsWith('[SUCCESS]')) {
       logToTerminal(data, 'success');
-      finishStepRun(true);
+      finishStepRun(true, step);
     } else if (data.startsWith('[ERROR]') || data.startsWith('[EXCEPTION]')) {
       logToTerminal(data, 'error');
-      finishStepRun(false);
+      finishStepRun(false, step);
     } else {
       logToTerminal(data);
     }
@@ -454,11 +454,11 @@ function runNotebookLMPipeline(phase) {
   eventSource.onerror = (err) => {
     console.error('SSE Error:', err);
     logToTerminal('[SYSTEM ERROR] 即時日誌通道異常中斷。', 'error');
-    finishStepRun(false);
+    finishStepRun(false, step);
   };
 }
 
-function finishStepRun(isSuccess) {
+function finishStepRun(isSuccess, step) {
   if (eventSource) {
     eventSource.onerror = null;
     eventSource.onmessage = null;
@@ -470,7 +470,90 @@ function finishStepRun(isSuccess) {
   togglePipelineButtons(false);
   
   // Refresh stats and files
-  refreshProjectInfo();
+  refreshProjectInfo().then(() => {
+    // Premium UI/UX Smart Guidance Alerts for manual steps execution
+    if (isSuccess && step) {
+      if (step === 'finalize') {
+        showSmartGuidanceModal({
+          title: "設計定稿優化成功！",
+          icon: "✨",
+          content: `<p><strong>🎉 SVG 視覺圖層已順利定稿！</strong></p>
+                    <div style="margin-top: 14px; padding: 12px; border-radius: 8px; background-color: var(--bg-base); font-size: 13px; line-height: 1.6;">
+                      <p>系統已順利打平向量字體、提取內嵌圖標 (Icons)，並為轉譯至微軟簡報 DrawingML 原生可編輯形狀做好完美準備！</p>
+                      <p style="margin-top: 8px;">👉 <strong>推薦下一步操作：</strong></p>
+                      <p>1. 點擊下方 <strong>「步驟 6」的一鍵編譯匯出 PPTX</strong> 進行打包下載！</p>
+                      <p style="margin-top: 4px;">2. 點擊右上角的 <strong>「編輯投影片 (SVG Editor)」</strong> 進行最後的視覺排版與漸層微調！</p>
+                    </div>`,
+          actions: [
+            { text: '👉 執行步驟 6 匯出 PPTX', value: 'export', className: 'btn btn-primary' },
+            { text: '🎨 編輯投影片 (SVG Editor)', value: 'edit', className: 'btn btn-secondary' },
+            { text: '確定', value: 'close', className: 'btn btn-secondary' }
+          ]
+        }).then((choice) => {
+          if (choice === 'export') {
+            runPipelineStep('export');
+          } else if (choice === 'edit') {
+            window.open(`/project/${window.currentProjectInfo.dir_name}/edit`, '_blank');
+          }
+        });
+      } else if (step === 'split') {
+        showSmartGuidanceModal({
+          title: "大綱分割成功！",
+          icon: "📝",
+          content: `<p><strong>🎉 簡報大綱結構已成功切割！</strong></p>
+                    <div style="margin-top: 14px; padding: 12px; border-radius: 8px; background-color: var(--bg-base); font-size: 13px; line-height: 1.6;">
+                      <p>系統已順利解析 <code>total.md</code> 並在 <code>svg_output</code> 目錄下建立了簡報的 Dark Mode 預設骨架。</p>
+                      <p style="margin-top: 8px;">👉 <strong>推薦下一步操作：</strong></p>
+                      <p>請點擊下方的<strong>「步驟 4」執行 AI 配圖與批量繪圖</strong>，為您的幻燈片注入驚艷的視覺資產！</p>
+                    </div>`,
+          actions: [
+            { text: '👉 執行步驟 4 AI 配圖', value: 'image_gen', className: 'btn btn-primary' },
+            { text: '確定', value: 'close', className: 'btn btn-secondary' }
+          ]
+        }).then((choice) => {
+          if (choice === 'image_gen') {
+            runPipelineStep('image_gen');
+          }
+        });
+      } else if (step === 'image_gen') {
+        showSmartGuidanceModal({
+          title: "AI 配圖生成完成！",
+          icon: "🎨",
+          content: `<p><strong>🎉 瑞士格線系統與配圖繪製已成功！</strong></p>
+                    <div style="margin-top: 14px; padding: 12px; border-radius: 8px; background-color: var(--bg-base); font-size: 13px; line-height: 1.6;">
+                      <p>所有投影片的視覺圖形與卡片插圖已全部繪製完畢。</p>
+                      <p style="margin-top: 8px;">👉 <strong>推薦下一步操作：</strong></p>
+                      <p>請點擊下方<strong>「步驟 5」進行設計定稿與字體提取優化</strong>，為轉譯可編輯 PowerPoint 做最後準備！</p>
+                    </div>`,
+          actions: [
+            { text: '👉 執行步驟 5 定稿優化', value: 'finalize', className: 'btn btn-primary' },
+            { text: '確定', value: 'close', className: 'btn btn-secondary' }
+          ]
+        }).then((choice) => {
+          if (choice === 'finalize') {
+            runPipelineStep('finalize');
+          }
+        });
+      } else if (step === 'export') {
+        showSmartGuidanceModal({
+          title: "簡報匯出成功！",
+          icon: "🎉",
+          content: `<p><strong>🎉 PowerPoint 簡報已完美編譯！</strong></p>
+                    <div style="margin-top: 14px; padding: 12px; border-radius: 8px; background-color: var(--bg-base); font-size: 13px; line-height: 1.6;">
+                      <p>您的幻燈片已編譯為 100% 原生 Office DrawingML 向量形狀，字型與色塊可在 PowerPoint 中雙擊任意編輯微調！</p>
+                    </div>`,
+          actions: [
+            { text: '📥 立即下載簡報 PPTX', value: 'download', className: 'btn btn-primary' },
+            { text: '確定', value: 'close', className: 'btn btn-secondary' }
+          ]
+        }).then((choice) => {
+          if (choice === 'download') {
+            downloadLatestPPTX();
+          }
+        });
+      }
+    }
+  });
 }
 
 function togglePipelineButtons(disabled) {
