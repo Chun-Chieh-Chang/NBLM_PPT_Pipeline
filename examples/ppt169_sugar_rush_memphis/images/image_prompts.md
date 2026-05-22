@@ -13,7 +13,7 @@
 
 | Attribute | Value |
 |---|---|
-| Purpose | P01 cover hero — SUGAR RUSH 主视觉 |
+| Purpose | P01 cover hero — SUGAR RUSH 主視覺 |
 | Type | hero |
 | Aspect ratio | 16:9 |
 | Image size | 2K |
@@ -32,7 +32,7 @@ Modern flat design illustration with bold geometric blocks and confident color z
 
 | Attribute | Value |
 |---|---|
-| Purpose | P02 chapter 1 WHAT — 沙滩派对俯视全景 |
+| Purpose | P02 chapter 1 WHAT — 沙灘派對俯視全景 |
 | Type | background |
 | Aspect ratio | 16:9 |
 | Image size | 2K |
@@ -51,7 +51,7 @@ Modern flat design illustration with bold geometric blocks and confident color z
 
 | Attribute | Value |
 |---|---|
-| Purpose | P05 chapter 2 WHO — 五位音乐人剪影舞台 |
+| Purpose | P05 chapter 2 WHO — 五位音樂人剪影舞臺 |
 | Type | hero |
 | Aspect ratio | 16:9 |
 | Image size | 2K |
@@ -70,7 +70,7 @@ Modern flat design illustration with bold geometric blocks and confident color z
 
 | Attribute | Value |
 |---|---|
-| Purpose | P06 头牌艺人四联画 — 四位虚构音乐人正面半身像 |
+| Purpose | P06 頭牌藝人四聯畫 — 四位虛構音樂人正面半身像 |
 | Type | portrait |
 | Aspect ratio | 21:9 |
 | Image size | 2K |
@@ -89,7 +89,7 @@ Modern flat design illustration with bold geometric blocks and confident color z
 
 | Attribute | Value |
 |---|---|
-| Purpose | P08 chapter 3 WHERE — 音乐节场地鸟瞰 |
+| Purpose | P08 chapter 3 WHERE — 音樂節場地鳥瞰 |
 | Type | map |
 | Aspect ratio | 16:9 |
 | Image size | 2K |
@@ -108,7 +108,7 @@ Modern flat design illustration with bold geometric blocks and confident color z
 
 | Attribute | Value |
 |---|---|
-| Purpose | P11 chapter 4 VIBES — 夜场荧光氛围 |
+| Purpose | P11 chapter 4 VIBES — 夜場熒光氛圍 |
 | Type | scene |
 | Aspect ratio | 16:9 |
 | Image size | 2K |
@@ -127,7 +127,7 @@ Modern flat design illustration with bold geometric blocks and confident color z
 
 | Attribute | Value |
 |---|---|
-| Purpose | P12 周边市集 local 插画 |
+| Purpose | P12 周邊市集 local 插畫 |
 | Type | scene |
 | Aspect ratio | 3:2 |
 | Image size | 1K |
@@ -146,7 +146,7 @@ Modern flat design illustration with bold geometric blocks and confident color z
 
 | Attribute | Value |
 |---|---|
-| Purpose | P12 互动艺术装置 local 插画 |
+| Purpose | P12 互動藝術裝置 local 插畫 |
 | Type | scene |
 | Aspect ratio | 3:2 |
 | Image size | 1K |
@@ -165,7 +165,7 @@ Modern flat design illustration with bold geometric blocks and confident color z
 
 | Attribute | Value |
 |---|---|
-| Purpose | P14 收尾页 — 夕阳空舞台与残存彩屑 |
+| Purpose | P14 收尾頁 — 夕陽空舞臺與殘存彩屑 |
 | Type | scene |
 | Aspect ratio | 16:9 |
 | Image size | 2K |

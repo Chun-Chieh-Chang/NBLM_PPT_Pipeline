@@ -8,7 +8,7 @@
 
 | Property       | Description                                                |
 | -------------- | ---------------------------------------------------------- |
-| **Template Name** | 中汽研_常规 (formerly zhongqiyan)                       |
+| **Template Name** | 中汽研_常規 (formerly zhongqiyan)                       |
 | **Use Cases**  | Product certification display, evaluation presentations, technology promotion, business visits |
 | **Design Tone** | Professional, authoritative, trustworthy, consulting style |
 | **Theme Mode** | Light theme (white background + deep blue accent)          |
@@ -61,7 +61,7 @@
 
 ### Font Stack
 
-**Font Stack**: `"Microsoft YaHei", "微软雅黑", "SimHei", Arial, Calibri, sans-serif`
+**Font Stack**: `"Microsoft YaHei", "微軟雅黑", "SimHei", Arial, Calibri, sans-serif`
 
 ### Font Size Hierarchy
 

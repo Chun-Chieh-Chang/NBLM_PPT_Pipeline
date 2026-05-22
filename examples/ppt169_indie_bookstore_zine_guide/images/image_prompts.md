@@ -13,7 +13,7 @@
 
 | Attribute | Value |
 |---|---|
-| Purpose | P01 封面 hero — Risograph 印刷工坊场景 |
+| Purpose | P01 封面 hero — Risograph 印刷工坊場景 |
 | Type | background |
 | Aspect ratio | 16:9 |
 | Image size | 2K |
@@ -32,7 +32,7 @@ Bold silkscreen poster art with limited flat color palette and characteristic pr
 
 | Attribute | Value |
 |---|---|
-| Purpose | P03 zine 是什么 — 跨年代 zine 堆叠拼贴侧栏 |
+| Purpose | P03 zine 是什麼 — 跨年代 zine 堆疊拼貼側欄 |
 | Type | scene |
 | Aspect ratio | 16:9 |
 | Image size | 1K |
@@ -51,7 +51,7 @@ Bold silkscreen poster art with limited flat color palette and stencil-cut edges
 
 | Attribute | Value |
 |---|---|
-| Purpose | P05 Risograph 工艺侧栏图 — 经典 Riso 复印机正三分之一立面 |
+| Purpose | P05 Risograph 工藝側欄圖 — 經典 Riso 影印機正三分之一立面 |
 | Type | hero |
 | Aspect ratio | 4:5 |
 | Image size | 1K |
@@ -70,7 +70,7 @@ Bold silkscreen poster art with confident flat color blocks, stencil-cut edges, 
 
 | Attribute | Value |
 |---|---|
-| Purpose | P06 Risograph 工艺横幅 — 5 stage 流程从左到右 |
+| Purpose | P06 Risograph 工藝橫幅 — 5 stage 流程從左到右 |
 | Type | flowchart |
 | Aspect ratio | 21:9 |
 | Image size | 2K |
@@ -89,7 +89,7 @@ Bold silkscreen poster art flowchart banner with stencil-cut edges and flat colo
 
 | Attribute | Value |
 |---|---|
-| Purpose | P07 八页折叠 hero — 双手折 A4，四角留 SVG 注解卡空间 |
+| Purpose | P07 八頁摺疊 hero — 雙手摺 A4，四角留 SVG 註解卡空間 |
 | Type | scene |
 | Aspect ratio | 3:2 |
 | Image size | 1K |
@@ -108,7 +108,7 @@ Bold silkscreen poster art scene with flat color blocks, stencil-cut edges, no f
 
 | Attribute | Value |
 |---|---|
-| Purpose | P09 神保町 hero — 东京旧书街夜景 |
+| Purpose | P09 神保町 hero — 東京舊書街夜景 |
 | Type | scene |
 | Aspect ratio | 16:9 |
 | Image size | 2K |
@@ -127,7 +127,7 @@ Bold silkscreen poster art cinematic scene with flat color blocks, stencil-cut e
 
 | Attribute | Value |
 |---|---|
-| Purpose | P10 三城三店三联 — 巴黎/伦敦/纽约书店并列 baked-in triptych |
+| Purpose | P10 三城三店三聯 — 巴黎/倫敦/紐約書店並列 baked-in triptych |
 | Type | scene |
 | Aspect ratio | 21:9 |
 | Image size | 2K |
@@ -146,7 +146,7 @@ Bold silkscreen poster art triptych baked in one image with three equal-width pa
 
 | Attribute | Value |
 |---|---|
-| Purpose | P11 柏林 Bücherbogen hero — S-Bahn 高架桥下拱顶书店内景 |
+| Purpose | P11 柏林 Bücherbogen hero — S-Bahn 高架橋下拱頂書店內景 |
 | Type | scene |
 | Aspect ratio | 16:9 |
 | Image size | 2K |
@@ -165,7 +165,7 @@ Bold silkscreen poster art interior scene with flat color blocks, stencil-cut ed
 
 | Attribute | Value |
 |---|---|
-| Purpose | P13 中国艺术书展 — 书展摊位现场氛围 |
+| Purpose | P13 中國藝術書展 — 書展攤位現場氛圍 |
 | Type | scene |
 | Aspect ratio | 1:1 |
 | Image size | 1K |
@@ -184,7 +184,7 @@ Bold silkscreen poster art booth-aisle scene with flat color blocks, stencil-cut
 
 | Attribute | Value |
 |---|---|
-| Purpose | P18 封底 outro hero — 手举一本 zine 朝向观者 |
+| Purpose | P18 封底 outro hero — 手舉一本 zine 朝向觀者 |
 | Type | hero |
 | Aspect ratio | 16:9 |
 | Image size | 2K |

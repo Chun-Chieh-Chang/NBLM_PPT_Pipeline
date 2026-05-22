@@ -19,7 +19,7 @@
     ]
   },
   "china_telecom_template": {
-    "summary": "China Telecom related briefings, 政企数字化方案, 转型规划, 内部汇报.",
+    "summary": "China Telecom related briefings, 政企數字化方案, 轉型規劃, 內部彙報.",
     "keywords": [
       "Authoritative",
       "structured",
@@ -73,7 +73,7 @@
       "trustworthy"
     ]
   },
-  "中国电建_常规": {
+  "中國電建_常規": {
     "summary": "Engineering project reports, technical proposal presentations, business negotiations, corporate promotion, annual summaries.",
     "keywords": [
       "Professional",
@@ -82,7 +82,7 @@
       "state-owned enterprise style"
     ]
   },
-  "中国电建_现代": {
+  "中國電建_現代": {
     "summary": "Major engineering reports, international market promotion, technology achievement showcases, high-end business negotiations.",
     "keywords": [
       "Grand narrative",
@@ -91,7 +91,7 @@
       "international vision"
     ]
   },
-  "中汽研_商务": {
+  "中汽研_商務": {
     "summary": "Product certification display, evaluation presentations, technology promotion, high-end business reporting.",
     "keywords": [
       "Modern tech",
@@ -99,7 +99,7 @@
       "composed & grand"
     ]
   },
-  "中汽研_常规": {
+  "中汽研_常規": {
     "summary": "Product certification display, evaluation presentations, technology promotion, business visits.",
     "keywords": [
       "Professional",
@@ -108,7 +108,7 @@
       "consulting style"
     ]
   },
-  "中汽研_现代": {
+  "中汽研_現代": {
     "summary": "Forward-looking technology showcases, strategic releases, high-end business reporting.",
     "keywords": [
       "Futuristic",
@@ -116,8 +116,8 @@
       "deep & refined"
     ]
   },
-  "招商银行": {
-    "summary": "交易银行产品介绍、销售收款方案汇报、客户案例拆解、分行培训材料.",
+  "招商銀行": {
+    "summary": "交易銀行產品介紹、銷售收款方案彙報、客戶案例拆解、分行培訓材料.",
     "keywords": [
       "Brand-consistent",
       "structured",
@@ -125,7 +125,7 @@
       "refined finance"
     ]
   },
-  "重庆大学": {
+  "重慶大學": {
     "summary": "Academic defense, research reports, teaching presentations, scholarly exchange.",
     "keywords": [
       "Academically grounded · Mountain City charm · Modern minimalism"

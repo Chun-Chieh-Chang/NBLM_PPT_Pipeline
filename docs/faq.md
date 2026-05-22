@@ -117,7 +117,6 @@ No. PPT Master is a **harness**, not a complete agent — `harness + model = age
 
 If the results you've seen look mediocre, check your setup before concluding anything about the tool: What model? What context size? Was image generation enabled? PPT Master + Claude Opus at 1M context + `gpt-image-2` images is a genuinely different experience from PPT Master + a small open-source model with no image API configured.
 
-> **No Claude access?** Project sponsor [PackyCode](https://www.packyapi.com/register?aff=ppt-master) provides pay-as-you-go access to Claude and other models — no subscription, no overseas card required. Use promo code **`ppt-master`** for 10% off.
 
 ## Q: Text overflows or elements are misaligned — what can I do?
 
@@ -139,7 +138,7 @@ If generation feels slow, check your model's token throughput. The bottleneck is
 
 Default recommendation: **continuous one-shot generation**. 10–15 page decks fit comfortably in a 200K window, and cross-page visual consistency is best when the Executor can see prior pages in the same session (it actively aligns style, font sizes, and rhythm).
 
-Only when signals are heavy (≥ 18 pages, thick source material, or `topic-research` ran with substantial web-fetch accumulation) does the AI surface an optional **two-stage (split mode)** hint at the Strategist phase: Phase A (eight confirmations + image acquisition) ends in the current chat; you open a fresh chat window and type `继续生成 projects/<project_name>` (or "resume execution projects/<project_name>") to enter Phase B (SVG generation + export). The new session reloads `design_spec` / `spec_lock` / `sources` / `images` from disk and continues from there.
+Only when signals are heavy (≥ 18 pages, thick source material, or `topic-research` ran with substantial web-fetch accumulation) does the AI surface an optional **two-stage (split mode)** hint at the Strategist phase: Phase A (eight confirmations + image acquisition) ends in the current chat; you open a fresh chat window and type `繼續生成 projects/<project_name>` (or "resume execution projects/<project_name>") to enter Phase B (SVG generation + export). The new session reloads `design_spec` / `spec_lock` / `sources` / `images` from disk and continues from there.
 
 Split mode is a **compromise** — it pays ~6K tokens (re-reading SKILL.md) to drop 60–200K of Phase A noise, then reuses the freed budget in Phase B to re-read `sources/` for richer slide content. **Not needed when signals are normal**; the hint won't appear, and you can always ignore it and stay in continuous mode.
 

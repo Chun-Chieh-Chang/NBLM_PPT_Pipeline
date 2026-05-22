@@ -196,7 +196,7 @@ grep "chart-plot-area" <project_path>/svg_output/<current_page>.svg
 
 Format: `<NN>_<page_name>.svg` (two-digit number from 01; name matches the deck's language and the page title in the Design Spec).
 
-Examples: `01_封面.svg` / `02_目录.svg` / `03_核心优势.svg`; `01_cover.svg` / `02_agenda.svg` / `03_key_benefits.svg`.
+Examples: `01_封面.svg` / `02_目錄.svg` / `03_核心優勢.svg`; `01_cover.svg` / `02_agenda.svg` / `03_key_benefits.svg`.
 
 ---
 
@@ -352,16 +352,16 @@ After all SVG pages are finalized, enter Logic Construction Phase and write the 
 
 **Pure spoken narration**: notes are read aloud verbatim by `notes_to_audio.py` (TTS). Write only what should be spoken. No visible markers, no labeled meta-lines, no enumerated key-point lists, no duration annotations — anything you write outside the heading will be vocalized.
 
-**Per-page structure**: `# <number>_<page_title>` heading (the `#` heading line is the only thing stripped before TTS), pages separated by `---`. Body is 2–5 natural sentences carrying the page's core message. Page-to-page transitions live inside the opening sentence as natural prose ("接下来……" / "Having framed X, let's turn to Y") — no bracketed `[过渡]` / `[Transition]` tags.
+**Per-page structure**: `# <number>_<page_title>` heading (the `#` heading line is the only thing stripped before TTS), pages separated by `---`. Body is 2–5 natural sentences carrying the page's core message. Page-to-page transitions live inside the opening sentence as natural prose ("接下來……" / "Having framed X, let's turn to Y") — no bracketed `[過渡]` / `[Transition]` tags.
 
 **Concrete examples** — same shape applies to any language; just write naturally in that language.
 
 中文 deck：
 
 ```
-# 02_市场格局
+# 02_市場格局
 
-在明确了行业背景之后，我们来看具体的市场格局。当前线上零售集中度持续上升，前三大平台合计份额已经达到百分之六十八，腰部玩家正在被快速挤压，留给新进入者的窗口期不超过十八个月。这意味着我们的策略必须聚焦，而不是铺开。
+在明確了行業背景之後，我們來看具體的市場格局。當前線上零售集中度持續上升，前三大平臺合計份額已經達到百分之六十八，腰部玩家正在被快速擠壓，留給新進入者的視窗期不超過十八個月。這意味著我們的策略必須聚焦，而不是鋪開。
 ```
 
 英文 deck：
@@ -372,13 +372,13 @@ After all SVG pages are finalized, enter Logic Construction Phase and write the 
 Having framed the industry backdrop, let's look at the actual market landscape. Online retail concentration keeps rising — the top three platforms now hold sixty-eight percent of combined share, mid-tier players are being squeezed fast, and the window for new entrants is under eighteen months. This means our strategy has to focus, not spread.
 ```
 
-> 日本語 / 한국어 / 其他语言：照搬同样的结构，用对应语言自然书写即可。
+> 日本語 / 한국어 / 其他語言：照搬同樣的結構，用對應語言自然書寫即可。
 
-**Number readability**: TTS reads digits and symbols literally. Prefer fully-spelled forms in the language being spoken when literal pronunciation would be awkward (e.g. Chinese "百分之六十八" reads better than "68%"; "1-2分钟" reads as "一减二分钟"). Plain integers and percentages in English are fine as-is.
+**Number readability**: TTS reads digits and symbols literally. Prefer fully-spelled forms in the language being spoken when literal pronunciation would be awkward (e.g. Chinese "百分之六十八" reads better than "68%"; "1-2分鐘" reads as "一減二分鐘"). Plain integers and percentages in English are fine as-is.
 
 **Common mistakes to avoid**:
-- Leaving any bracketed stage marker (`[过渡]` / `[Transition]` / `[Pause]` / `[Data]` / `[Scan Room]` / `[Interactive]` / `[Benchmark]` etc.) in the text — they will be read aloud literally.
-- Adding `要点：① …` / `Key points: (1) …` / `时长：2分钟` / `Duration: 2 minutes` / `Flex: …` lines — TTS will speak "要点 一 …".
+- Leaving any bracketed stage marker (`[過渡]` / `[Transition]` / `[Pause]` / `[Data]` / `[Scan Room]` / `[Interactive]` / `[Benchmark]` etc.) in the text — they will be read aloud literally.
+- Adding `要點：① …` / `Key points: (1) …` / `時長：2分鐘` / `Duration: 2 minutes` / `Flex: …` lines — TTS will speak "要點 一 …".
 - Mixing languages within one deck's notes.
 
 ### Task 2. Split Into Per-Page Note Files

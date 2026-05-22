@@ -64,7 +64,7 @@ The aggregated brand review is the responsibility of the orchestrator at the end
 
 ## §2 Soft rules (act only when clearly bad)
 
-Subagents must apply the **明显** ("clearly bad") threshold — when in doubt, leave it. Better to under-fix than to oscillate.
+Subagents must apply the **明顯** ("clearly bad") threshold — when in doubt, leave it. Better to under-fix than to oscillate.
 
 | # | Category | Trigger | Fix direction |
 |---|----------|---------|---------------|
@@ -177,7 +177,7 @@ Each subagent writes exactly one file to `<project>/.review/<page>.json`:
     }
   ],
   "design_intent_check": {
-    "spec_says": "TL;DR — emphasize 意图 as the core abstraction",
+    "spec_says": "TL;DR — emphasize 意圖 as the core abstraction",
     "render_delivers": true,
     "note": "..."
   }

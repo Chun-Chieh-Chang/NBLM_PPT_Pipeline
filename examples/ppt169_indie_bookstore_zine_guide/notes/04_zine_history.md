@@ -1,1 +1,1 @@
-zine 不是新东西，它有一百年的浪潮史。一九二零年代，哈莱姆文艺复兴时期就有黑人创作者自费出版的小册子。一九三零年代，科幻迷办起同人志，"fanzine" 这个词在一九四零年由 Russ Chauvenet 创造。一九七六年，朋克随着复印机的普及而引爆 zine 文化，Sniffin' Glue 成为标志。一九九一年，Riot Grrrl 把 zine 推向第三波女性主义，Kathleen Hanna 的 Bikini Kill 同名 zine 至今仍是范式。今天，zine 文化在书展和图书馆的收藏中复兴 —— 它一直在，只是换了形式。
+zine 不是新東西，它有一百年的浪潮史。一九二零年代，哈萊姆文藝復興時期就有黑人創作者自費出版的小冊子。一九三零年代，科幻迷辦起同人誌，"fanzine" 這個詞在一九四零年由 Russ Chauvenet 創造。一九七六年，朋克隨著影印機的普及而引爆 zine 文化，Sniffin' Glue 成為標誌。一九九一年，Riot Grrrl 把 zine 推向第三波女性主義，Kathleen Hanna 的 Bikini Kill 同名 zine 至今仍是正規化。今天，zine 文化在書展和圖書館的收藏中復興 —— 它一直在，只是換了形式。

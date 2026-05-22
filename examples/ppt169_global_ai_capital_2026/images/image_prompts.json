@@ -12,7 +12,7 @@
   "items": [
     {
       "filename": "cover_atmosphere.png",
-      "purpose": "Cover background — 2026 全球 AI 资本格局封面氛围底图",
+      "purpose": "Cover background — 2026 全球 AI 資本格局封面氛圍底圖",
       "type": "background",
       "page_role": "hero_page",
       "text_policy": "none",
@@ -24,7 +24,7 @@
     },
     {
       "filename": "nvidia_circular.png",
-      "purpose": "Part V Nvidia 闭环章节锚点 — 圆形资本流转氛围",
+      "purpose": "Part V Nvidia 閉環章節錨點 — 圓形資本流轉氛圍",
       "type": "background",
       "page_role": "hero_page",
       "text_policy": "none",
@@ -36,7 +36,7 @@
     },
     {
       "filename": "bubble_tension.png",
-      "purpose": "Part VI 泡沫论章节锚点 — 单一气泡张力氛围",
+      "purpose": "Part VI 泡沫論章節錨點 — 單一氣泡張力氛圍",
       "type": "background",
       "page_role": "hero_page",
       "text_policy": "none",

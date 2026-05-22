@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NBLM PPT Pipeline - 專案工作台</title>
+  <title>NBLM PPT Pipeline - 專案工作臺</title>
   <link rel="stylesheet" href="/static/style.css?v=2.7.2">
   <style>
     /* Tabs styling */
@@ -88,9 +88,9 @@
     <!-- Workspace Header & Breadcrumbs -->
     <div style="margin-bottom: 32px;">
       <div style="display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--secondary-text); margin-bottom: 8px;">
-        <a href="/">儀表板</a>
+        <a href="/">儀錶板</a>
         <span>/</span>
-        <span id="breadcrumb-project" style="color: var(--primary-text); font-weight: 500;">專案工作台</span>
+        <span id="breadcrumb-project" style="color: var(--primary-text); font-weight: 500;">專案工作臺</span>
       </div>
       
       <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
@@ -184,7 +184,7 @@
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                     </svg>
-                    <span class="dropzone-text">拖曳簡報素材至此區塊，或點擊以瀏覽檔案</span>
+                    <span class="dropzone-text">拖曳簡報素材至此區塊，或點選以瀏覽檔案</span>
                     <span class="dropzone-sub">支援 PDF, DOCX, XLSX, TXT, MD, MP3 (音訊)</span>
                     <input type="file" id="file-uploader" style="display: none;" multiple>
                   </div>
@@ -215,7 +215,7 @@
                   <span class="step-name">AI 配圖生成與註冊 (AI Image Generator)</span>
                   <span id="badge-step-image" class="badge">待執行</span>
                 </div>
-                <p class="step-desc">此步驟由 AI 與後端腳本共同合作。請在 AI 聊天視窗中呼叫配圖指令，並在後端一鍵繪圖。</p>
+                <p class="step-desc">此步驟由 AI 與後端指令碼共同合作。請在 AI 聊天視窗中呼叫配圖指令，並在後端一鍵繪圖。</p>
                 
                 <div class="prompt-box">
                   <button class="prompt-copy-btn" onclick="copyAIPrompt()">複製 AI 任務 Prompt</button>
@@ -224,7 +224,7 @@
                 </div>
                 
                 <div class="step-control">
-                  <button class="btn btn-primary" onclick="runPipelineStep('image_gen')">一鍵執行 AI 批量繪圖</button>
+                  <button class="btn btn-primary" onclick="runPipelineStep('image_gen')">一鍵執行 AI 批次繪圖</button>
                 </div>
               </div>
             </div>
@@ -234,10 +234,10 @@
               <div class="step-indicator">5</div>
               <div class="step-content">
                 <div class="step-title-row">
-                  <span class="step-name">SVG 定稿後製優化 (Finalize SVGs)</span>
+                  <span class="step-name">SVG 定稿後製最佳化 (Finalize SVGs)</span>
                   <span id="badge-step-finalize" class="badge">待執行</span>
                 </div>
-                <p class="step-desc">打平 SVG 字體、提取內嵌 Icon，並為 DrawingML 可編輯形狀做好準備。</p>
+                <p class="step-desc">打平 SVG 字型、提取內嵌 Icon，並為 DrawingML 可編輯形狀做好準備。</p>
                 <div class="step-control">
                   <button class="btn btn-primary" onclick="runPipelineStep('finalize')">執行定稿編譯</button>
                 </div>
@@ -305,7 +305,7 @@
             </div>
             
             <div class="form-group">
-              <label class="form-label" for="nblm-transcript">Podcast 語句文本 (Transcript TXT 字幕檔) (選填)</label>
+              <label class="form-label" for="nblm-transcript">Podcast 語句文字 (Transcript TXT 字幕檔) (選填)</label>
               <select id="nblm-transcript" class="form-select">
                 <option value="">-- 請上傳字幕或留空 (自動按權重估計) --</option>
               </select>
@@ -337,7 +337,7 @@
                   <span class="step-name">Phase B: 整合 SVG 向量並打包 PPTX</span>
                   <span id="badge-step-nblm-export" class="badge">待執行</span>
                 </div>
-                <p class="step-desc">在您利用 SVG Editor 調校好投影片視覺後，一鍵將向量字體後製，並合併語音編譯為 DrawingML PPTX 檔。</p>
+                <p class="step-desc">在您利用 SVG Editor 調校好投影片視覺後，一鍵將向量字型後製，並合併語音編譯為 DrawingML PPTX 檔。</p>
                 <div class="step-control">
                   <button class="btn btn-primary" onclick="runNotebookLMPipeline('export')">執行 Phase B 匯出打包</button>
                 </div>
@@ -362,8 +362,8 @@
             <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 13px; min-height: 28px;" onclick="clearConsole()">清除紀錄</button>
           </div>
           <div class="console-terminal" id="console-terminal">
-[SYSTEM] 專案工作台已就緒。
-[SYSTEM] 請在左側執行步驟以查看實時日誌...
+[SYSTEM] 專案工作臺已就緒。
+[SYSTEM] 請在左側執行步驟以檢視實時日誌...
           </div>
         </div>
 

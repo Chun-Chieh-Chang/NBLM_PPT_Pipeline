@@ -2,7 +2,7 @@
 
 > 17 curated example projects, 229 SVG presentation pages.
 
-**[Browse all examples online](https://hugohe3.github.io/ppt-master/)** — the canonical catalog, powered by [`examples.json`](./examples.json). The JSON file is the source of truth for project metadata, tags, and slide listings; this README only documents folder structure.
+**[Browse all examples online]([Local URL])** — the canonical catalog, powered by [`examples.json`](./examples.json). The JSON file is the source of truth for project metadata, tags, and slide listings; this README only documents folder structure.
 
 ## Project Structure
 

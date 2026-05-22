@@ -87,4 +87,4 @@
 - `<style>`, `class`, `<foreignObject>`, `textPath`, `@font-face`, `<animate*>`, `<script>`, `<iframe>`, `<symbol>`+`<use>`
 - `<g opacity>` (set opacity on each child element individually)
 - HTML named entities in text (`&nbsp;`, `&mdash;`, `&copy;`, `&ndash;`, `&reg;`, `&hellip;`, `&bull;` …) — write as raw Unicode (`—`, `©`, `→`, NBSP, etc.); XML reserved chars `& < > " '` must be escaped as `&amp; &lt; &gt; &quot; &apos;`
-- Card border-radius > 0 (Risograph 美学 = 硬边、无圆角)
+- Card border-radius > 0 (Risograph 美學 = 硬邊、無圓角)

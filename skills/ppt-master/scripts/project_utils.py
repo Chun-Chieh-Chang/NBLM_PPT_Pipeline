@@ -72,7 +72,7 @@ CANVAS_FORMAT_ALIASES = {
     'wechat_moment': 'moments',
     'wechat-moment': 'moments',
     '朋友圈': 'moments',
-    '小红书': 'xiaohongshu',
+    '小紅書': 'xiaohongshu',
     '小紅書': 'xiaohongshu',
 }
 
@@ -184,7 +184,7 @@ def get_project_info(project_path: str) -> Dict:
     info['has_readme'] = (project_path / 'README.md').exists()
 
     # Check design specification files (current standard + legacy names)
-    spec_files = ['design_spec.md', '設計規範與內容大綱.md', '設計規範.md', '设计规范与内容大纲.md', '设计规范.md', 'design_specification.md']
+    spec_files = ['design_spec.md', '設計規範與內容大綱.md', '設計規範.md', '設計規範與內容大綱.md', '設計規範.md', 'design_specification.md']
     for spec_file in spec_files:
         if (project_path / spec_file).exists():
             info['has_spec'] = True
@@ -192,8 +192,8 @@ def get_project_info(project_path: str) -> Dict:
             break
 
     # Check source documents
-    legacy_source_file_cn = project_path / '来源文档.md'
-    legacy_source_file_tw = project_path / '來源文檔.md'
+    legacy_source_file_cn = project_path / '來源文件.md'
+    legacy_source_file_tw = project_path / '來源文件.md'
     sources_dir = project_path / 'sources'
     info['has_source'] = legacy_source_file_cn.exists() or legacy_source_file_tw.exists() or sources_dir.exists()
 
@@ -262,7 +262,7 @@ def validate_project_structure(project_path: str, verbose: bool = False) -> Tupl
         errors.append(msg)
 
     # Check design specification file
-    spec_files = ['design_spec.md', '設計規範與內容大綱.md', '設計規範.md', '设计规范与内容大纲.md', '设计规范.md', 'design_specification.md']
+    spec_files = ['design_spec.md', '設計規範與內容大綱.md', '設計規範.md', '設計規範與內容大綱.md', '設計規範.md', 'design_specification.md']
     has_spec = any((project_path / f).exists() for f in spec_files)
     if not has_spec:
         msg = "Missing design specification file (suggested filename: design_spec.md)"
@@ -379,7 +379,7 @@ def find_all_projects(base_dir: str) -> List[Path]:
             # Check if it's a valid project directory (contains svg_output or design spec)
             has_svg_output = (item / 'svg_output').exists()
             has_spec = any((item / f).exists() for f in
-                           ['design_spec.md', '設計規範與內容大綱.md', '設計規範.md', '设计规范与内容大纲.md', '设计规范.md', 'design_specification.md'])
+                           ['design_spec.md', '設計規範與內容大綱.md', '設計規範.md', '設計規範與內容大綱.md', '設計規範.md', 'design_specification.md'])
 
             if has_svg_output or has_spec:
                 projects.append(item)

@@ -1,1 +1,1 @@
-四组头牌艺人，来自完全不同的世界。粉发的 CHERRY BOMB，摇滚主唱，代表作 Pink Static。金色墨镜的 NEON CLOUD，电子 DJ，柏林 Berghain 常驻。薄荷绿衬衫的 MINT FOLK，民谣吉他手，Spotify 月听众四百八十万。鲜黄连帽的 YELLOW HUSTLE，嘻哈 rapper，XXL Freshman 2025。四种声音，四种性格，缺一不可。
+四組頭牌藝人，來自完全不同的世界。粉發的 CHERRY BOMB，搖滾主唱，代表作 Pink Static。金色墨鏡的 NEON CLOUD，電子 DJ，柏林 Berghain 常駐。薄荷綠襯衫的 MINT FOLK，民謠吉他手，Spotify 月聽眾四百八十萬。鮮黃連帽的 YELLOW HUSTLE，嘻哈 rapper，XXL Freshman 2025。四種聲音，四種性格，缺一不可。

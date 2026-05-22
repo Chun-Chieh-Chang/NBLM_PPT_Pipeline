@@ -146,7 +146,7 @@ def clean_title(title: str) -> str:
     if not title:
         return ""
     # Remove site name suffixes often found in Chinese titles
-    clean = re.sub(r"[-_|].*?(政府|门户|网站|委员会).*$", "", title)
+    clean = re.sub(r"[-_|].*?(政府|門戶|網站|委員會).*$", "", title)
     return clean.strip()
 
 
@@ -353,10 +353,10 @@ def extract_metadata(soup: BeautifulSoup, url: str) -> dict[str, str]:
         # Try matching date patterns in the text
         text_content = soup.get_text()
         date_patterns = [
-            r"发布[时日]间[：:]\s*(\d{4}[-\/年]\d{1,2}[-\/月]\d{1,2}[日]?)",
+            r"釋出[時日]間[：:]\s*(\d{4}[-\/年]\d{1,2}[-\/月]\d{1,2}[日]?)",
             r"日期[：:]\s*(\d{4}[-\/年]\d{1,2}[-\/月]\d{1,2}[日]?)",
-            r"(\d{4}[-\/年]\d{1,2}[-\/月]\d{1,2}[日]?)\s*(?:发布|来源)",
-            r"时间[：:]\s*(\d{4}[-\/]\d{1,2}[-\/]\d{1,2})"
+            r"(\d{4}[-\/年]\d{1,2}[-\/月]\d{1,2}[日]?)\s*(?:釋出|來源)",
+            r"時間[：:]\s*(\d{4}[-\/]\d{1,2}[-\/]\d{1,2})"
         ]
         for pattern in date_patterns:
             match = re.search(pattern, text_content)
@@ -388,8 +388,8 @@ def extract_metadata(soup: BeautifulSoup, url: str) -> dict[str, str]:
     if not author:
         # Try common patterns
         source_patterns = [
-            r"来源[：:]\s*([^\s<]+)",
-            r"发布(?:单位|机构)[：:]\s*([^\s<]+)"
+            r"來源[：:]\s*([^\s<]+)",
+            r"釋出(?:單位|機構)[：:]\s*([^\s<]+)"
         ]
         for pattern in source_patterns:
             match = re.search(pattern, soup.get_text())

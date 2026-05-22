@@ -1,4 +1,4 @@
-# POWERCHINA (中国电建) Modern Template v2 - Design Specification
+# POWERCHINA (中國電建) Modern Template v2 - Design Specification
 
 > Suitable for POWERCHINA major project reports, international business showcases, high-end summit roadshows, technology innovation releases, and similar scenarios.
 > **v2.0 Features**: Blends modern engineering aesthetics with an international perspective, emphasizing structural form, transparency, and digital expression.
@@ -9,7 +9,7 @@
 
 | Property       | Description                                                      |
 | -------------- | ---------------------------------------------------------------- |
-| **Template Name** | 中国电建_现代 (formerly powerchina_v2)                        |
+| **Template Name** | 中國電建_現代 (formerly powerchina_v2)                        |
 | **Use Cases**  | Major engineering reports, international market promotion, technology achievement showcases, high-end business negotiations |
 | **Design Tone** | **Grand narrative, modern precision, digital tech, international vision** |
 | **Theme Mode** | Deep blue tech gradient + precision grid texture                 |

@@ -1,4 +1,4 @@
-# 2026家居趋势 - Design Spec
+# 2026家居趨勢 - Design Spec
 
 > This document is the human-readable design narrative — rationale, audience, style, color choices, content outline. It is read once by downstream roles for context.
 >
@@ -8,12 +8,12 @@
 
 | Item | Value |
 | ---- | ----- |
-| **Project Name** | 2026家居趋势：回归"人的尺度" |
+| **Project Name** | 2026家居趨勢：迴歸"人的尺度" |
 | **Canvas Format** | PPT 16:9 (1280×720) |
 | **Page Count** | 12 |
 | **Design Style** | General Versatile (A) |
-| **Target Audience** | 室内设计师、家居爱好者、装修计划者 |
-| **Use Case** | 家居设计趋势分享/培训演示 |
+| **Target Audience** | 室內設計師、家居愛好者、裝修計劃者 |
+| **Use Case** | 家居設計趨勢分享/培訓演示 |
 | **Created Date** | 2026-04-22 |
 
 ---
@@ -34,25 +34,25 @@
 
 ### Theme Style
 
-- **Style**: General Versatile — 杂志质感的图文混排风格
-- **Theme**: Dark theme（深色暖调底色）
-- **Tone**: 高端、温暖、自然、人文、杂志感
+- **Style**: General Versatile — 雜誌質感的圖文混排風格
+- **Theme**: Dark theme（深色暖調底色）
+- **Tone**: 高階、溫暖、自然、人文、雜誌感
 
 ### Color Scheme
 
 | Role | HEX | Purpose |
 | ---- | --- | ------- |
 | **Background** | `#1A1714` | 深棕暖黑底色 |
-| **Secondary bg** | `#2A2520` | 卡片/区域背景 |
-| **Primary** | `#C4A882` | 标题装饰、金色暖调 |
-| **Accent** | `#D4956A` | 数据高亮、关键信息 |
-| **Secondary accent** | `#8B7355` | 渐变过渡、次要装饰 |
-| **Body text** | `#E8E0D4` | 主体文字（浅暖白） |
-| **Secondary text** | `#B0A08E` | 注释说明 |
-| **Tertiary text** | `#7A6E60` | 补充信息、页脚 |
-| **Border/divider** | `#3D362E` | 卡片边框、分隔线 |
-| **Success** | `#7BA37B` | 可持续/正向指标 |
-| **Warning** | `#C06048` | 强调/警示 |
+| **Secondary bg** | `#2A2520` | 卡片/區域背景 |
+| **Primary** | `#C4A882` | 標題裝飾、金色暖調 |
+| **Accent** | `#D4956A` | 資料高亮、關鍵資訊 |
+| **Secondary accent** | `#8B7355` | 漸變過渡、次要裝飾 |
+| **Body text** | `#E8E0D4` | 主體文字（淺暖白） |
+| **Secondary text** | `#B0A08E` | 註釋說明 |
+| **Tertiary text** | `#7A6E60` | 補充資訊、頁尾 |
+| **Border/divider** | `#3D362E` | 卡片邊框、分隔線 |
+| **Success** | `#7BA37B` | 可持續/正向指標 |
+| **Warning** | `#C06048` | 強調/警示 |
 
 ### Gradient Scheme
 
@@ -76,7 +76,7 @@
 
 ### Font Plan
 
-**Typography direction**: Editorial Display（杂志展示风）— 标题使用衬线字体传递高级感，正文使用无衬线保证阅读性。
+**Typography direction**: Editorial Display（雜誌展示風）— 標題使用襯線字型傳遞高階感，正文使用無襯線保證閱讀性。
 
 | Role | Chinese | English | Fallback tail |
 | ---- | ------- | ------- | ------------- |
@@ -94,7 +94,7 @@
 
 ### Font Size Hierarchy
 
-**Baseline**: Body font size = 22px（内容密度适中，每页 3-5 要点为主）
+**Baseline**: Body font size = 22px（內容密度適中，每頁 3-5 要點為主）
 
 | Purpose | Ratio to body | Size | Weight |
 | ------- | ------------- | ---- | ------ |
@@ -112,23 +112,23 @@
 
 ### Page Structure
 
-- **Header area**: 50-80px, 含页面标题及装饰元素
-- **Content area**: 560-620px, 主要图文内容区域
-- **Footer area**: 30-40px, 页码及来源信息
+- **Header area**: 50-80px, 含頁面標題及裝飾元素
+- **Content area**: 560-620px, 主要圖文內容區域
+- **Footer area**: 30-40px, 頁碼及來源資訊
 
 ### Layout Pattern Library
 
-本项目以图文并茂为核心，主要使用以下布局模式：
+本專案以圖文並茂為核心，主要使用以下佈局模式：
 
 | Pattern | Used In |
 | ------- | ------- |
-| **Full-bleed + floating text** | P01 封面、P10 可持续奢华 |
-| **Asymmetric split (4:6 / 3:7)** | P03 色彩、P05 材质、P06 纹理、P08 奶油风 |
-| **Symmetric split (5:5)** | P04 色彩实践、P09 波西米亚&复古 |
-| **Center-radiating** | P07 CMT体系 |
+| **Full-bleed + floating text** | P01 封面、P10 可持續奢華 |
+| **Asymmetric split (4:6 / 3:7)** | P03 色彩、P05 材質、P06 紋理、P08 奶油風 |
+| **Symmetric split (5:5)** | P04 色彩實踐、P09 波西米亞&復古 |
+| **Center-radiating** | P07 CMT體系 |
 | **Single column centered** | P02 引言 |
-| **Three-column cards** | P11 书籍推荐 |
-| **Negative-space-driven** | P12 结语 |
+| **Three-column cards** | P11 書籍推薦 |
+| **Negative-space-driven** | P12 結語 |
 
 ### Spacing Specification
 
@@ -154,25 +154,25 @@
 
 ### Source
 
-- **Built-in icon library**: `templates/icons/tabler-filled/` — 圆润贝塞尔曲线，契合家居/生活方式温暖调性
+- **Built-in icon library**: `templates/icons/tabler-filled/` — 圓潤貝塞爾曲線，契合家居/生活方式溫暖調性
 - **Usage method**: Placeholder format `{{icon:tabler-filled/icon-name}}`
 
 ### Recommended Icon List
 
 | Purpose | Icon Path | Page |
 | ------- | --------- | ---- |
-| 色彩主题 | `{{icon:tabler-filled/palette}}` | P03, P04 |
-| 材质主题 | `{{icon:tabler-filled/diamond}}` | P05 |
-| 纹理主题 | `{{icon:tabler-filled/paint}}` | P06 |
+| 色彩主題 | `{{icon:tabler-filled/palette}}` | P03, P04 |
+| 材質主題 | `{{icon:tabler-filled/diamond}}` | P05 |
+| 紋理主題 | `{{icon:tabler-filled/paint}}` | P06 |
 | 家居 | `{{icon:tabler-filled/home}}` | P01, P02 |
-| 太阳/光线 | `{{icon:tabler-filled/sun}}` | P05 |
-| 树叶/自然 | `{{icon:tabler-filled/leaf}}` | P10 |
-| 星星/亮点 | `{{icon:tabler-filled/sparkles}}` | P07 |
+| 太陽/光線 | `{{icon:tabler-filled/sun}}` | P05 |
+| 樹葉/自然 | `{{icon:tabler-filled/leaf}}` | P10 |
+| 星星/亮點 | `{{icon:tabler-filled/sparkles}}` | P07 |
 | 心/情感 | `{{icon:tabler-filled/heart}}` | P12 |
-| 书籍 | `{{icon:tabler-filled/book}}` | P11 |
-| 眼睛/视觉 | `{{icon:tabler-filled/eye}}` | P06 |
-| 调整 | `{{icon:tabler-filled/adjustments}}` | P07 |
-| 星标 | `{{icon:tabler-filled/star}}` | P08 |
+| 書籍 | `{{icon:tabler-filled/book}}` | P11 |
+| 眼睛/視覺 | `{{icon:tabler-filled/eye}}` | P06 |
+| 調整 | `{{icon:tabler-filled/adjustments}}` | P07 |
+| 星標 | `{{icon:tabler-filled/star}}` | P08 |
 
 ---
 
@@ -180,7 +180,7 @@
 
 | Visualization Type | Reference Template | Used In |
 | ------------------ | ------------------ | ------- |
-| concentric_circles | `templates/charts/concentric_circles.svg` | P07 (CMT三层体系) |
+| concentric_circles | `templates/charts/concentric_circles.svg` | P07 (CMT三層體系) |
 
 ---
 
@@ -189,169 +189,169 @@
 | Filename | Dimensions | Ratio | Purpose | Intent | Type | Status |
 | -------- | ---------- | ----- | ------- | ------ | ---- | ------ |
 | intro_living.png | 1080x608 | 1.78 | P01 封面全屏背景 | Hero | Photography | Existing |
-| space_overview.png | 800x540 | 1.48 | P02 引言配图 | Side-by-side | Photography | Existing |
-| color_wheel.png | 559x823 | 0.68 | P03 色彩理论配图 | Side-by-side | Diagram | Existing |
-| brown_cozy.png | 658x496 | 1.33 | P03 棕色舒适空间 | Accent | Photography | Existing |
-| light_tone_room.png | 749x749 | 1.00 | P04 浅色调空间 | Side-by-side | Photography | Existing |
-| saturated_room.png | 853x671 | 1.27 | P04 高饱和度空间 | Side-by-side | Photography | Existing |
-| material_detail.png | 749x708 | 1.06 | P05 材质细节 | Side-by-side | Photography | Existing |
-| light_material.png | 800x1000 | 0.80 | P05 光与材质 | Accent | Photography | Existing |
-| texture_tactile.png | 615x398 | 1.55 | P06 触觉纹理 | Side-by-side | Photography | Existing |
-| texture_visual.png | 519x569 | 0.91 | P06 视觉纹理 | Side-by-side | Photography | Existing |
-| cmt_overview.png | 990x744 | 1.33 | P07 CMT体系总览 | Side-by-side | Photography | Existing |
+| space_overview.png | 800x540 | 1.48 | P02 引言配圖 | Side-by-side | Photography | Existing |
+| color_wheel.png | 559x823 | 0.68 | P03 色彩理論配圖 | Side-by-side | Diagram | Existing |
+| brown_cozy.png | 658x496 | 1.33 | P03 棕色舒適空間 | Accent | Photography | Existing |
+| light_tone_room.png | 749x749 | 1.00 | P04 淺色調空間 | Side-by-side | Photography | Existing |
+| saturated_room.png | 853x671 | 1.27 | P04 高飽和度空間 | Side-by-side | Photography | Existing |
+| material_detail.png | 749x708 | 1.06 | P05 材質細節 | Side-by-side | Photography | Existing |
+| light_material.png | 800x1000 | 0.80 | P05 光與材質 | Accent | Photography | Existing |
+| texture_tactile.png | 615x398 | 1.55 | P06 觸覺紋理 | Side-by-side | Photography | Existing |
+| texture_visual.png | 519x569 | 0.91 | P06 視覺紋理 | Side-by-side | Photography | Existing |
+| cmt_overview.png | 990x744 | 1.33 | P07 CMT體系總覽 | Side-by-side | Photography | Existing |
 | cmt_neutral_mix.png | 1023x636 | 1.61 | P07 中性色搭配 | Accent | Photography | Existing |
-| dark_tone_luxury.png | 614x423 | 1.45 | P07 深色调奢华 | Accent | Photography | Existing |
-| cream_style.png | 681x499 | 1.36 | P08 奶油风空间 | Side-by-side | Photography | Existing |
-| bohemian_style.png | 615x924 | 0.67 | P09 波西米亚风 | Side-by-side | Photography | Existing |
-| retro_style.png | 1080x608 | 1.78 | P09 怀旧复古风 | Side-by-side | Photography | Existing |
-| sustainable_luxury.png | 417x500 | 0.83 | P10 可持续奢华 | Side-by-side | Photography | Existing |
-| book_cover1.png | 1080x732 | 1.48 | P11 书籍封面 | Side-by-side | Photography | Existing |
-| book_cover2.png | 1080x735 | 1.47 | P11 书籍封面背面 | Accent | Photography | Existing |
-| book_inside1.png | 1080x741 | 1.46 | P11 书籍内页展示 | Accent | Photography | Existing |
-| book_inside2.png | 1080x738 | 1.46 | P11 书籍内页展示 | Accent | Photography | Existing |
-| book_display1.png | 1080x727 | 1.49 | P12 书籍展示 | Side-by-side | Photography | Existing |
-| book_display2.png | 1080x743 | 1.45 | P12 书籍展示 | Accent | Photography | Existing |
+| dark_tone_luxury.png | 614x423 | 1.45 | P07 深色調奢華 | Accent | Photography | Existing |
+| cream_style.png | 681x499 | 1.36 | P08 奶油風空間 | Side-by-side | Photography | Existing |
+| bohemian_style.png | 615x924 | 0.67 | P09 波西米亞風 | Side-by-side | Photography | Existing |
+| retro_style.png | 1080x608 | 1.78 | P09 懷舊復古風 | Side-by-side | Photography | Existing |
+| sustainable_luxury.png | 417x500 | 0.83 | P10 可持續奢華 | Side-by-side | Photography | Existing |
+| book_cover1.png | 1080x732 | 1.48 | P11 書籍封面 | Side-by-side | Photography | Existing |
+| book_cover2.png | 1080x735 | 1.47 | P11 書籍封面背面 | Accent | Photography | Existing |
+| book_inside1.png | 1080x741 | 1.46 | P11 書籍內頁展示 | Accent | Photography | Existing |
+| book_inside2.png | 1080x738 | 1.46 | P11 書籍內頁展示 | Accent | Photography | Existing |
+| book_display1.png | 1080x727 | 1.49 | P12 書籍展示 | Side-by-side | Photography | Existing |
+| book_display2.png | 1080x743 | 1.45 | P12 書籍展示 | Accent | Photography | Existing |
 
 ---
 
 ## IX. Content Outline
 
-### Part 1: 开篇
+### Part 1: 開篇
 
 #### Slide 01 - 封面
 
 - **Layout**: Full-bleed + floating text
-- **Title**: 2026家居趋势
-- **Subtitle**: 回归"人的尺度"，让色彩、材质与纹理塑造"空间的高级感"
-- **Info**: 基于《空间的高级感》· 2026
-- **Images**: `intro_living.png`（hero全屏，暗色渐变叠加层保证文字可读）
+- **Title**: 2026家居趨勢
+- **Subtitle**: 迴歸"人的尺度"，讓色彩、材質與紋理塑造"空間的高階感"
+- **Info**: 基於《空間的高階感》· 2026
+- **Images**: `intro_living.png`（hero全屏，暗色漸變疊加層保證文字可讀）
 
-#### Slide 02 - 从"网红风"到"人的尺度"
+#### Slide 02 - 從"網紅風"到"人的尺度"
 
 - **Layout**: Single column centered + side-by-side image
-- **Title**: 从"网红风"到"人的尺度"
+- **Title**: 從"網紅風"到"人的尺度"
 - **Images**: `space_overview.png`
 - **Content**:
-  - 过去几年家居"网红风"迅速更迭
-  - 2026年转向：从视觉符号堆砌回归人本关怀
-  - 高级感 = 色彩 + 材质 + 纹理的精妙搭配
-  - 有颜值，更有温度与情感
+  - 過去幾年家居"網紅風"迅速更迭
+  - 2026年轉向：從視覺符號堆砌迴歸人本關懷
+  - 高階感 = 色彩 + 材質 + 紋理的精妙搭配
+  - 有顏值，更有溫度與情感
 
-### Part 2: 三大底层元素
+### Part 2: 三大底層元素
 
-#### Slide 03 - 色彩：空间的情绪魔法师
+#### Slide 03 - 色彩：空間的情緒魔法師
 
-- **Layout**: Asymmetric split (4:6) — 左图右文
-- **Title**: 色彩：空间的"情绪魔法师"
-- **Images**: `color_wheel.png`（左侧主图），`brown_cozy.png`（右下小图点缀）
+- **Layout**: Asymmetric split (4:6) — 左圖右文
+- **Title**: 色彩：空間的"情緒魔法師"
+- **Images**: `color_wheel.png`（左側主圖），`brown_cozy.png`（右下小圖點綴）
 - **Content**:
-  - 色彩是空间的第一印象
-  - 能改变视觉尺度、营造氛围
-  - 暖色调 → 温柔包裹感；冷色调 → 开阔冷静
-  - 不同色彩传递不同信号与心理反应
+  - 色彩是空間的第一印象
+  - 能改變視覺尺度、營造氛圍
+  - 暖色調 → 溫柔包裹感；冷色調 → 開闊冷靜
+  - 不同色彩傳遞不同訊號與心理反應
 
-#### Slide 04 - 色彩实践：冷暖色调的空间效果
+#### Slide 04 - 色彩實踐：冷暖色調的空間效果
 
-- **Layout**: Symmetric split (5:5) — 左右对比
-- **Title**: 冷暖色调的空间效果对比
-- **Images**: `light_tone_room.png`（左，浅色调），`saturated_room.png`（右，高饱和度）
+- **Layout**: Symmetric split (5:5) — 左右對比
+- **Title**: 冷暖色調的空間效果對比
+- **Images**: `light_tone_room.png`（左，淺色調），`saturated_room.png`（右，高飽和度）
 - **Content**:
-  - 左：浅色调 → 增大光线反射 → 空间显得宽敞
-  - 右：高饱和度 → 房间紧凑小巧
-  - 灰绿 → 平静专注；咖色 → 阳光包裹；跳色 → 个性活力
+  - 左：淺色調 → 增大光線反射 → 空間顯得寬敞
+  - 右：高飽和度 → 房間緊湊小巧
+  - 灰綠 → 平靜專注；咖色 → 陽光包裹；跳色 → 個性活力
 
-#### Slide 05 - 材质：触手可及的空间语言
+#### Slide 05 - 材質：觸手可及的空間語言
 
-- **Layout**: Asymmetric split (3:7) — 右侧大图
-- **Title**: 材质：触手可及的空间语言
-- **Images**: `material_detail.png`（主图），`light_material.png`（次图/accent）
+- **Layout**: Asymmetric split (3:7) — 右側大圖
+- **Title**: 材質：觸手可及的空間語言
+- **Images**: `material_detail.png`（主圖），`light_material.png`（次圖/accent）
 - **Content**:
-  - 材料是色彩搭配的物理基础
-  - 原木地板 → 质朴温暖；手工编织 → 慵懒松弛
-  - 光本身也是一种材质
-  - 巧妙照明 + 色彩光影 → 不依赖昂贵材料也能实现高级感
+  - 材料是色彩搭配的物理基礎
+  - 原木地板 → 質樸溫暖；手工編織 → 慵懶鬆弛
+  - 光本身也是一種材質
+  - 巧妙照明 + 色彩光影 → 不依賴昂貴材料也能實現高階感
 
-#### Slide 06 - 纹理：赋予空间灵魂的细节
+#### Slide 06 - 紋理：賦予空間靈魂的細節
 
-- **Layout**: Asymmetric split (5:5) — 左右并列
-- **Title**: 纹理：赋予空间灵魂的细节
-- **Images**: `texture_tactile.png`（左，触觉），`texture_visual.png`（右，视觉）
+- **Layout**: Asymmetric split (5:5) — 左右並列
+- **Title**: 紋理：賦予空間靈魂的細節
+- **Images**: `texture_tactile.png`（左，觸覺），`texture_visual.png`（右，視覺）
 - **Content**:
-  - 纹理 = 空间的"指纹"，独一无二的辨识度
-  - 触觉纹理：羊毛地毯 → 柔软温暖；粗陶花瓶 → 凹凸肌理
-  - 视觉纹理：壁纸图案 → 眼睛"感受"肌理
+  - 紋理 = 空間的"指紋"，獨一無二的辨識度
+  - 觸覺紋理：羊毛地毯 → 柔軟溫暖；粗陶花瓶 → 凹凸肌理
+  - 視覺紋理：桌布圖案 → 眼睛"感受"肌理
 
-### Part 3: CMT 体系
+### Part 3: CMT 體系
 
-#### Slide 07 - CMT 体系：色彩·材质·纹理的交响
+#### Slide 07 - CMT 體系：色彩·材質·紋理的交響
 
 - **Layout**: Center-radiating + accent images
-- **Title**: CMT 体系：编织全方位感官体验
-- **Visualization**: concentric_circles (CMT三层)
-- **Images**: `cmt_overview.png`（主视觉），`cmt_neutral_mix.png`（中性色案例），`dark_tone_luxury.png`（深色调案例）
+- **Title**: CMT 體系：編織全方位感官體驗
+- **Visualization**: concentric_circles (CMT三層)
+- **Images**: `cmt_overview.png`（主視覺），`cmt_neutral_mix.png`（中性色案例），`dark_tone_luxury.png`（深色調案例）
 - **Content**:
   - CMT = Colour + Material + Texture
-  - 物理层：光滑/粗糙、透明/不透明、高光/亚光
-  - 心理层：手工/工业、简朴/奢华、安慰/刺激
-  - 不是简单叠加，是系统性编织 — 如交响乐团的指挥
+  - 物理層：光滑/粗糙、透明/不透明、高光/亞光
+  - 心理層：手工/工業、簡樸/奢華、安慰/刺激
+  - 不是簡單疊加，是系統性編織 — 如交響樂團的指揮
 
-### Part 4: 2026 流行风格
+### Part 4: 2026 流行風格
 
-#### Slide 08 - 奶油风进化论
+#### Slide 08 - 奶油風進化論
 
-- **Layout**: Asymmetric split (4:6) — 左文右图
-- **Title**: 奶油风 2.0：从公式化到细腻表达
+- **Layout**: Asymmetric split (4:6) — 左文右圖
+- **Title**: 奶油風 2.0：從公式化到細膩表達
 - **Images**: `cream_style.png`
 - **Content**:
-  - 奶油风正经历深刻"进化"
-  - 不再只是"米白墙面+原木家具"的公式
-  - 颜色基底：奶油色、燕麦色、米白色
-  - 材质点睛：羊毛、亚麻、天然结疤原木、手工陶瓷
-  - 真正的治愈空间 = 可触摸 + 可感知
+  - 奶油風正經歷深刻"進化"
+  - 不再只是"米白牆面+原木傢俱"的公式
+  - 顏色基底：奶油色、燕麥色、米白色
+  - 材質點睛：羊毛、亞麻、天然結疤原木、手工陶瓷
+  - 真正的治癒空間 = 可觸控 + 可感知
 
-#### Slide 09 - 波西米亚 & 怀旧复古
+#### Slide 09 - 波西米亞 & 懷舊復古
 
-- **Layout**: Symmetric split (5:5) — 左右双风格
-- **Title**: 自由灵魂与时间记忆
-- **Images**: `bohemian_style.png`（左，波西米亚），`retro_style.png`（右，怀旧复古）
+- **Layout**: Symmetric split (5:5) — 左右雙風格
+- **Title**: 自由靈魂與時間記憶
+- **Images**: `bohemian_style.png`（左，波西米亞），`retro_style.png`（右，懷舊復古）
 - **Content**:
-  - 波西米亚：大胆色彩 + 自由织物 + 手工挂毯 → "有层次的不羁感"
-  - 怀旧复古：风化木材 + 熟铁 + 柳编 → 带有使用痕迹的"时间感"
-  - 共同特点：对真实与情感的渴望
+  - 波西米亞：大膽色彩 + 自由織物 + 手工掛毯 → "有層次的不羈感"
+  - 懷舊復古：風化木材 + 熟鐵 + 柳編 → 帶有使用痕跡的"時間感"
+  - 共同特點：對真實與情感的渴望
 
-#### Slide 10 - 可持续奢华
+#### Slide 10 - 可持續奢華
 
-- **Layout**: Full-bleed + floating text（breathing页）
-- **Title**: 可持续奢华：负责任的审美
+- **Layout**: Full-bleed + floating text（breathing頁）
+- **Title**: 可持續奢華：負責任的審美
 - **Images**: `sustainable_luxury.png`
 - **Content**:
-  - 2026 奢华不再是昂贵材料的堆砌
-  - 环保饰面、自然光照、再生木材、软木、黄麻纤维
-  - 从"炫耀性消费"转向"负责任的审美"
-  - 与世界和谐共存的生活哲学
+  - 2026 奢華不再是昂貴材料的堆砌
+  - 環保飾面、自然光照、再生木材、軟木、黃麻纖維
+  - 從"炫耀性消費"轉向"負責任的審美"
+  - 與世界和諧共存的生活哲學
 
-### Part 5: 结语
+### Part 5: 結語
 
-#### Slide 11 - 一本书解锁空间高级感
+#### Slide 11 - 一本書解鎖空間高階感
 
-- **Layout**: Three-column cards（书籍展示）
-- **Title**: 《空间的高级感》— 可拆解、可复制、可验证的美学体系
+- **Layout**: Three-column cards（書籍展示）
+- **Title**: 《空間的高階感》— 可拆解、可複製、可驗證的美學體系
 - **Images**: `book_cover1.png`, `book_cover2.png`, `book_inside1.png`, `book_inside2.png`
 - **Content**:
-  - 作者：宋文雯（清华大学色彩研究所常务副所长）
-  - 创新引入 CMF → CMT 体系
-  - 色彩篇 + 材料篇 + 纹理篇 + 综合篇
-  - 适合：设计师专业提升 / 装修业主自学
+  - 作者：宋文雯（清華大學色彩研究所常務副所長）
+  - 創新引入 CMF → CMT 體系
+  - 色彩篇 + 材料篇 + 紋理篇 + 綜合篇
+  - 適合：設計師專業提升 / 裝修業主自學
 
-#### Slide 12 - 结语
+#### Slide 12 - 結語
 
 - **Layout**: Negative-space-driven + accent image
-- **Title**: 让家回归"人的尺度"
+- **Title**: 讓家迴歸"人的尺度"
 - **Images**: `book_display1.png`, `book_display2.png`
 - **Content**:
-  - 高级感的本质：色彩、材质、纹理的精妙共鸣
-  - 有颜值，更有温度与情感
-  - 参考来源：《空间的高级感——设计师的色彩、材质、纹理搭配指南》
+  - 高階感的本質：色彩、材質、紋理的精妙共鳴
+  - 有顏值，更有溫度與情感
+  - 參考來源：《空間的高階感——設計師的色彩、材質、紋理搭配指南》
 
 ---
 
@@ -361,8 +361,8 @@ Generate corresponding speaker note files for each page, saved to the `notes/` d
 
 - **File naming**: Match SVG names, e.g., `01_cover.md`
 - **Content includes**: Script key points, timing cues, transition phrases
-- **Style**: 自然对话式（conversational），适合设计趋势分享场景
-- **Duration**: 约 15-20 分钟总时长
+- **Style**: 自然對話式（conversational），適合設計趨勢分享場景
+- **Duration**: 約 15-20 分鐘總時長
 - **Purpose**: Inform + Inspire
 
 ---

@@ -70,7 +70,7 @@ def check_and_deploy_env():
             print("=" * 70)
             return True
         except subprocess.CalledProcessError as e:
-            print(f"\n[環境部署] ❌ 自動安裝失敗。錯誤代碼: {e.returncode}")
+            print(f"\n[環境部署] ❌ 自動安裝失敗。錯誤程式碼: {e.returncode}")
             print("[環境部署] 請嘗試手動在終端機中執行：")
             print(f"  pip install -r requirements.txt")
             print("=" * 70)

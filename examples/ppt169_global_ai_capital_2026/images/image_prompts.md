@@ -13,7 +13,7 @@
 
 | Attribute | Value |
 |---|---|
-| Purpose | Cover background — 2026 全球 AI 资本格局封面氛围底图 |
+| Purpose | Cover background — 2026 全球 AI 資本格局封面氛圍底圖 |
 | Type | background |
 | Aspect ratio | 16:9 |
 | Image size | 2K |
@@ -32,7 +32,7 @@ Magazine-style editorial illustration backdrop with sophisticated visual hierarc
 
 | Attribute | Value |
 |---|---|
-| Purpose | Part V Nvidia 闭环章节锚点 — 圆形资本流转氛围 |
+| Purpose | Part V Nvidia 閉環章節錨點 — 圓形資本流轉氛圍 |
 | Type | background |
 | Aspect ratio | 16:9 |
 | Image size | 2K |
@@ -51,7 +51,7 @@ Magazine-style editorial illustration backdrop with restrained sophistication an
 
 | Attribute | Value |
 |---|---|
-| Purpose | Part VI 泡沫论章节锚点 — 单一气泡张力氛围 |
+| Purpose | Part VI 泡沫論章節錨點 — 單一氣泡張力氛圍 |
 | Type | background |
 | Aspect ratio | 16:9 |
 | Image size | 2K |

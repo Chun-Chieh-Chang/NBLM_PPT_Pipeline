@@ -12,7 +12,7 @@
   "items": [
     {
       "filename": "cover_hero.png",
-      "purpose": "P01 封面 hero — Risograph 印刷工坊场景",
+      "purpose": "P01 封面 hero — Risograph 印刷工坊場景",
       "type": "background",
       "page_role": "hero_page",
       "text_policy": "none",
@@ -24,7 +24,7 @@
     },
     {
       "filename": "zine_history_collage.png",
-      "purpose": "P03 zine 是什么 — 跨年代 zine 堆叠拼贴侧栏",
+      "purpose": "P03 zine 是什麼 — 跨年代 zine 堆疊拼貼側欄",
       "type": "scene",
       "page_role": "local",
       "text_policy": "none",
@@ -36,7 +36,7 @@
     },
     {
       "filename": "risograph_machine.png",
-      "purpose": "P05 Risograph 工艺侧栏图 — 经典 Riso 复印机正三分之一立面",
+      "purpose": "P05 Risograph 工藝側欄圖 — 經典 Riso 影印機正三分之一立面",
       "type": "hero",
       "page_role": "local",
       "text_policy": "none",
@@ -48,7 +48,7 @@
     },
     {
       "filename": "risograph_process_banner.png",
-      "purpose": "P06 Risograph 工艺横幅 — 5 stage 流程从左到右",
+      "purpose": "P06 Risograph 工藝橫幅 — 5 stage 流程從左到右",
       "type": "flowchart",
       "page_role": "local",
       "text_policy": "none",
@@ -60,7 +60,7 @@
     },
     {
       "filename": "zine_folding_hands.png",
-      "purpose": "P07 八页折叠 hero — 双手折 A4，四角留 SVG 注解卡空间",
+      "purpose": "P07 八頁摺疊 hero — 雙手摺 A4，四角留 SVG 註解卡空間",
       "type": "scene",
       "page_role": "local",
       "text_policy": "none",
@@ -72,7 +72,7 @@
     },
     {
       "filename": "jimbocho_hero.png",
-      "purpose": "P09 神保町 hero — 东京旧书街夜景",
+      "purpose": "P09 神保町 hero — 東京舊書街夜景",
       "type": "scene",
       "page_role": "hero_page",
       "text_policy": "none",
@@ -84,7 +84,7 @@
     },
     {
       "filename": "three_cities_triptych.png",
-      "purpose": "P10 三城三店三联 — 巴黎/伦敦/纽约书店并列 baked-in triptych",
+      "purpose": "P10 三城三店三聯 — 巴黎/倫敦/紐約書店並列 baked-in triptych",
       "type": "scene",
       "page_role": "local",
       "text_policy": "none",
@@ -96,7 +96,7 @@
     },
     {
       "filename": "berlin_bucherbogen.png",
-      "purpose": "P11 柏林 Bücherbogen hero — S-Bahn 高架桥下拱顶书店内景",
+      "purpose": "P11 柏林 Bücherbogen hero — S-Bahn 高架橋下拱頂書店內景",
       "type": "scene",
       "page_role": "hero_page",
       "text_policy": "none",
@@ -108,7 +108,7 @@
     },
     {
       "filename": "zine_fair_scene.png",
-      "purpose": "P13 中国艺术书展 — 书展摊位现场氛围",
+      "purpose": "P13 中國藝術書展 — 書展攤位現場氛圍",
       "type": "scene",
       "page_role": "local",
       "text_policy": "none",
@@ -120,7 +120,7 @@
     },
     {
       "filename": "zine_action_outro.png",
-      "purpose": "P18 封底 outro hero — 手举一本 zine 朝向观者",
+      "purpose": "P18 封底 outro hero — 手舉一本 zine 朝向觀者",
       "type": "hero",
       "page_role": "hero_page",
       "text_policy": "none",

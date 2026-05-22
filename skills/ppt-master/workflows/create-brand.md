@@ -14,7 +14,7 @@ This workflow edits the global brand library, not any specific `projects/<x>/`. 
 
 | User signal | Action |
 |---|---|
-| "set up brand" / "extract brand from this logo" / 建立品牌 / 做品牌规范 | Run this workflow |
+| "set up brand" / "extract brand from this logo" / 建立品牌 / 做品牌規範 | Run this workflow |
 | User provides a brand asset (logo / brand site URL / branded PPTX / brand PDF) and wants it locked across future projects | Run this workflow |
 | User mentions brand color or font once for a single deck only | Skip — handle inline via Strategist h.5 |
 | `templates/brands/<requested_id>/` already exists | Ask: update / replace / use a new id — never silently overwrite |
@@ -194,7 +194,7 @@ Emit the confirmation card:
 - Provenance: <fact / approx / user counts>
 
 How to use in a project:
-- Include the brand directory path in your initial Step 3 input — e.g. "做一个 Q4 总结 PPT, 用 skills/ppt-master/templates/brands/<brand_id>/ 这个品牌"
+- Include the brand directory path in your initial Step 3 input — e.g. "做一個 Q4 總結 PPT, 用 skills/ppt-master/templates/brands/<brand_id>/ 這個品牌"
 - Same explicit-path rule as layout templates: bare brand names never trigger
 - May be supplied together with a layout template path; Step 3 fuses both into a single `design_spec.md` (brand wins on identity tokens, layout wins on page structure) — see `SKILL.md` Step 3
 - To list available brands: open `templates/brands/brands_index.json`

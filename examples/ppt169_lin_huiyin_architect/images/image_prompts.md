@@ -3,7 +3,7 @@
 > Auto-generated from `image_prompts.json` by `image_gen.py --render-md`.
 > Do not hand-edit — re-run the command to refresh.
 
-> Project: 林徽因：被文学光环遮蔽的建筑巨匠
+> Project: 林徽因：被文學光環遮蔽的建築巨匠
 > Generated: 2026-04-21
 > Color scheme: Primary #C9A96E | Secondary #16213E | Accent #E8D5B7 | Background #1A1A2E
 > Deck Style Anchor: Chinese traditional architectural aesthetic, color palette: deep navy (#1A1A2E), midnight blue (#16213E), antique gold (#C9A96E), warm ivory (#E8D5B7), cinematic atmospheric, high quality, 4K

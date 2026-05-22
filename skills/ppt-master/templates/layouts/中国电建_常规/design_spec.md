@@ -1,4 +1,4 @@
-# POWERCHINA (中国电建) Standard Template - Design Specification
+# POWERCHINA (中國電建) Standard Template - Design Specification
 
 > Suitable for PowerChina (China Power Construction Corporation) project reports, engineering showcases, business negotiations, corporate promotion, and similar scenarios.
 
@@ -8,7 +8,7 @@
 
 | Property       | Description                                                      |
 | -------------- | ---------------------------------------------------------------- |
-| **Template Name** | 中国电建_常规 (formerly powerchina)                           |
+| **Template Name** | 中國電建_常規 (formerly powerchina)                           |
 | **Use Cases**  | Engineering project reports, technical proposal presentations, business negotiations, corporate promotion, annual summaries |
 | **Design Tone** | Professional, composed, international, state-owned enterprise style |
 | **Theme Mode** | Light theme (white background + POWERCHINA blue accent)          |
@@ -62,7 +62,7 @@
 
 ### Font Stack
 
-**Font Stack**: `"Microsoft YaHei", "微软雅黑", "SimHei", Arial, sans-serif`
+**Font Stack**: `"Microsoft YaHei", "微軟雅黑", "SimHei", Arial, sans-serif`
 
 ### Font Size Hierarchy
 

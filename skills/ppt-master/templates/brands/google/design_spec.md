@@ -56,7 +56,7 @@ Google uses a dual-lockup brand system — pick by context, never combine on the
 ## V. Voice & Tone
 
 - Formality: neutral
-- Person: we / you (English), 我们 / 你 (Chinese)
+- Person: we / you (English), 我們 / 你 (Chinese)
 - Emoji: allowed
 - Abbreviations: common-abbrev-allowed
 

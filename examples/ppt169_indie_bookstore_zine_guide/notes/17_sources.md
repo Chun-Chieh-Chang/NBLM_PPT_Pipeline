@@ -1,1 +1,1 @@
-这一页是来源声明。这本指南里所有的事实、数字、人名都来自二十个公开来源 —— 维基百科为主，加上 The Creative Independent、AFAR、Time Out、Sixth Tone 等独立媒体，以及数英、搜狐、知乎上中文社区整理的独立书店清单。所有图像是用 PPT Master 的 screen-print × duotone 风格通过 Gemini 3.1 Flash Image 合成的，参考图来自 Wikimedia Commons CC BY 2.0 授权 ——不构成任何品牌或商标的关联。
+這一頁是來源宣告。這本指南里所有的事實、數字、人名都來自二十個公開來源 —— 維基百科為主，加上 The Creative Independent、AFAR、Time Out、Sixth Tone 等獨立媒體，以及數英、搜狐、知乎上中文社群整理的獨立書店清單。所有影象是用 PPT Master 的 screen-print × duotone 風格透過 Gemini 3.1 Flash Image 合成的，參考圖來自 Wikimedia Commons CC BY 2.0 授權 ——不構成任何品牌或商標的關聯。

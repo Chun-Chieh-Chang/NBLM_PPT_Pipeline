@@ -184,14 +184,14 @@ One logical line — even with mixed colors/weights/sizes — MUST be one `<text
 
 ```xml
 <text x="100" y="200" font-size="24" fill="#333333">
-  实现<tspan fill="#1A73E8" font-weight="bold">10倍</tspan>效率提升
+  實現<tspan fill="#1A73E8" font-weight="bold">10倍</tspan>效率提升
 </text>
 ```
 
 ❌ **DON'T** — three side-by-side `<text>` elements become three separate text frames in PPT (breaks edit-as-one-line, risks alignment drift, makes spacing fragile):
 
 ```xml
-<text x="100" y="200" font-size="24" fill="#333333">实现</text>
+<text x="100" y="200" font-size="24" fill="#333333">實現</text>
 <text x="160" y="200" font-size="24" fill="#1A73E8" font-weight="bold">10倍</text>
 <text x="240" y="200" font-size="24" fill="#333333">效率提升</text>
 ```
@@ -202,8 +202,8 @@ One logical line — even with mixed colors/weights/sizes — MUST be one `<text
 
 ```xml
 <text x="80" y="190" font-size="18" fill="#333333">
-  <tspan x="80" dy="0">完成率<tspan fill="#4CAF50" font-weight="bold">98%</tspan>超预期</tspan>
-  <tspan x="80" dy="35">成本降低<tspan fill="#F44336" font-weight="bold">¥120万</tspan></tspan>
+  <tspan x="80" dy="0">完成率<tspan fill="#4CAF50" font-weight="bold">98%</tspan>超預期</tspan>
+  <tspan x="80" dy="35">成本降低<tspan fill="#F44336" font-weight="bold">¥120萬</tspan></tspan>
 </text>
 ```
 
@@ -219,7 +219,7 @@ One logical line — even with mixed colors/weights/sizes — MUST be one `<text
 
 **Default — lift key information.** Uniform-styled paragraphs read as walls of text. Wrap these in `<tspan fill="..." font-weight="bold">`:
 
-- **Numerical results** — percentages, multipliers (`10x`), absolute amounts (`¥120万`)
+- **Numerical results** — percentages, multipliers (`10x`), absolute amounts (`¥120萬`)
 - **Contrasts** — gain/loss, before/after, target/actual
 - **One or two load-bearing nouns per sentence** — the term that carries the insight
 
@@ -231,7 +231,7 @@ Color: use the deck's primary brand color for emphasis. Reserve green/red for ac
 
 ```xml
 <text x="80" y="200" font-size="20" fill="#333333">
-  2024年公司营收同比增长35%达到12亿元创历史新高
+  2024年公司營收同比增長35%達到12億元創歷史新高
 </text>
 ```
 
@@ -239,7 +239,7 @@ Color: use the deck's primary brand color for emphasis. Reserve green/red for ac
 
 ```xml
 <text x="80" y="200" font-size="20" fill="#333333">
-  2024年公司营收同比<tspan fill="#1A73E8" font-weight="bold">增长35%</tspan>达到<tspan fill="#1A73E8" font-weight="bold">12亿元</tspan>创历史新高
+  2024年公司營收同比<tspan fill="#1A73E8" font-weight="bold">增長35%</tspan>達到<tspan fill="#1A73E8" font-weight="bold">12億元</tspan>創歷史新高
 </text>
 ```
 

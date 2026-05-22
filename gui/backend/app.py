@@ -49,6 +49,7 @@ def check_and_deploy_env():
     for mod_name, pkg_name in critical_modules.items():
         try:
             if mod_name == "edgeTTS":
+                # pyrefly: ignore [missing-import]
                 import edgeTTS
             else:
                 __import__(mod_name)
@@ -72,7 +73,7 @@ def check_and_deploy_env():
             print("=" * 70)
             return True
         except subprocess.CalledProcessError as e:
-            print(f"\n[環境部署] ❌ 自動安裝失敗。錯誤代碼: {e.returncode}")
+            print(f"\n[環境部署] ❌ 自動安裝失敗。錯誤程式碼: {e.returncode}")
             print("[環境部署] 請嘗試手動在終端機中執行：")
             print(f"  pip install -r requirements.txt")
             print("=" * 70)
@@ -84,10 +85,13 @@ def check_and_deploy_env():
 # Check and deploy environment before executing Flask imports
 check_and_deploy_env()
 
+# pyrefly: ignore [missing-import]
 from flask import Flask, jsonify, request, Response, render_template, send_from_directory, redirect
 
 try:
+    # pyrefly: ignore [missing-import]
     import project_utils
+    # pyrefly: ignore [missing-import]
     from config import CANVAS_FORMATS
 except ImportError:
     project_utils = None
@@ -271,7 +275,7 @@ def api_projects_list():
         if item.is_dir() and not item.name.startswith('.'):
             # Check if this is a project directory
             has_svg = (item / 'svg_output').exists()
-            has_spec = any((item / f).exists() for f in ['design_spec.md', '設計規範與內容大綱.md', '設計規範.md', '设计规范与内容大纲.md', '设计规范.md', 'design_specification.md'])
+            has_spec = any((item / f).exists() for f in ['design_spec.md', '設計規範與內容大綱.md', '設計規範.md', '設計規範與內容大綱.md', '設計規範.md', 'design_specification.md'])
             
             if has_svg or has_spec or (item / 'sources').exists() or (item / 'notes').exists():
                 try:
@@ -603,7 +607,7 @@ def api_project_run_step(name, step):
         if step == 'split':
             total_md = project_path / "notes" / "total.md"
             if rebuild:
-                yield "data: [SYSTEM] 🔄 偵測到強制【全新乾淨重建】參數，正在清理舊有大綱與投影片...\n\n"
+                yield "data: [SYSTEM] 🔄 偵測到強制【全新乾淨重建】引數，正在清理舊有大綱與投影片...\n\n"
                 if total_md.exists():
                     try:
                         total_md.unlink()
@@ -641,7 +645,7 @@ def api_project_run_step(name, step):
                     convertible = [f for f in source_files if f.suffix.lower() in {".docx", ".pdf", ".pptx", ".xlsx"}]
                     if convertible:
                         primary_file = convertible[0]
-                        yield "data: [SYSTEM] 🔄 偵測到您上傳了文件素材 {}，正在自動調用 project_manager.py 進行轉換...\n\n".format(primary_file.name)
+                        yield "data: [SYSTEM] 🔄 偵測到您上傳了檔案素材 {}，正在自動呼叫 project_manager.py 進行轉換...\n\n".format(primary_file.name)
                         
                         import_cmd = [
                             get_python_executable(),
@@ -665,7 +669,7 @@ def api_project_run_step(name, step):
                                     yield "data: [ERROR] ❌ 轉換後未能在 sources/ 目錄下尋找到 Markdown 檔案！\n\n"
                                     return
                             else:
-                                yield "data: [ERROR] ❌ 素材轉換失敗。腳本輸出: {}\n\n".format(res.stderr or res.stdout)
+                                yield "data: [ERROR] ❌ 素材轉換失敗。指令碼輸出: {}\n\n".format(res.stderr or res.stdout)
                                 return
                         except Exception as e:
                             yield "data: [EXCEPTION] 轉換素材出錯: {}\n\n".format(str(e))
@@ -678,7 +682,7 @@ def api_project_run_step(name, step):
             svg_dir = project_path / "svg_output"
             svg_files = list(svg_dir.glob("*.svg")) if svg_dir.exists() else []
             if not svg_files:
-                yield "data: [SYSTEM] 🎨 偵測到 svg_output/ 為空，正在自動解析 total.md 並為每一頁生成高對比度 Dark Mode 占位 SVG 投影片...\n\n"
+                yield "data: [SYSTEM] 🎨 偵測到 svg_output/ 為空，正在自動解析 total.md 並為每一頁生成高對比度 Dark Mode 佔位 SVG 投影片...\n\n"
                 
                 headings = []
                 try:
@@ -724,7 +728,7 @@ def api_project_run_step(name, step):
                             mock_svg.write_text(placeholder_svg_content, encoding="utf-8")
                             created_count += 1
                         except Exception as e:
-                            yield "data: [WARN] 無法寫入 SVG 占位檔: {}\n\n".format(str(e))
+                            yield "data: [WARN] 無法寫入 SVG 佔位檔: {}\n\n".format(str(e))
                             
                 yield "data: [SYSTEM] ✅ 已成功為 {} 個投影片大綱生成對應的 Slate 900 SVG 預設視覺骨架！\n\n".format(created_count)
 
@@ -778,12 +782,12 @@ def api_project_run_step(name, step):
                         images_dir.mkdir(parents=True, exist_ok=True)
                         with open(manifest_path, "w", encoding="utf-8") as f:
                             json.dump(manifest_data, f, ensure_ascii=False, indent=2)
-                        yield "data: [SYSTEM] ✅ 已自動為您建立配圖清單 {} (含 {} 個項目)！\n\n".format(manifest_path.name, len(referenced_images))
+                        yield "data: [SYSTEM] ✅ 已自動為您建立配圖清單 {} (含 {} 個專案)！\n\n".format(manifest_path.name, len(referenced_images))
                     except Exception as e:
                         yield "data: [EXCEPTION] 無法建立配圖清單: {}\n\n".format(str(e))
                         return
                 else:
-                    yield "data: [SYSTEM] 🔍 偵測到本簡報中沒有配置任何圖像元素，已自動跳過 AI 配圖步驟！\n\n"
+                    yield "data: [SYSTEM] 🔍 偵測到本簡報中沒有配置任何影象元素，已自動跳過 AI 配圖步驟！\n\n"
                     yield "data: [SUCCESS] Step 'image_gen' completed successfully!\n\n"
                     return
             
@@ -804,7 +808,7 @@ def api_project_run_step(name, step):
             
             if not has_image_backend:
                 yield "data: [環境提示] ⚠️ 偵測到系統未配置 IMAGE_BACKEND 繪圖金鑰（如 GEMINI_API_KEY 或 OPENAI_API_KEY）。\n\n"
-                yield "data: [環境提示] 👉 為保持一鍵流水線的完整性，系統將配圖項目自動轉為「手動處理 (Needs-Manual)」狀態，您可以手動放圖。\n\n"
+                yield "data: [環境提示] 👉 為保持一鍵流水線的完整性，系統將配圖專案自動轉為「手動處理 (Needs-Manual)」狀態，您可以手動放圖。\n\n"
                 yield "data: [環境提示] 💡 您可以在右上角的「設定」頁面中配置您的 API 金鑰以啟用自動繪圖功能。\n\n"
                 
                 try:
@@ -820,7 +824,7 @@ def api_project_run_step(name, step):
                     if updated:
                         with open(manifest_path, 'w', encoding='utf-8') as f:
                             json.dump(manifest_data, f, ensure_ascii=False, indent=2)
-                        yield "data: [SYSTEM] 已將配圖項目全部轉為「手動處理 (Needs-Manual)」狀態。\n\n"
+                        yield "data: [SYSTEM] 已將配圖專案全部轉為「手動處理 (Needs-Manual)」狀態。\n\n"
                 except Exception as e:
                     yield "data: [WARN] 無法更新配圖清單狀態: {}\n\n".format(str(e))
                 

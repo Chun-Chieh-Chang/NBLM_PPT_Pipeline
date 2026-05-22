@@ -86,7 +86,7 @@ To adapt to other medical institution branding, replace the corresponding values
 
 ### Font Stack
 
-**Font Stack**: `"Microsoft YaHei", "微软雅黑", Arial, sans-serif`
+**Font Stack**: `"Microsoft YaHei", "微軟雅黑", Arial, sans-serif`
 
 ### Font Size Hierarchy
 

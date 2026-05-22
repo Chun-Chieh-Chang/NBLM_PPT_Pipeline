@@ -10,7 +10,7 @@
     {
       "id": "ppt169_pritzker_2026",
       "title": "Pritzker 2026",
-      "description": "2026 普利兹克建筑奖深度阅读 — 建筑摄影主导 + 编辑设计",
+      "description": "2026 普利茲克建築獎深度閱讀 — 建築攝影主導 + 編輯設計",
       "icon": "🏛️",
       "color": "#594A3C",
       "style": "editorial",
@@ -85,7 +85,7 @@
     {
       "id": "ppt169_global_ai_capital_2026",
       "title": "Global AI Capital 2026",
-      "description": "全球 AI 资本流向年度观察 — Bloomberg / Economist 信息图风",
+      "description": "全球 AI 資本流向年度觀察 — Bloomberg / Economist 資訊圖風",
       "icon": "💰",
       "color": "#1F3A5F",
       "style": "consulting",
@@ -205,7 +205,7 @@
     {
       "id": "ppt169_swiss_grid_systems",
       "title": "Swiss Grid Systems",
-      "description": "瑞士国际主义设计史 lecture — Müller-Brockmann 致敬",
+      "description": "瑞士國際主義設計史 lecture — Müller-Brockmann 致敬",
       "icon": "🅢",
       "color": "#C8102E",
       "style": "creative",
@@ -295,7 +295,7 @@
     {
       "id": "ppt169_glassmorphism_demo",
       "title": "Glassmorphism Demo",
-      "description": "AI 产品发布 — 毛玻璃质感的现代 SaaS 视觉语言",
+      "description": "AI 產品釋出 — 毛玻璃質感的現代 SaaS 視覺語言",
       "icon": "💎",
       "color": "#6366F1",
       "style": "general",
@@ -375,7 +375,7 @@
     {
       "id": "ppt169_sugar_rush_memphis",
       "title": "Sugar Rush Memphis",
-      "description": "虚构音乐节年度手册 — Memphis 设计运动 + 流行流派 mash-up",
+      "description": "虛構音樂節年度手冊 — Memphis 設計運動 + 流行流派 mash-up",
       "icon": "🎵",
       "color": "#FF4488",
       "style": "creative",
@@ -465,7 +465,7 @@
     {
       "id": "ppt169_indie_bookstore_zine_guide",
       "title": "Indie Bookstore Zine Guide",
-      "description": "独立书店 zine 入门指南 — Risograph 印刷工艺 + DIY 海报美学",
+      "description": "獨立書店 zine 入門指南 — Risograph 印刷工藝 + DIY 海報美學",
       "icon": "📖",
       "color": "#E85D75",
       "style": "creative",
@@ -574,13 +574,13 @@
     },
     {
       "id": "ppt169_high_rise_renewal",
-      "title": "高层住宅“主动再生”",
-      "description": "从悉尼到中国 — 高层住宅老化的再生议题，编辑杂志风",
+      "title": "高層住宅“主動再生”",
+      "description": "從悉尼到中國 — 高層住宅老化的再生議題，編輯雜誌風",
       "icon": "🏙️",
       "color": "#2D4A5F",
       "style": "editorial",
       "styleName": "Editorial Magazine",
-      "desc": "Urban-renewal feature on aging high-rise housing, drawing parallels between Sydney's experience and Chinese cities — in 三联 / 看理想 editorial cadence.",
+      "desc": "Urban-renewal feature on aging high-rise housing, drawing parallels between Sydney's experience and Chinese cities — in 三聯 / 看理想 editorial cadence.",
       "tags": [
         "Urban Renewal",
         "Editorial",
@@ -670,7 +670,7 @@
     {
       "id": "ppt169_cangzhuo",
       "title": "藏拙",
-      "description": "《男人最顶级的城府：藏拙》读书分享 — 新中式水墨留白",
+      "description": "《男人最頂級的城府：藏拙》讀書分享 — 新中式水墨留白",
       "icon": "🖋️",
       "color": "#2C3E50",
       "style": "creative",
@@ -696,34 +696,34 @@
           "desc": "引子"
         },
         {
-          "file": "03_烧烤摊故事.svg",
-          "title": "烧烤摊故事",
-          "desc": "烧烤摊故事"
+          "file": "03_燒烤攤故事.svg",
+          "title": "燒烤攤故事",
+          "desc": "燒烤攤故事"
         },
         {
-          "file": "04_什么是藏拙.svg",
-          "title": "什么是藏拙",
-          "desc": "什么是藏拙"
+          "file": "04_什麼是藏拙.svg",
+          "title": "什麼是藏拙",
+          "desc": "什麼是藏拙"
         },
         {
-          "file": "05_木秀于林.svg",
-          "title": "木秀于林",
-          "desc": "木秀于林"
+          "file": "05_木秀於林.svg",
+          "title": "木秀於林",
+          "desc": "木秀於林"
         },
         {
-          "file": "06_年轻人最易犯的错.svg",
-          "title": "年轻人最易犯的错",
-          "desc": "年轻人最易犯的错"
+          "file": "06_年輕人最易犯的錯.svg",
+          "title": "年輕人最易犯的錯",
+          "desc": "年輕人最易犯的錯"
         },
         {
-          "file": "07_会藏拙的人怎么做.svg",
-          "title": "会藏拙的人怎么做",
-          "desc": "会藏拙的人怎么做"
+          "file": "07_會藏拙的人怎麼做.svg",
+          "title": "會藏拙的人怎麼做",
+          "desc": "會藏拙的人怎麼做"
         },
         {
-          "file": "08_韩信.svg",
-          "title": "韩信",
-          "desc": "韩信"
+          "file": "08_韓信.svg",
+          "title": "韓信",
+          "desc": "韓信"
         },
         {
           "file": "09_藏拙的高明.svg",
@@ -731,19 +731,19 @@
           "desc": "藏拙的高明"
         },
         {
-          "file": "10_潜龙勿用.svg",
-          "title": "潜龙勿用",
-          "desc": "潜龙勿用"
+          "file": "10_潛龍勿用.svg",
+          "title": "潛龍勿用",
+          "desc": "潛龍勿用"
         },
         {
-          "file": "11_藏拙不等于消极避世.svg",
-          "title": "藏拙不等于消极避世",
-          "desc": "藏拙不等于消极避世"
+          "file": "11_藏拙不等於消極避世.svg",
+          "title": "藏拙不等於消極避世",
+          "desc": "藏拙不等於消極避世"
         },
         {
-          "file": "12_曾国藩.svg",
-          "title": "曾国藩",
-          "desc": "曾国藩"
+          "file": "12_曾國藩.svg",
+          "title": "曾國藩",
+          "desc": "曾國藩"
         },
         {
           "file": "13_藏住四件事.svg",
@@ -751,16 +751,16 @@
           "desc": "藏住四件事"
         },
         {
-          "file": "14_结语.svg",
-          "title": "结语",
-          "desc": "结语"
+          "file": "14_結語.svg",
+          "title": "結語",
+          "desc": "結語"
         }
       ]
     },
     {
       "id": "ppt169_image_text_showcase",
       "title": "Image-Text Showcase",
-      "description": "20种图文组合范式展示 — 每页不同 rendering × palette × 布局",
+      "description": "20種圖文組合正規化展示 — 每頁不同 rendering × palette × 佈局",
       "icon": "🎨",
       "color": "#7C6FF7",
       "style": "creative",
@@ -781,29 +781,29 @@
           "desc": "封面"
         },
         {
-          "file": "02_目录.svg",
-          "title": "目录",
-          "desc": "目录"
+          "file": "02_目錄.svg",
+          "title": "目錄",
+          "desc": "目錄"
         },
         {
-          "file": "03_左图右文.svg",
-          "title": "左图右文",
-          "desc": "左图右文"
+          "file": "03_左圖右文.svg",
+          "title": "左圖右文",
+          "desc": "左圖右文"
         },
         {
-          "file": "04_右图出血.svg",
-          "title": "右图出血",
-          "desc": "右图出血"
+          "file": "04_右圖出血.svg",
+          "title": "右圖出血",
+          "desc": "右圖出血"
         },
         {
-          "file": "05_顶图三栏.svg",
-          "title": "顶图三栏",
-          "desc": "顶图三栏"
+          "file": "05_頂圖三欄.svg",
+          "title": "頂圖三欄",
+          "desc": "頂圖三欄"
         },
         {
-          "file": "06_底图浮文.svg",
-          "title": "底图浮文",
-          "desc": "底图浮文"
+          "file": "06_底圖浮文.svg",
+          "title": "底圖浮文",
+          "desc": "底圖浮文"
         },
         {
           "file": "07_Z型蛇形.svg",
@@ -811,81 +811,81 @@
           "desc": "Z型蛇形"
         },
         {
-          "file": "08_九宫格混排.svg",
-          "title": "九宫格混排",
-          "desc": "九宫格混排"
+          "file": "08_九宮格混排.svg",
+          "title": "九宮格混排",
+          "desc": "九宮格混排"
         },
         {
-          "file": "09_圆形放射.svg",
-          "title": "圆形放射",
-          "desc": "圆形放射"
+          "file": "09_圓形放射.svg",
+          "title": "圓形放射",
+          "desc": "圓形放射"
         },
         {
-          "file": "10_底纹密铺.svg",
-          "title": "底纹密铺",
-          "desc": "底纹密铺"
+          "file": "10_底紋密鋪.svg",
+          "title": "底紋密鋪",
+          "desc": "底紋密鋪"
         },
         {
-          "file": "11_剪纸分层.svg",
-          "title": "剪纸分层",
-          "desc": "剪纸分层"
+          "file": "11_剪紙分層.svg",
+          "title": "剪紙分層",
+          "desc": "剪紙分層"
         },
         {
-          "file": "12_竖版杂志.svg",
-          "title": "竖版杂志",
-          "desc": "竖版杂志"
+          "file": "12_豎版雜誌.svg",
+          "title": "豎版雜誌",
+          "desc": "豎版雜誌"
         },
         {
-          "file": "13_对角线分割.svg",
-          "title": "对角线分割",
-          "desc": "对角线分割"
+          "file": "13_對角線分割.svg",
+          "title": "對角線分割",
+          "desc": "對角線分割"
         },
         {
-          "file": "14_褪色底图大字.svg",
-          "title": "褪色底图大字",
-          "desc": "褪色底图大字"
+          "file": "14_褪色底圖大字.svg",
+          "title": "褪色底圖大字",
+          "desc": "褪色底圖大字"
         },
         {
-          "file": "15_上文下图.svg",
-          "title": "上文下图",
-          "desc": "上文下图"
+          "file": "15_上文下圖.svg",
+          "title": "上文下圖",
+          "desc": "上文下圖"
         },
         {
-          "file": "16_中心放射标注.svg",
-          "title": "中心放射标注",
-          "desc": "中心放射标注"
+          "file": "16_中心放射標註.svg",
+          "title": "中心放射標註",
+          "desc": "中心放射標註"
         },
         {
-          "file": "17_横条贯穿.svg",
-          "title": "横条贯穿",
-          "desc": "横条贯穿"
+          "file": "17_橫條貫穿.svg",
+          "title": "橫條貫穿",
+          "desc": "橫條貫穿"
         },
         {
-          "file": "18_多边形填缝.svg",
-          "title": "多边形填缝",
-          "desc": "多边形填缝"
+          "file": "18_多邊形填縫.svg",
+          "title": "多邊形填縫",
+          "desc": "多邊形填縫"
         },
         {
-          "file": "19_蒙太奇拼贴.svg",
-          "title": "蒙太奇拼贴",
-          "desc": "蒙太奇拼贴"
+          "file": "19_蒙太奇拼貼.svg",
+          "title": "蒙太奇拼貼",
+          "desc": "蒙太奇拼貼"
         },
         {
-          "file": "20_黑板收场.svg",
-          "title": "黑板收场",
-          "desc": "黑板收场"
+          "file": "20_黑板收場.svg",
+          "title": "黑板收場",
+          "desc": "黑板收場"
         }
       ]
     },
     {
       "id": "ppt169_building_effective_agents",
       "title": "Building Effective Agents",
-      "description": "Anthropic 工程博客的 AI Agent 架构与工作流模式解析",
+      "description": "Anthropic 工程部落格的 AI Agent 架構與工作流模式解析",
       "icon": "🤖",
       "color": "#D4845A",
       "style": "general",
       "styleName": "General + Dark Tech",
-      "desc": "Based on Anthropic's Building Effective Agents — augmented LLM、五类 workflow pattern 与 autonomous agent 实践。",
+      "desc": "Based on Anthropic's Building Effective Agents — augmented LLM、五類 workflow pattern 與 autonomous agent 實踐。",
       "tags": [
         "Dark Theme",
         "AI/ML",
@@ -959,17 +959,17 @@
     },
     {
       "id": "ppt169_fashion_weekly_digest",
-      "title": "时尚美学周鉴",
-      "description": "奢侈品与生活方式品牌新闻的杂志化周报",
+      "title": "時尚美學周鑑",
+      "description": "奢侈品與生活方式品牌新聞的雜誌化週報",
       "icon": "✨",
       "color": "#C9A96E",
       "style": "editorial",
       "styleName": "Luxury Editorial",
-      "desc": "覆盖 Hermès、CHANEL、Dior、Louis Vuitton、Gucci 等品牌动态的高端杂志编辑风周报。",
+      "desc": "覆蓋 Hermès、CHANEL、Dior、Louis Vuitton、Gucci 等品牌動態的高階雜誌編輯風週報。",
       "tags": [
         "Luxury",
         "Fashion",
-        "杂志风"
+        "雜誌風"
       ],
       "isNew": false,
       "folder": "ppt169_fashion_weekly_digest/svg_final",
@@ -981,19 +981,19 @@
           "desc": "封面"
         },
         {
-          "file": "02_爱马仕家居.svg",
-          "title": "爱马仕家居",
-          "desc": "爱马仕家居"
+          "file": "02_愛馬仕家居.svg",
+          "title": "愛馬仕家居",
+          "desc": "愛馬仕家居"
         },
         {
-          "file": "03_香奈儿海滩.svg",
-          "title": "香奈儿海滩",
-          "desc": "香奈儿海滩"
+          "file": "03_香奈兒海灘.svg",
+          "title": "香奈兒海灘",
+          "desc": "香奈兒海灘"
         },
         {
-          "file": "04_迪奥双面.svg",
-          "title": "迪奥双面",
-          "desc": "迪奥双面"
+          "file": "04_迪奧雙面.svg",
+          "title": "迪奧雙面",
+          "desc": "迪奧雙面"
         },
         {
           "file": "05_路易威登家居.svg",
@@ -1001,29 +1001,29 @@
           "desc": "路易威登家居"
         },
         {
-          "file": "06_古驰记忆.svg",
-          "title": "古驰记忆",
-          "desc": "古驰记忆"
+          "file": "06_古馳記憶.svg",
+          "title": "古馳記憶",
+          "desc": "古馳記憶"
         },
         {
-          "file": "07_珠宝灵韵.svg",
-          "title": "珠宝灵韵",
-          "desc": "珠宝灵韵"
+          "file": "07_珠寶靈韻.svg",
+          "title": "珠寶靈韻",
+          "desc": "珠寶靈韻"
         },
         {
-          "file": "08_艺术表达.svg",
-          "title": "艺术表达",
-          "desc": "艺术表达"
+          "file": "08_藝術表達.svg",
+          "title": "藝術表達",
+          "desc": "藝術表達"
         },
         {
-          "file": "09_传承新章.svg",
-          "title": "传承新章",
-          "desc": "传承新章"
+          "file": "09_傳承新章.svg",
+          "title": "傳承新章",
+          "desc": "傳承新章"
         },
         {
-          "file": "10_结构重塑.svg",
-          "title": "结构重塑",
-          "desc": "结构重塑"
+          "file": "10_結構重塑.svg",
+          "title": "結構重塑",
+          "desc": "結構重塑"
         },
         {
           "file": "11_感官新篇.svg",
@@ -1031,9 +1031,9 @@
           "desc": "感官新篇"
         },
         {
-          "file": "12_跨界新风.svg",
-          "title": "跨界新风",
-          "desc": "跨界新风"
+          "file": "12_跨界新風.svg",
+          "title": "跨界新風",
+          "desc": "跨界新風"
         },
         {
           "file": "13_潮流共振.svg",
@@ -1041,9 +1041,9 @@
           "desc": "潮流共振"
         },
         {
-          "file": "14_亮点回顾.svg",
-          "title": "亮点回顾",
-          "desc": "亮点回顾"
+          "file": "14_亮點回顧.svg",
+          "title": "亮點回顧",
+          "desc": "亮點回顧"
         },
         {
           "file": "15_品牌全景.svg",
@@ -1051,24 +1051,24 @@
           "desc": "品牌全景"
         },
         {
-          "file": "16_结尾.svg",
-          "title": "结尾",
-          "desc": "结尾"
+          "file": "16_結尾.svg",
+          "title": "結尾",
+          "desc": "結尾"
         }
       ]
     },
     {
       "id": "ppt169_home_design_trends_2026",
-      "title": "2026 家居设计趋势",
-      "description": "杂志编辑风的家居色彩、材质与纹理趋势解析",
+      "title": "2026 家居設計趨勢",
+      "description": "雜誌編輯風的家居色彩、材質與紋理趨勢解析",
       "icon": "🏠",
       "color": "#C4A882",
       "style": "general",
       "styleName": "Magazine Editorial",
-      "desc": "从色彩、材质、纹理到 CMT 体系，解读 2026 家居设计趋势与可持续奢华。",
+      "desc": "從色彩、材質、紋理到 CMT 體系，解讀 2026 家居設計趨勢與可持續奢華。",
       "tags": [
-        "家居设计",
-        "杂志风",
+        "家居設計",
+        "雜誌風",
         "CMT"
       ],
       "isNew": false,
@@ -1081,73 +1081,73 @@
           "desc": "封面"
         },
         {
-          "file": "02_从网红风到人的尺度.svg",
-          "title": "从网红风到人的尺度",
-          "desc": "从网红风到人的尺度"
+          "file": "02_從網紅風到人的尺度.svg",
+          "title": "從網紅風到人的尺度",
+          "desc": "從網紅風到人的尺度"
         },
         {
-          "file": "03_色彩情绪魔法师.svg",
-          "title": "色彩情绪魔法师",
-          "desc": "色彩情绪魔法师"
+          "file": "03_色彩情緒魔法師.svg",
+          "title": "色彩情緒魔法師",
+          "desc": "色彩情緒魔法師"
         },
         {
-          "file": "04_冷暖色调对比.svg",
-          "title": "冷暖色调对比",
-          "desc": "冷暖色调对比"
+          "file": "04_冷暖色調對比.svg",
+          "title": "冷暖色調對比",
+          "desc": "冷暖色調對比"
         },
         {
-          "file": "05_材质空间语言.svg",
-          "title": "材质空间语言",
-          "desc": "材质空间语言"
+          "file": "05_材質空間語言.svg",
+          "title": "材質空間語言",
+          "desc": "材質空間語言"
         },
         {
-          "file": "06_纹理空间灵魂.svg",
-          "title": "纹理空间灵魂",
-          "desc": "纹理空间灵魂"
+          "file": "06_紋理空間靈魂.svg",
+          "title": "紋理空間靈魂",
+          "desc": "紋理空間靈魂"
         },
         {
-          "file": "07_CMT体系.svg",
-          "title": "CMT体系",
-          "desc": "CMT体系"
+          "file": "07_CMT體系.svg",
+          "title": "CMT體系",
+          "desc": "CMT體系"
         },
         {
-          "file": "08_奶油风进化论.svg",
-          "title": "奶油风进化论",
-          "desc": "奶油风进化论"
+          "file": "08_奶油風進化論.svg",
+          "title": "奶油風進化論",
+          "desc": "奶油風進化論"
         },
         {
-          "file": "09_波西米亚与复古.svg",
-          "title": "波西米亚与复古",
-          "desc": "波西米亚与复古"
+          "file": "09_波西米亞與復古.svg",
+          "title": "波西米亞與復古",
+          "desc": "波西米亞與復古"
         },
         {
-          "file": "10_可持续奢华.svg",
-          "title": "可持续奢华",
-          "desc": "可持续奢华"
+          "file": "10_可持續奢華.svg",
+          "title": "可持續奢華",
+          "desc": "可持續奢華"
         },
         {
-          "file": "11_书籍推荐.svg",
-          "title": "书籍推荐",
-          "desc": "书籍推荐"
+          "file": "11_書籍推薦.svg",
+          "title": "書籍推薦",
+          "desc": "書籍推薦"
         },
         {
-          "file": "12_结语.svg",
-          "title": "结语",
-          "desc": "结语"
+          "file": "12_結語.svg",
+          "title": "結語",
+          "desc": "結語"
         }
       ]
     },
     {
       "id": "ppt169_kimsoong_loyalty_programme",
       "title": "Kimsoong Loyalty Programme",
-      "description": "MBB 风格汽车品牌客户忠诚度战略提案",
+      "description": "MBB 風格汽車品牌客戶忠誠度戰略提案",
       "icon": "💎",
       "color": "#E8A838",
       "style": "consulting",
       "styleName": "Top Consulting",
-      "desc": "面向 Kimsoong 欧洲总部的客户忠诚度战略提案，覆盖根因分析、四支柱策略与实施路线图。",
+      "desc": "面向 Kimsoong 歐洲總部的客戶忠誠度戰略提案，覆蓋根因分析、四支柱策略與實施路線圖。",
       "tags": [
-        "MBB 级",
+        "MBB 級",
         "Loyalty",
         "Automotive"
       ],
@@ -1209,17 +1209,17 @@
     },
     {
       "id": "ppt169_lin_huiyin_architect",
-      "title": "林徽因：当之无愧的建筑师",
-      "description": "深色建筑人文纪念风的林徽因建筑贡献梳理",
+      "title": "林徽因：當之無愧的建築師",
+      "description": "深色建築人文紀念風的林徽因建築貢獻梳理",
       "icon": "🏛️",
       "color": "#C9A96E",
       "style": "editorial",
-      "styleName": "建筑人文纪念",
-      "desc": "从建筑实践、国家纪念碑到学术论文，重新审视林徽因作为建筑师的专业贡献。",
+      "styleName": "建築人文紀念",
+      "desc": "從建築實踐、國家紀念碑到學術論文，重新審視林徽因作為建築師的專業貢獻。",
       "tags": [
-        "建筑史",
+        "建築史",
         "人文",
-        "深色主题"
+        "深色主題"
       ],
       "isNew": false,
       "folder": "ppt169_lin_huiyin_architect/svg_final",
@@ -1231,65 +1231,65 @@
           "desc": "封面"
         },
         {
-          "file": "02_人生轨迹.svg",
-          "title": "人生轨迹",
-          "desc": "人生轨迹"
+          "file": "02_人生軌跡.svg",
+          "title": "人生軌跡",
+          "desc": "人生軌跡"
         },
         {
-          "file": "03_归国初期建筑实践.svg",
-          "title": "归国初期建筑实践",
-          "desc": "归国初期建筑实践"
+          "file": "03_歸國初期建築實踐.svg",
+          "title": "歸國初期建築實踐",
+          "desc": "歸國初期建築實踐"
         },
         {
-          "file": "04_战火中的建筑理想.svg",
-          "title": "战火中的建筑理想",
-          "desc": "战火中的建筑理想"
+          "file": "04_戰火中的建築理想.svg",
+          "title": "戰火中的建築理想",
+          "desc": "戰火中的建築理想"
         },
         {
-          "file": "05_国之重器.svg",
-          "title": "国之重器",
-          "desc": "国之重器"
+          "file": "05_國之重器.svg",
+          "title": "國之重器",
+          "desc": "國之重器"
         },
         {
-          "file": "06_首篇建筑论文.svg",
-          "title": "首篇建筑论文",
-          "desc": "首篇建筑论文"
+          "file": "06_首篇建築論文.svg",
+          "title": "首篇建築論文",
+          "desc": "首篇建築論文"
         },
         {
-          "file": "07_学术贡献一览.svg",
-          "title": "学术贡献一览",
-          "desc": "学术贡献一览"
+          "file": "07_學術貢獻一覽.svg",
+          "title": "學術貢獻一覽",
+          "desc": "學術貢獻一覽"
         },
         {
-          "file": "08_穿越战火的建筑斗士.svg",
-          "title": "穿越战火的建筑斗士",
-          "desc": "穿越战火的建筑斗士"
+          "file": "08_穿越戰火的建築鬥士.svg",
+          "title": "穿越戰火的建築鬥士",
+          "desc": "穿越戰火的建築鬥士"
         },
         {
-          "file": "09_当之无愧的建筑师.svg",
-          "title": "当之无愧的建筑师",
-          "desc": "当之无愧的建筑师"
+          "file": "09_當之無愧的建築師.svg",
+          "title": "當之無愧的建築師",
+          "desc": "當之無愧的建築師"
         },
         {
-          "file": "10_结尾.svg",
-          "title": "结尾",
-          "desc": "结尾"
+          "file": "10_結尾.svg",
+          "title": "結尾",
+          "desc": "結尾"
         }
       ]
     },
     {
       "id": "ppt169_lin_huiyin_architect_revised",
-      "title": "重识林徽因建筑师身份",
-      "description": "浅色博物馆展陈风的林徽因建筑贡献修订版",
+      "title": "重識林徽因建築師身份",
+      "description": "淺色博物館展陳風的林徽因建築貢獻修訂版",
       "icon": "🏛️",
       "color": "#A44A3F",
       "style": "editorial",
-      "styleName": "博物馆展陈风",
-      "desc": "以浅色展陈图录方式重构同一主题，强调建筑现场、国家尺度参与与方法论远见。",
+      "styleName": "博物館展陳風",
+      "desc": "以淺色展陳圖錄方式重構同一主題，強調建築現場、國家尺度參與與方法論遠見。",
       "tags": [
-        "建筑史",
-        "展陈图录",
-        "修订版"
+        "建築史",
+        "展陳圖錄",
+        "修訂版"
       ],
       "isNew": false,
       "folder": "ppt169_lin_huiyin_architect_revised/svg_final",
@@ -1301,60 +1301,60 @@
           "desc": "封面"
         },
         {
-          "file": "02_为什么今天要重识林徽因.svg",
-          "title": "为什么今天要重识林徽因",
-          "desc": "为什么今天要重识林徽因"
+          "file": "02_為什麼今天要重識林徽因.svg",
+          "title": "為什麼今天要重識林徽因",
+          "desc": "為什麼今天要重識林徽因"
         },
         {
-          "file": "03_建筑实践并不缺席.svg",
-          "title": "建筑实践并不缺席",
-          "desc": "建筑实践并不缺席"
+          "file": "03_建築實踐並不缺席.svg",
+          "title": "建築實踐並不缺席",
+          "desc": "建築實踐並不缺席"
         },
         {
-          "file": "04_作品现场：建筑不是抽象名词.svg",
-          "title": "作品现场：建筑不是抽象名词",
-          "desc": "作品现场：建筑不是抽象名词"
+          "file": "04_作品現場：建築不是抽象名詞.svg",
+          "title": "作品現場：建築不是抽象名詞",
+          "desc": "作品現場：建築不是抽象名詞"
         },
         {
-          "file": "05_国家尺度上的建筑参与.svg",
-          "title": "国家尺度上的建筑参与",
-          "desc": "国家尺度上的建筑参与"
+          "file": "05_國家尺度上的建築參與.svg",
+          "title": "國家尺度上的建築參與",
+          "desc": "國家尺度上的建築參與"
         },
         {
-          "file": "06_她不是辅助者，而是理论提出者.svg",
-          "title": "她不是辅助者，而是理论提出者",
-          "desc": "她不是辅助者，而是理论提出者"
+          "file": "06_她不是輔助者，而是理論提出者.svg",
+          "title": "她不是輔助者，而是理論提出者",
+          "desc": "她不是輔助者，而是理論提出者"
         },
         {
-          "file": "07_学科、方法与远见.svg",
-          "title": "学科、方法与远见",
-          "desc": "学科、方法与远见"
+          "file": "07_學科、方法與遠見.svg",
+          "title": "學科、方法與遠見",
+          "desc": "學科、方法與遠見"
         },
         {
-          "file": "08_她如何穿过战火与病痛.svg",
-          "title": "她如何穿过战火与病痛",
-          "desc": "她如何穿过战火与病痛"
+          "file": "08_她如何穿過戰火與病痛.svg",
+          "title": "她如何穿過戰火與病痛",
+          "desc": "她如何穿過戰火與病痛"
         },
         {
-          "file": "09_结尾.svg",
-          "title": "结尾",
-          "desc": "结尾"
+          "file": "09_結尾.svg",
+          "title": "結尾",
+          "desc": "結尾"
         }
       ]
     },
     {
       "id": "ppt169_liziqi_plant_dye_colors",
       "title": "李子柒植物染色彩",
-      "description": "东方文化叙事下的传统色与植物染研究",
+      "description": "東方文化敘事下的傳統色與植物染研究",
       "icon": "🌿",
       "color": "#6B9AAE",
       "style": "editorial",
-      "styleName": "东方文化叙事",
-      "desc": "围绕李子柒春晚战袍背后的传统中国色，讲述五正色、植物染、诗意色名与手作疗愈。",
+      "styleName": "東方文化敘事",
+      "desc": "圍繞李子柒春晚戰袍背後的傳統中國色，講述五正色、植物染、詩意色名與手作療愈。",
       "tags": [
-        "传统色",
+        "傳統色",
         "植物染",
-        "东方美学"
+        "東方美學"
       ],
       "isNew": false,
       "folder": "ppt169_liziqi_plant_dye_colors/svg_final",

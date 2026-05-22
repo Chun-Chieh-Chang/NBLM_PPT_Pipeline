@@ -189,7 +189,7 @@ See [`../templates/icons/README.md`](../templates/icons/README.md) for the curre
 | Same family, weight contrast (900 / 300) | `"Microsoft YaHei", "PingFang SC", sans-serif` | same | — |
 | Display × neutral | `Impact, "Arial Black", SimHei, sans-serif` | `Arial, "Microsoft YaHei", sans-serif` | — |
 | Cool serif (academic) | `Cambria, SimSun, serif` | `"Times New Roman", SimSun, serif` | — |
-| Hei × song (政务) | `SimHei, "Microsoft YaHei", sans-serif` | `SimSun, serif` | — |
+| Hei × song (政務) | `SimHei, "Microsoft YaHei", sans-serif` | `SimSun, serif` | — |
 | Tech / developer | `Arial, "Microsoft YaHei", sans-serif` | same | `Consolas, "Courier New", monospace` |
 | Concord (default fallback) | `"Microsoft YaHei", "PingFang SC", sans-serif` | same | — |
 
@@ -280,7 +280,7 @@ After the candidates, append one line:
 | HEX values in `Color` line MUST be e.'s real values | Palette contributes only the 60-30-10 ratio + role assignment. Never substitute the palette's typical HEX. |
 | Span a personality spectrum | Typically: one conservative-default (industry norm), one shifted-tone (same fit, 1-2 ticks different), one bold-contrast (more expressive, may challenge default). No near-duplicates. |
 | `Mood` line MUST include a real-world analogy | Company / publication / event the user can picture. Adjective stacks alone are forbidden. |
-| Adapt labels to chat language | Schema is English by default. Chinese chat → render as 「方案 A / 视觉 / 色彩 / 情绪」. Structure stays the same; only the labels translate. |
+| Adapt labels to chat language | Schema is English by default. Chinese chat → render as 「方案 A / 視覺 / 色彩 / 情緒」. Structure stays the same; only the labels translate. |
 | Skip presentation when user has specified | User-named rendering or palette (chat / brand / template) bypasses the candidate flow — lock directly per the truth-precedence rule. |
 
 **Forbidden — padding with conflicts**: if e.'s HEX cannot find ≥3 compatible palettes, present the smaller set (2 candidates) and state "your color is unusual — only N palettes can carry it without conflict." Never fill remaining slots with known-conflicting options.
@@ -319,30 +319,30 @@ The tables below are source data Strategist reads when constructing the three ca
 | `d. Style` signal | Recommended rendering | Alternates |
 |---|---|---|
 | Top Consulting / strategic / MBB | `editorial` or `vector-illustration` | `blueprint`, `minimalist-swiss` |
-| General Consulting / corporate report / 学术答辩 | `vector-illustration` | `flat`, `editorial` |
-| High-end consulting / luxury / 高端 / design-firm | `minimalist-swiss` | `editorial`, `vector-illustration` |
-| Tech / SaaS / AI / 架构 | `3d-isometric`, `blueprint`, `digital-dashboard` | `flat` |
+| General Consulting / corporate report / 學術答辯 | `vector-illustration` | `flat`, `editorial` |
+| High-end consulting / luxury / 高階 / design-firm | `minimalist-swiss` | `editorial`, `vector-illustration` |
+| Tech / SaaS / AI / 架構 | `3d-isometric`, `blueprint`, `digital-dashboard` | `flat` |
 | Modern SaaS / fintech / health-tech / premium app | `glassmorphism` | `digital-dashboard`, `flat` |
 | Product launch / brand / marketing | `flat`, `3d-isometric`, `corporate-photo` | `vector-illustration` |
-| Education / training / 教学 / 培训 | `sketch-notes` | `vector-illustration`, `paper-cut` |
-| Children / storybook / 儿童 / 治愈 | `fantasy-animation` | `paper-cut`, `watercolor`, `sketch-notes` |
-| Cultural / folk / festival / 文化 / 节日 | `paper-cut` | `vintage-poster`, `screen-print` |
-| Methodology / Before-After / 方法论 / manifesto | `ink-notes` | `editorial` |
-| Government / formal / 政务 | `editorial` or `corporate-photo` | `vector-illustration` |
-| Finance / journalism / 财经 | `editorial`, `digital-dashboard` | `vector-illustration` |
-| Personal story / 个人成长 / lifestyle | `watercolor`, `warm-scene` | `corporate-photo`, `paper-cut` |
+| Education / training / 教學 / 培訓 | `sketch-notes` | `vector-illustration`, `paper-cut` |
+| Children / storybook / 兒童 / 治癒 | `fantasy-animation` | `paper-cut`, `watercolor`, `sketch-notes` |
+| Cultural / folk / festival / 文化 / 節日 | `paper-cut` | `vintage-poster`, `screen-print` |
+| Methodology / Before-After / 方法論 / manifesto | `ink-notes` | `editorial` |
+| Government / formal / 政務 | `editorial` or `corporate-photo` | `vector-illustration` |
+| Finance / journalism / 財經 | `editorial`, `digital-dashboard` | `vector-illustration` |
+| Personal story / 個人成長 / lifestyle | `watercolor`, `warm-scene` | `corporate-photo`, `paper-cut` |
 | Cultural / media / opinion / cinematic | `screen-print`, `vintage-poster` | `editorial`, `warm-scene` |
-| Brand heritage / hospitality / 老字号 / 周年 | `vintage-poster` | `screen-print`, `editorial` |
-| Gaming / retro / 复古 / 像素 | `pixel-art` | `vintage-poster` |
-| Environment / wellness / 环保 | `nature` | `watercolor`, `paper-cut` |
-| Classroom / blackboard / 课堂 | `chalkboard` | `sketch-notes` |
+| Brand heritage / hospitality / 老字號 / 週年 | `vintage-poster` | `screen-print`, `editorial` |
+| Gaming / retro / 復古 / 畫素 | `pixel-art` | `vintage-poster` |
+| Environment / wellness / 環保 | `nature` | `watercolor`, `paper-cut` |
+| Classroom / blackboard / 課堂 | `chalkboard` | `sketch-notes` |
 | Team / company / product photo | `corporate-photo` | — |
 
 **Palette recommendation** (soft — user may override):
 
 | Content vibe / industry | Recommended palette | Alternates |
 |---|---|---|
-| Consulting / finance / B2B / corporate / 学术答辩 | `cool-corporate` | `editorial-classic`, `frost-ice` |
+| Consulting / finance / B2B / corporate / 學術答辯 | `cool-corporate` | `editorial-classic`, `frost-ice` |
 | Tech / SaaS / AI | `tech-neon` | `cool-corporate`, `dark-cinematic` |
 | Modern SaaS / fintech / health-tech | `frost-ice` | `cool-corporate`, `tech-neon` |
 | Health / medical / beauty / skincare | `frost-ice` | `nature-organic`, `earthy-dusty` |
@@ -508,7 +508,7 @@ The most common Strategist failure mode is missing the structural half — treat
 > 3. One primary visualization per page; a supporting layout may accompany it.
 > 4. List selections in Design Spec section VII; section IX only notes the visualization type name per page.
 >
-> **Source vocabulary mismatch** — the catalog is in English. When source content uses Chinese / industry jargon ("中台", "架构图", "述职", "管道", "前后端"), translate the intent first, then match against summaries. The catalog deliberately keeps no keyword index — full-read forces semantic matching rather than lexical grep.
+> **Source vocabulary mismatch** — the catalog is in English. When source content uses Chinese / industry jargon ("中臺", "架構圖", "述職", "管道", "前後端"), translate the intent first, then match against summaries. The catalog deliberately keeps no keyword index — full-read forces semantic matching rather than lexical grep.
 >
 > **Read-audit (mandatory, section VII format)** — single combined table; `summary-quote` column is the anti-fabrication audit, `path` + `usage` serve Executor lookup. Format defined in [`templates/design_spec_reference.md`](../templates/design_spec_reference.md) §VII:
 > ```

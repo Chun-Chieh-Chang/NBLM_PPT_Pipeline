@@ -63,7 +63,7 @@
 
 ### Font Stack
 
-**Font Stack**: `"Microsoft YaHei", "微软雅黑", "SimHei", "Source Han Sans SC", Arial, sans-serif`
+**Font Stack**: `"Microsoft YaHei", "微軟雅黑", "SimHei", "Source Han Sans SC", Arial, sans-serif`
 
 ### Font Size Hierarchy
 

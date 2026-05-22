@@ -33,7 +33,7 @@ from typing import Any, Optional
 # Project-wide constants
 # ---------------------------------------------------------------------------
 
-USER_AGENT = "PPTMaster/1.0 (https://github.com/hugohe3/ppt-master)"
+USER_AGENT = "NBLM_PPT_Pipeline/1.0"
 
 
 # ---------------------------------------------------------------------------
@@ -389,7 +389,7 @@ def score_candidate(candidate: AssetCandidate, request: ImageSearchRequest) -> f
     # This prevents high-res subway station photos from outranking actual tourist landmarks.
     text = _candidate_text(candidate)
     query_lower = request.query.lower()
-    infra_terms = ["station", "subway", "metro", "rail", "transit", "airport", "bus", "地鐵", "地铁", "站", "軌道", "轨道"]
+    infra_terms = ["station", "subway", "metro", "rail", "transit", "airport", "bus", "地鐵", "地鐵", "站", "軌道", "軌道"]
     
     if not any(t in query_lower for t in infra_terms):
         if any(t in text for t in infra_terms):

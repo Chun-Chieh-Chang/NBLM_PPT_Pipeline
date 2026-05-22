@@ -173,7 +173,7 @@ Sections to **omit** from template `design_spec.md` (sourced elsewhere — listi
 |---|---|
 | SVG technical constraints / Mandatory rules / Prohibited elements | `shared-standards.md` §1 |
 | PPT compatibility rules (`<g opacity>`, inline-styles-only, etc.) | `shared-standards.md` |
-| Generic layout pattern library (centered card / 三栏 / timeline / …) | `design_spec_reference.md` §V |
+| Generic layout pattern library (centered card / 三欄 / timeline / …) | `design_spec_reference.md` §V |
 | Generic spacing bands (margin 40-60px, card gap 20-32px, etc.) | `design_spec_reference.md` §V |
 | Generic font-size hierarchy (cover 2.5-5x body, page title 1.5-2x, …) | `design_spec_reference.md` §IV |
 | Canonical placeholder table (`{{TITLE}}`, `{{PAGE_NUM}}`, …) | §4 below |
@@ -366,7 +366,7 @@ This section describes downstream reuse. The `Template_Designer` role itself is 
 templates/layouts/
 ├── academic_defense/  # Academic defense style
 ├── pixel_retro/       # Pixel retro / cyberpunk style
-└── 招商银行/          # China Merchants Bank brand style
+└── 招商銀行/          # China Merchants Bank brand style
 ```
 
 ---

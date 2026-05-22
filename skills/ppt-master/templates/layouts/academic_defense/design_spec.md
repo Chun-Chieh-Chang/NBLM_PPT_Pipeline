@@ -69,7 +69,7 @@
 
 ### Font Stack
 
-**Font Stack**: `"Microsoft YaHei", "微软雅黑", Arial, sans-serif`
+**Font Stack**: `"Microsoft YaHei", "微軟雅黑", Arial, sans-serif`
 
 ### Font Size Hierarchy
 
@@ -240,11 +240,11 @@ Templates use `{{PLACEHOLDER}}` format placeholders. Common placeholders:
 ```xml
 <!-- Blue background white text tag -->
 <rect x="40" y="150" width="80" height="28" fill="#0066CC" rx="4"/>
-<text x="80" y="170" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="bold">内容详解</text>
+<text x="80" y="170" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="bold">內容詳解</text>
 
 <!-- Red background white text tag (emphasis) -->
 <rect x="40" y="150" width="80" height="28" fill="#CC0000" rx="4"/>
-<text x="80" y="170" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="bold">核心目标</text>
+<text x="80" y="170" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="bold">核心目標</text>
 ```
 
 ### 2. Flow Arrow
@@ -261,7 +261,7 @@ Templates use `{{PLACEHOLDER}}` format placeholders. Common placeholders:
 <!-- Key data block -->
 <rect x="40" y="400" width="200" height="80" fill="#FFFFFF" stroke="#CC0000" stroke-width="2" rx="8"/>
 <text x="140" y="445" text-anchor="middle" fill="#CC0000" font-size="24" font-weight="bold">30%</text>
-<text x="140" y="470" text-anchor="middle" fill="#666666" font-size="12">关键指标</text>
+<text x="140" y="470" text-anchor="middle" fill="#666666" font-size="12">關鍵指標</text>
 ```
 
 ---

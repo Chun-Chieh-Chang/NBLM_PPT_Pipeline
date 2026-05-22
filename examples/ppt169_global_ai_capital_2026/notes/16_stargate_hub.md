@@ -1,1 +1,1 @@
-Stargate 项目是这一切的物理基础。OpenAI 加 Oracle 加 SoftBank，五千亿美元投入，十吉瓦容量，四年期。中心节点是已经投运的德州 Abilene 旗舰，到 2026 年中期将达到一吉瓦。围绕它有七个站点：Shackelford TX、Doña Ana NM、密歇根萨林、中西部未公开、俄亥俄 Lordstown、德州 Milam。截至目前已规划七吉瓦，未来三年投入四千亿，GB200 机架已经在 Abilene 交付。Sam Altman 简洁地说了一句：up and running。
+Stargate 專案是這一切的物理基礎。OpenAI 加 Oracle 加 SoftBank，五千億美元投入，十吉瓦容量，四年期。中心節點是已經投運的德州 Abilene 旗艦，到 2026 年中期將達到一吉瓦。圍繞它有七個站點：Shackelford TX、Doña Ana NM、密歇根薩林、中西部未公開、俄亥俄 Lordstown、德州 Milam。截至目前已規劃七吉瓦，未來三年投入四千億，GB200 機架已經在 Abilene 交付。Sam Altman 簡潔地說了一句：up and running。

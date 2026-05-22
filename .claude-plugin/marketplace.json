@@ -4,7 +4,7 @@
   "owner": {
     "name": "Hugo He",
     "email": "heyug3@gmail.com",
-    "url": "https://github.com/hugohe3"
+    "url": "https://github.com/"
   },
   "metadata": {
     "description": "PPT Master skill — AI generates natively editable PPTX from any document",
@@ -20,8 +20,8 @@
         "email": "heyug3@gmail.com",
         "url": "https://www.hehugo.com/"
       },
-      "homepage": "https://github.com/hugohe3/ppt-master",
-      "repository": "https://github.com/hugohe3/ppt-master",
+      "homepage": "[Local Repository]",
+      "repository": "[Local Repository]",
       "license": "MIT",
       "category": "productivity",
       "keywords": [

@@ -21,16 +21,16 @@ The workflow **defaults to free design** — it will not ask whether you want a 
 Send a path to a template directory in your initial message. Anywhere in the sentence is fine; the path just has to be unambiguous:
 
 > "use this template: `skills/ppt-master/templates/layouts/academic_defense/`" ✅
-> "用这个模板做汇报：`projects/last_deck/template/`" ✅
-> "做一份产品介绍，模板用 `/Users/me/Desktop/our_brand_v3/`" ✅
+> "用這個模板做彙報：`projects/last_deck/template/`" ✅
+> "做一份產品介紹，模板用 `/Users/me/Desktop/our_brand_v3/`" ✅
 
 The AI copies that directory's SVGs, `design_spec.md`, and assets into your project, then proceeds to the Strategist phase. The path can point to anywhere — the built-in library under `skills/ppt-master/templates/layouts/`, a previous project's `template/` folder, or any other location on disk.
 
 ### What does NOT trigger the template flow
 
-- **A bare template name without a path**: "use the academic_defense template" / "用 招商银行 模板" / "做一份 pixel_retro 模板的答辩" → free design. The AI does not look the name up. You must give a path.
-- **Style descriptions**: "McKinsey style" / "Google style" / "麦肯锡那种" / "极简风" / "Keynote 风" → free design. The descriptive words flow into Strategist as a style brief, but no template is copied.
-- **Vague intent**: "想用个模板" / "I want a template" with no path → free design.
+- **A bare template name without a path**: "use the academic_defense template" / "用 招商銀行 模板" / "做一份 pixel_retro 模板的答辯" → free design. The AI does not look the name up. You must give a path.
+- **Style descriptions**: "McKinsey style" / "Google style" / "麥肯錫那種" / "極簡風" / "Keynote 風" → free design. The descriptive words flow into Strategist as a style brief, but no template is copied.
+- **Vague intent**: "想用個模板" / "I want a template" with no path → free design.
 
 This is intentional — the AI never makes a fuzzy / interpretive judgment about whether your wording maps to a template, and never resolves a name to a path on your behalf. If you want a template, give the path.
 
@@ -48,7 +48,7 @@ Free design is **not** "no style" — the AI designs a fresh visual system **for
 
 ### Styles are not templates
 
-A **style** is a description ("minimalist" / "Keynote-style" / "magazine 风") — a few words you type in chat. A **template** is a copy-and-paste asset bundle (SVGs + design_spec + assets) the workflow installs into your project when you give it an explicit directory path.
+A **style** is a description ("minimalist" / "Keynote-style" / "magazine 風") — a few words you type in chat. A **template** is a copy-and-paste asset bundle (SVGs + design_spec + assets) the workflow installs into your project when you give it an explicit directory path.
 
 | | Template | Style |
 |---|---|---|
@@ -67,11 +67,11 @@ Three axes, freely combinable ("dark tech + minimalist" or "magazine + neo-Chine
 
 | Style | One-line characterization |
 |---|---|
-| **Minimalist / 极简风** | High whitespace, 2-3 colors, single focal point per page |
-| **Information-dense / 信息密集** | McKinsey-style structured tables, high density, conclusion-first |
+| **Minimalist / 極簡風** | High whitespace, 2-3 colors, single focal point per page |
+| **Information-dense / 資訊密集** | McKinsey-style structured tables, high density, conclusion-first |
 | **Keynote-style** | Single-page hero text, premium whitespace, Apple-feel |
-| **Editorial / 杂志风** | Large hero images, asymmetric layouts, strong typography contrast |
-| **Editorial illustration / 文艺手绘** | Warm tones, hand-drawn feel, zine-like |
+| **Editorial / 雜誌風** | Large hero images, asymmetric layouts, strong typography contrast |
+| **Editorial illustration / 文藝手繪** | Warm tones, hand-drawn feel, zine-like |
 
 **Scenario / Industry**
 
@@ -91,7 +91,7 @@ Three axes, freely combinable ("dark tech + minimalist" or "magazine + neo-Chine
 | **Dark tech / 暗色科技** | Dark backgrounds, neon accents, futuristic |
 | **Pixel retro** | 8-bit, scanlines, gaming aesthetic |
 | **Neo-Chinese / 新中式** | Restrained traditional motifs, ink / vermilion |
-| **Scandinavian / 北欧极简** | Light, natural, restrained |
+| **Scandinavian / 北歐極簡** | Light, natural, restrained |
 | **Memphis / pop** | High-saturation blocks, geometric, 80s |
 | **Cyberpunk / vaporwave** | Neon purple-pink, grids, dreamlike |
 

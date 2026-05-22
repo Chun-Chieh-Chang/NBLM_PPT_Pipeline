@@ -8,8 +8,8 @@
 
 | Property | Description |
 | --- | --- |
-| **Template Name** | `china_telecom_template` (`中国电信模板`) |
-| **Use Cases** | China Telecom related briefings, 政企数字化方案, 转型规划, 内部汇报 |
+| **Template Name** | `china_telecom_template` (`中國電信模板`) |
+| **Use Cases** | China Telecom related briefings, 政企數字化方案, 轉型規劃, 內部彙報 |
 | **Design Tone** | Authoritative, structured, restrained, enterprise-government hybrid |
 | **Theme Mode** | Light theme (white background + telecom red title bar + silver-gray structural lane + restrained brand imagery) |
 
@@ -54,7 +54,7 @@
 
 ### Font Stack
 
-`"Microsoft YaHei", "微软雅黑", "PingFang SC", "Source Han Sans SC", Arial, sans-serif`
+`"Microsoft YaHei", "微軟雅黑", "PingFang SC", "Source Han Sans SC", Arial, sans-serif`
 
 ### Font Size Hierarchy
 

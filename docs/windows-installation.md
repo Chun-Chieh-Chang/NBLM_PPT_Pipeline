@@ -30,14 +30,14 @@ Python is the only hard requirement.
 
 **Option A — Download ZIP** (easiest):
 
-1. Go to [github.com/hugohe3/ppt-master](https://github.com/hugohe3/ppt-master)
+1. Go to [github.com/NBLM_PPT_Pipeline]([Local Repository])
 2. Click the green **Code** button → **Download ZIP**
 3. Unzip to `C:\Users\YourName\ppt-master`
 
 **Option B — Git Clone** (requires [Git](https://git-scm.com/downloads)):
 
 ```powershell
-git clone https://github.com/hugohe3/ppt-master.git
+git clone [Local Repository].git
 cd ppt-master
 ```
 
@@ -146,5 +146,5 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ## Still stuck?
 
 - 📖 [FAQ](./faq.md)
-- 🐛 [GitHub Issues](https://github.com/hugohe3/ppt-master/issues) — include your Python version, Windows version, and full error message
-- 💬 [GitHub Discussions](https://github.com/hugohe3/ppt-master/discussions)
+- 🐛 [GitHub Issues]([Local Repository]/issues) — include your Python version, Windows version, and full error message
+- 💬 [GitHub Discussions]([Local Repository]/discussions)

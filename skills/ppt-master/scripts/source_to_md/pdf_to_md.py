@@ -116,7 +116,7 @@ def get_heading_level(size: float, size_map: dict, text: str = "",
     sentence_endings = '.。!！?？'
     if text and text[-1] in sentence_endings:
         # But keep numbered headings like "1. Overview" or "Chapter 1."
-        if not re.match(r'^[\d第]+[.、章节]', text):
+        if not re.match(r'^[\d第]+[.、章節]', text):
             return 0
 
     # Bonus: bold text is more likely to be a heading
