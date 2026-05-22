@@ -119,7 +119,7 @@ function switchPipeline(pipeline) {
 // Refresh project information (sources, exports, status)
 async function refreshProjectInfo() {
   try {
-    const res = await fetch(`/api/projects/${projectDirName}/info`);
+    const res = await fetch(`/api/projects/${projectDirName}/info?t=${Date.now()}`);
     if (!res.ok) throw new Error('Failed to load project details');
     
     const info = await res.json();
@@ -173,7 +173,7 @@ function updateTimelineNodes(info) {
   // Step 3: Split notes
   const splitNode = document.getElementById('step-node-split');
   const splitBadge = document.getElementById('badge-step-split');
-  if (info.has_total_md && info.svg_count > 0) {
+  if (info.has_total_md && (info.has_split || info.svg_count > 0)) {
     // If outline split completed
     splitNode.className = "step-node completed";
     splitBadge.className = "badge badge-exported";
@@ -460,6 +460,8 @@ function runNotebookLMPipeline(phase) {
 
 function finishStepRun(isSuccess) {
   if (eventSource) {
+    eventSource.onerror = null;
+    eventSource.onmessage = null;
     eventSource.close();
     eventSource = null;
   }
@@ -693,15 +695,23 @@ function runPipelineStepPromise(step, urlParams = "") {
         logToTerminal(data, 'system');
       } else if (data.startsWith('[SUCCESS]')) {
         logToTerminal(data, 'success');
-        eventSource.close();
-        eventSource = null;
+        if (eventSource) {
+          eventSource.onerror = null;
+          eventSource.onmessage = null;
+          eventSource.close();
+          eventSource = null;
+        }
         setTerminalPulseState('success');
         togglePipelineButtons(false);
         resolve(true);
       } else if (data.startsWith('[ERROR]') || data.startsWith('[EXCEPTION]')) {
         logToTerminal(data, 'error');
-        eventSource.close();
-        eventSource = null;
+        if (eventSource) {
+          eventSource.onerror = null;
+          eventSource.onmessage = null;
+          eventSource.close();
+          eventSource = null;
+        }
         setTerminalPulseState('error');
         togglePipelineButtons(false);
         reject(new Error(data));
@@ -714,6 +724,8 @@ function runPipelineStepPromise(step, urlParams = "") {
       console.error('SSE connection error:', err);
       logToTerminal('[SYSTEM ERROR] 即時日誌通道異常中斷。', 'error');
       if (eventSource) {
+        eventSource.onerror = null;
+        eventSource.onmessage = null;
         eventSource.close();
         eventSource = null;
       }

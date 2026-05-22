@@ -316,3 +316,64 @@
 - **API 端到端驗證**：在 `test_ppt169_20260521` 已被徹底刪除的情況下，手動使用原生 `curl.exe` 發送 DELETE 請求，後端精準返回 `{"success": true, "message": "Project test_ppt169_20260521 already deleted or does not exist."}` 且 HTTP 狀態碼 200，前端控制台乾淨零錯誤！
 - **編譯與後端運行驗證**：重啟伺服器後一切運作流暢，經 `py_compile` 驗證 100% 通過。
 
+## 2026-05-22 — SSE 管道執行「Working outside of request context」RuntimeError 修復
+
+### 1. 失敗嘗試與異常記錄
+- **問題現象**：在儀表板點擊「一鍵自動生成簡報」或執行 pipeline `split` 步驟時，前端 Console 拋出 `pipeline.js:398 SSE connection error: Event` 與 `Failed to load resource: net::ERR_INCOMPLETE_CHUNKED_ENCODING` 錯誤，後端 Flask 拋出 `RuntimeError: Working outside of request context` 崩潰並中斷連線。
+- **原因分析**：
+  這是因為 Flask 在執行非同步資料流（Server-Sent Events）的生成器 `generate_events()` 時，其執行緒與原始請求上下文解耦。而在原本的 `app.py` 中，我們在 `generate_events()` 內部呼叫了 `request.args.get('rebuild', '')`。此時由於脫離了活動的 HTTP 請求上下文環境，Flask 的 `request` 物件無法進行安全繫結，進而引發 `RuntimeError`，阻斷了 SSE 資料流的順暢傳輸。
+
+### 2. 最終矯正措施（Defensive Hardening & Fix）
+- **參數提取前置化（Outer Scope Parameter Capture）**：
+  - 將原本位於 `generate_events()` 內部的 `rebuild = request.args.get('rebuild', '').lower() == 'true'` 擷取邏輯，前移至外層的 `api_project_run_step(name, step)` 路由函數中。
+  - 這使得 `rebuild` 參數在 Flask 還擁有活動 Request Context 的階段便已完成安全解析，並作為閉包（Closure）變數供內部的 `generate_events()` 串流直接使用，徹底規避了 Context 繫結遺失的風險。
+- **副作用防禦**：
+  - 全域掃描 `app.py` 中的 `generate_events` 方法，確認該生成器內部已無 any 其他直接使用 `request` 的地方。
+  - 終止殘留的舊進程，以 bug-fixed 版本重啟伺服器。
+
+### 3. 測試驗證
+- **E2E 整合測試**：重啟伺服器後，後端順暢監聽 Port 7070。前端重新執行 `split` 管道步驟，後端無任何 `RuntimeError` 拋出，SSE 連線保持 Keep-Alive 穩定傳輸，成功回傳大綱分割資料，前端控制台 **0 錯誤**！
+
+## 2026-05-22 — 大綱分割完成但 UI 步驟 3 顯示「待執行」狀態同步 Bug 修復
+
+### 1. 失敗嘗試與異常記錄
+- **問題現象**：在大綱切割步驟順利執行完成、產生 `total.md` 與個別 notes 檔案後，前端工作台的步驟 3「分割大綱與投影片結構」狀態卻依然卡在「待執行」狀態，沒有正確亮起。此外，即時日誌通道偶爾拋出 `pipeline.js:398 SSE connection error: Event` 異常。
+- **原因分析**：
+  1. **瀏覽器對 GET API 強烈快取**：當專案剛載入時，`/api/projects/<name>/info` 回傳 `has_total_md: false`。在切割步驟執行成功後，前端呼叫 `refreshProjectInfo` 以刷新進度，但瀏覽器此時直接返回了先前快取的舊資料，造成 UI 誤以為大綱依然不存在，因而卡在「待執行」。
+  2. **SSE 連線正常關閉被 Chrome 誤判為異常中斷**：後端 Flask 的 SSE 串流在執行完畢後會主動關閉連線，Chrome 瀏覽器會因為此 sudden close 拋出 `net::ERR_INCOMPLETE_CHUNKED_ENCODING` 警告，這會同步觸發前端 `eventSource.onerror` 監聽器。原本的 `onerror` 處理器直接執行了 `finishStepRun(false)`（標記執行失敗），覆蓋了先前成功的狀態。
+  3. **狀態完成判斷不夠精準**：步驟 3 的原創完成條件為 `info.has_total_md && info.svg_count > 0`。但在剛分割完大綱時，投影片 SVG 可能尚未生成（`svg_count === 0`），這會導致該節點不被點亮。
+
+### 2. 最終矯正措施（Defensive Hardening & Fix）
+- **全域 API 快取禁用與前端 Cache-Busting 防禦**：
+  - 後端 `app.py` 加裝全域 `after_request` 過濾器，強行為所有 `/api/` 路由標註 `Cache-Control: no-cache, no-store, must-revalidate`，阻斷所有瀏覽器隱式快取。
+  - 前端 `pipeline.js` 之 `refreshProjectInfo` 呼叫統一加上時間戳後綴 `?t=${Date.now()}`，雙重保障獲取 100% 乾淨的實時資料。
+- **SSE 事件監聽器即時解綁 (Listener Detaching)**：
+  - 在 `pipeline.js` 的 `finishStepRun` 及 `runPipelineStepPromise` 的成功/失敗/錯誤處理分支中，於關閉 `eventSource` 之前**強行將 `onerror` 與 `onmessage` 繫結設為 `null`**。
+  - 這能完美在 Chrome 觸發 `net::ERR_INCOMPLETE_CHUNKED_ENCODING` 警告前先行移除監聽，100% 杜絕執行緒狀態被 onerror 誤判覆蓋的問題。
+- **狀態判定精準化與 notes 掃描增強**：
+  - 後端 `/api/projects/<name>/info` 路由新增 `has_split` 狀態：掃描專案 `notes/` 目錄，若存在除 `total.md` 之外的 `.md` 檔案，則 `info['has_split'] = True`。
+  - 前端步驟 3 亮起條件更新為：`info.has_total_md && (info.has_split || info.svg_count > 0)`，精準兼顧大綱切割獨立成功與後續 SVG 階段進度。
+
+### 3. 測試驗證
+- **E2E 整合測試**：在本地 Flask (`127.0.0.1:7070`) 下重啟服務，點選大綱切割，終端機順暢回傳 `[SUCCESS]`。前端成功即時解綁 Event 監聽，無任何紅字報錯，且步驟 3 立即亮起「已分割」綠色徽章，狀態同步機制 100% 回歸完美！
+
+## 2026-05-22 — app.py 本地導入全域化與 IDE 靜態警報消除修復
+
+### 1. 失敗嘗試與異常記錄
+- **問題現象**：
+  在 `gui/backend/app.py` 中，使用 IDE 開啟代碼時，發現大量紅色波浪線（異常警報）。
+- **原因分析**：
+  這是因為原本的 `json`、`time`、`urllib.request` 模組僅在 `route_project_edit` 路由中進行了局部（Local）導入，但在 `api_project_run_step` 路由（特別是 AI 繪圖與 JSON 處理）中卻直接引用了全域未導入的 `json` 變數。在未先訪問 `route_project_edit` 的情況下執行該區段代碼，會拋出 `NameError: name 'json' is not defined` 的嚴重運行時異常，且在 IDE 靜態分析中會因變數未定義、重複導入（如 sys）而報警。
+
+### 2. 最終矯正措施（Defensive Hardening & Fix）
+- **全域導入一體化**：
+  - 將原先局部導入的 `json`、`time`、`urllib.request`、`atexit` 及 `io` 統一移至 `app.py` 頂部的模組層級（Global imports）。
+  - 清理重複的 `import sys` 與各局部函式內多餘的導入語句。
+- **編譯與防迴歸驗證**：
+  - 以 `py -m py_compile` 進行 100% 語法編譯檢查，確認零語法錯誤。
+  - 重啟 Flask 伺服器並執行網頁載入測試，控制台 0 報警，完美消除 IDE 所有紅色異常波浪線！
+
+### 3. 測試驗證
+- **E2E 整合測試**：重新部署伺服器並順暢調用 HTTP REST 接口與 SSE 管道，確認全域導入之 `json` 在所有分支下安全且精準。
+
+

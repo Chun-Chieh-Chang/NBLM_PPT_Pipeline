@@ -8,6 +8,11 @@ import os
 import re
 import shutil
 import subprocess
+import json
+import time
+import urllib.request
+import atexit
+import io
 from pathlib import Path
 from datetime import datetime
 
@@ -18,10 +23,8 @@ if str(scripts_dir) not in sys.path:
     sys.path.insert(0, str(scripts_dir))
 
 # Force sys.stdout and sys.stderr to UTF-8 encoding on Windows to prevent UnicodeEncodeError
-import sys
 if sys.platform.startswith('win'):
     try:
-        import io
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
         sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
     except Exception:
@@ -98,6 +101,14 @@ app = Flask(
 )
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
+@app.after_request
+def add_header(r):
+    if request.path.startswith('/api/'):
+        r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        r.headers["Pragma"] = "no-cache"
+        r.headers["Expires"] = "0"
+    return r
+
 # Configuration
 PROJECTS_DIR = root_dir / "projects"
 ENV_FILE = root_dir / ".env"
@@ -107,7 +118,6 @@ ENV_EXAMPLE = root_dir / ".env.example"
 active_editor_process = None
 active_editor_project = None
 
-import atexit
 def cleanup_editor_on_exit():
     global active_editor_process
     if active_editor_process:
@@ -166,10 +176,6 @@ def route_project_edit(name):
             return redirect("http://127.0.0.1:5050/")
             
     # Otherwise, shutdown any server currently on port 5050
-    import urllib.request
-    import json
-    import time
-    
     try:
         req = urllib.request.Request(
             "http://127.0.0.1:5050/api/shutdown",
@@ -404,6 +410,15 @@ def api_project_info(name):
         except Exception:
             info['total_md_size'] = 0
             
+    # Check if outline split has occurred (other .md files in notes/ besides total.md)
+    notes_dir = project_path / "notes"
+    has_split = False
+    if notes_dir.exists():
+        md_files = [f.name for f in notes_dir.iterdir() if f.is_file() and f.suffix.lower() == '.md' and f.name != 'total.md']
+        if md_files:
+            has_split = True
+    info['has_split'] = has_split
+            
     return jsonify(info)
 
 @app.route('/api/projects/<name>/upload', methods=['POST'])
@@ -473,6 +488,7 @@ def api_project_download_pptx(name):
 # SSE Pipeline execution
 @app.route('/api/projects/<name>/run/<step>', methods=['GET', 'POST'])
 def api_project_run_step(name, step):
+    rebuild = request.args.get('rebuild', '').lower() == 'true'
     project_path = PROJECTS_DIR / name
     if not project_path.exists():
         matches = sorted(PROJECTS_DIR.glob(f"{name}_*"))
@@ -578,7 +594,6 @@ def api_project_run_step(name, step):
         # ─────────────────────────────────────────────────────────────
         
         if step == 'split':
-            rebuild = request.args.get('rebuild', '').lower() == 'true'
             total_md = project_path / "notes" / "total.md"
             if rebuild:
                 yield "data: [SYSTEM] 🔄 偵測到強制【全新乾淨重建】參數，正在清理舊有大綱與投影片...\n\n"

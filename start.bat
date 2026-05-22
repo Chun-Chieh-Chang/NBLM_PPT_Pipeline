@@ -7,19 +7,32 @@ echo        NBLM PPT PIPELINE - PowerPoint Generator Workbench
 echo ======================================================================
 echo [1/3] Detecting Python installation in system...
 
-:: Check python installation
-where python >nul 2>nul
-if %errorlevel% neq 0 goto :NO_PYTHON
+:: Check python launcher (py.exe) first as it is highly stable on Windows
+py --version >nul 2>nul
+if %errorlevel% == 0 (
+    set PYTHON_CMD=py
+    goto :PYTHON_OK
+)
 
+:: Check standard python command
+python --version >nul 2>nul
+if %errorlevel% == 0 (
+    set PYTHON_CMD=python
+    goto :PYTHON_OK
+)
+
+goto :NO_PYTHON
+
+:PYTHON_OK
 echo [2/3] Found Python environment:
-python --version
+%PYTHON_CMD% --version
 echo.
 echo [3/3] Calling Python dependency auto-installer and server launcher...
 echo Please wait while we verify requirements.txt...
 echo ----------------------------------------------------------------------
 
 :: Run python GUI starter
-python pptmaster_gui.py
+%PYTHON_CMD% pptmaster_gui.py
 if %errorlevel% neq 0 goto :RUN_ERROR
 
 echo.
