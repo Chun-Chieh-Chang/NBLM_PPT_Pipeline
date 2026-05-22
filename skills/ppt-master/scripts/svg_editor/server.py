@@ -250,6 +250,10 @@ def create_app(
         threading.Thread(target=_stop, daemon=True).start()
         return jsonify({'status': 'ok'})
 
+    @app.route('/favicon.ico')
+    def favicon():
+        return '', 204
+
     @app.route('/')
     def index():
         return send_from_directory(app.static_folder, 'index.html')
