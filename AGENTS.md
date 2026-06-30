@@ -25,6 +25,8 @@ PPT Master is an AI-driven presentation generation system. Multi-role collaborat
 > Brand identity setup: when the user asks to "set up brand" / "建立品牌" / "做品牌規範", provides a brand asset (logo / brand site URL / branded PPTX / brand PDF), or wants to extract a brand from existing materials, run the standalone [`create-brand`](skills/ppt-master/workflows/create-brand.md) workflow. Output goes to `skills/ppt-master/templates/brands/<id>/`. Brands apply at SKILL.md Step 3 via the same explicit-path rule as layout templates — the user supplies the brand directory path to apply it; bare brand names never trigger.
 >
 > Visual self-check: only when the user explicitly requests a per-page visual review on the generated SVGs (e.g., "跑一下視覺自檢 / 視覺回看 / 視覺 rubric", "visual review", "check each page visually"), run the standalone [`visual-review`](skills/ppt-master/workflows/visual-review.md) workflow between the executor and post-processing steps. The main pipeline does NOT invoke it automatically; do not infer or recommend it from deck size, model identity, or any other signal — user request is the only trigger.
+>
+> Consulting-style PPT with MBB evidence analysis: when the user requests consulting-grade presentations with evidence traceability, SCR argumentation, and dual hard gates (editability + visual semantics), run the standalone [`consultant-ppt`](skills/ppt-master/workflows/consultant-ppt.md) workflow. This invokes CyberPPT's 14-layer QA门禁 including `validate_cyberppt.py --strict`.
 
 ## Execution Requirements
 
@@ -70,6 +72,7 @@ python3 skills/ppt-master/scripts/image_gen.py --render-md <project_path>/images
 python3 skills/ppt-master/scripts/image_gen.py "prompt" --aspect_ratio 16:9 --image_size 1K -o <project_path>/images
 python3 skills/ppt-master/scripts/svg_editor/server.py <project_path> --live
 python3 skills/ppt-master/scripts/svg_quality_checker.py <project_path>
+python3 skills/ppt-master/scripts/validate_cyberppt.py <pptx_path> --manifest <manifest.json> --visual-qa <visual_qa.json> --strict  # CyberPPT consulting-style strict QA
 python3 skills/ppt-master/scripts/animation_config.py scaffold <project_path>  # optional, only for custom object-level animation
 python3 skills/ppt-master/scripts/animation_config.py validate <project_path>  # optional, before re-export
 

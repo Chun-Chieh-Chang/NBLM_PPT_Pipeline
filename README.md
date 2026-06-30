@@ -205,6 +205,7 @@ PPT Master reads the current process environment first, then the first `.env` fo
 | 📐 | [Canvas Formats](./skills/ppt-master/references/canvas-formats.md) | PPT 16:9, Xiaohongshu, WeChat, and 10+ formats |
 | 🎬 | [Animations & Transitions](./skills/ppt-master/references/animations.md) | Page transitions and per-element entrance animations |
 | 🎙️ | [Audio Narration & Video Export](./docs/audio-narration.md) | TTS narration in 90+ locales, embed audio, export as MP4 |
+| 🔍 | [Consulting-Style PPT](./skills/ppt-master/workflows/consultant-ppt.md) | MBB evidence analysis, SCR argumentation, 8 fixed palettes, 14-layer QA |
 | 🛠️ | [Scripts & Tools](./skills/ppt-master/scripts/README.md) | All scripts and commands |
 | 💼 | [Examples](./examples/README.md) | 17 projects, 229 pages |
 | 🏗️ | [Technical Design](./docs/technical-design.md) | Architecture, design philosophy, why SVG |

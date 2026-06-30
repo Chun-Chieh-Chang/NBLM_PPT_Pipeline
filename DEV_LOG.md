@@ -3,6 +3,60 @@
 > 原專案名稱：PPTMaster → 重新命名為 NBLM_PPT_Pipeline（2026-05-21）
 > GitHub Remote 維持不變：`[Local Repository]`
 
+## 2026-06-30 — CyberPPT 核心功能整合
+
+### 1. 需求背景
+用戶要求啟動全自動 SkillsBuilder 開發模式，將 [CyberPPT](https://github.com/crazyykhllc-bit/CyberPPT) 的核心功能整合到 NBLM_PPT_Pipeline 中，增強諮詢風格 PPT 的證據分析、SCR 論證、視覺風格和 QA 門禁能力。
+
+### 2. 整合決策 (RCA)
+- **問題**：現有 PPT-Master 缺少 MBB 級證據分析、SCR 論證結構、嚴格門禁 QA 等諮詢級能力
+- **根因**：原有流程侧重通用 PPT 生成，未針對高強度諮詢場景優化
+- **矯正措施**：以「互補優先、不破壞現有流程」为原则，將 CyberPPT 作為可選的高階諮詢模式
+
+### 3. 執行摘要
+
+#### 移植文件清單
+| 類別 | 來源 | 目標路徑 | 狀態 |
+|------|------|----------|------|
+| Reference (5) | `CyberPPT/references/*.md` | `skills/ppt-master/references/cyberppt/` | ✅ |
+| Palette Samples (8) | `CyberPPT/assets/palette-samples/*.png` | `skills/ppt-master/templates/palette-samples/` | ✅ |
+| QA Script | `CyberPPT/scripts/validate_pptx.py` | `skills/ppt-master/scripts/validate_cyberppt.py` | ✅ |
+| Workflow | 新建 | `skills/ppt-master/workflows/consultant-ppt.md` | ✅ |
+| Documentation | 新建 | `findings.md`, `progress.md`, `task_plan.md` | ✅ |
+
+#### 關鍵技術決策
+1. **獨立工作流設計** - `consultant-ppt.md` 完整封裝三階段流程，不修改現有 SKILL.md
+2. **Python 標準庫依賴** - validate_cyberppt.py 僅使用 zipfile/json/xml.etree，無需額外 pip install
+3. **向後兼容** - 現有模板、品牌、layout 功能完全不受影響
+4. **語言一致性** - 所有文件使用繁體中文，符合 workspace 規則
+
+### 4. 門禁機制整合
+CyberPPT 的 14 層門禁已完整記錄於 consultant-ppt.md：
+- Reference Gate → Evidence Gate → Storyline Gate → Density Gate → Style Gate
+- Blueprint Gate → Asset Admission Gate → Editable Layer Gate → Visual Semantics Gate
+- Curve Trace Gate → Spatial Registration Gate → Container Overflow Gate → Typography Gate
+- Strict QA Gate (validate_cyberppt.py --strict)
+
+### 5. 驗證結果
+- ✅ 所有文件完整性驗證通過（9 個關鍵文件）
+- ✅ validate_cyberppt.py 導入測試成功
+- ✅ 文件大小和內容完整性確認
+- ✅ 現有流程兼容性確認（無破壞性變更）
+
+### 6. 使用方式
+用戶明確要求「諮詢風格」「MBB 級別」「證據鏈」「SCR 論證」「高密度」時，系統將自動啟動 consultant-ppt 工作流。
+
+命令參考：
+```bash
+python3 skills/ppt-master/scripts/validate_cyberppt.py \
+  path/to/deck.pptx \
+  --manifest path/to/slide_manifest.json \
+  --visual-qa path/to/visual_qa.json \
+  --strict \
+  --json-out path/to/report.json
+```
+
+
 ## 2026-05-21 — 初始化專案與建立中文使用手冊
 
 ### 1. 失敗嘗試與異常記錄

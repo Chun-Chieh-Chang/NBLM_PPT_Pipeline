@@ -1,13 +1,6 @@
 # PPT Master — AI 生成原生可編輯 PPTX，支援任意檔案輸入
 
 
-
-
-
-
-
-
-
 ---
 
 丟進一份 PDF、DOCX、網址或 Markdown，拿回一份**原生可編輯的 PowerPoint**——真正的形狀、真正的文字框、真正的圖表，不是圖片。點選任何元素即可編輯。
@@ -205,7 +198,8 @@ PPT Master 會優先讀取當前程式環境變數，然後按順序讀取第一
 | 📐 | [畫布格式](./skills/ppt-master/references/canvas-formats.md) | PPT 16:9、小紅書、朋友圈等 10+ 種格式 |
 | 🎬 | [轉場與動畫](./docs/zh-TW/animations.md) | 頁間轉場和頁內元素入場動畫 |
 | 🎙️ | [音訊旁白與影片匯出](./docs/zh-TW/audio-narration.md) | 90+ 語種 TTS 旁白、音訊嵌入 PPTX、匯出為 MP4 |
-| 🛠️ | [指令碼與工具](./skills/ppt-master/scripts/README.md) | 所有指令碼和命令 |
+| � | [諮詢風格 PPT](./skills/ppt-master/workflows/consultant-ppt.md) | MBB 級證據分析、SCR 論證、8 種固定視覺風格、14 層門禁 QA |
+| �🛠️ | [指令碼與工具](./skills/ppt-master/scripts/README.md) | 所有指令碼和命令 |
 | 💼 | [示例](./examples/README.md) | 17 個專案，229 頁 |
 | 🏗️ | [技術路線](./docs/zh-TW/technical-design.md) | 架構、設計哲學、為什麼選 SVG |
 | ❓ | [常見問題](./docs/zh-TW/faq.md) | 模型選擇、費用、排版問題排查、自定義模板 |
