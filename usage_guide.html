@@ -1147,6 +1147,7 @@
                             <button class="tab-header-btn active" onclick="switchTab(event, 'tab-brand')">品牌模板複製</button>
                             <button class="tab-header-btn" onclick="switchTab(event, 'tab-preview')">Live Preview 與視覺註釋</button>
                             <button class="tab-header-btn" onclick="switchTab(event, 'tab-audio')">AI 語音克隆與視訊</button>
+                            <button class="tab-header-btn" onclick="switchTab(event, 'tab-agnes')">Agnes AI 雙模態路由</button>
                         </div>
 
                         <!-- Tab 1 -->
@@ -1177,6 +1178,17 @@
                                 <li><strong>語音朗讀合成：</strong>PPT Master 可以自動抓取您寫在每張投影片下方的<strong>「演講備忘錄 (Speaker Notes)」</strong>，並自動呼叫 <code>edge-tts</code> 批次合成為高保真語音（支援 90 種以上的全球口音）。</li>
                                 <li><strong>語音克隆 (Voice Cloning)：</strong>您甚至可以在 <code>.env</code> 中配置 <span class="interactive-tag" data-tooltip="支援 ElevenLabs, Qwen, CosyVoice 等平臺。只需將您在該平臺錄製的個人語音複製得到的 voice_id 填寫至環境變數中即可。">ElevenLabs 等供應商</span> 的金鑰，上傳您自己的短語音，讓生成的整套投影片以<strong>「您本人的專屬音色」</strong>進行沉浸式演講朗讀！</li>
                                 <li><strong>影片自動同步：</strong>生成好的音軌會被原生地嵌入到 PPTX 的每頁音訊元件中，您只需在 PowerPoint 中點選「檔案 ➔ 匯出 ➔ 建立視訊」，即可得到一部音軌與頁面切換、動畫完美對齊的 MP4 簡報影片！</li>
+                            </ul>
+                        </div>
+
+                        <!-- Tab 4 -->
+                        <div id="tab-agnes" class="tab-content">
+                            <h4>Agnes AI 智慧多模態路由</h4>
+                            <p>本專案原生支援 <strong>Agnes AI</strong> 的多模態模型，並且已經內建了無縫的自動路由機制：</p>
+                            <ul>
+                                <li><strong>文字與網頁排版：</strong>只要在 <code>.env</code> 中配置了 <code>AGNES_API_KEY</code>，當您進行 Guizang 網頁版簡報 (Magazine / Swiss 格式) 生成時，系統會自動呼叫 <code>agnes-2.0-flash</code> 模型來處理複雜的文本與 HTML 邏輯。</li>
+                                <li><strong>自動插畫生成：</strong>對於 PPTX 的視覺化影像，系統後端預設會自動切換並對接 <code>agnes-image-2.1-flash</code>，為您的簡報產生高解析度的精美背景或插圖。</li>
+                                <li><strong>零手動切換：</strong>您不需要頻繁更改模型參數設定，Pipeline 已經完全理解何種任務該分配給哪一個模態，實現了真正意義上的全自動 AI 協同工作流程。</li>
                             </ul>
                         </div>
                     </div>

@@ -179,7 +179,7 @@ cp /path/to/installed/ppt-master/.env.example ~/.ppt-master/.env
 
 PPT Master 會優先讀取當前程式環境變數，然後按順序讀取第一個存在的 `.env`：當前工作目錄、clone 倉庫根目錄、`~/.ppt-master/.env`。
 
-**A) AI 生圖** — `image_gen.py`。設定 `IMAGE_BACKEND` 和對應 `*_API_KEY`（`OPENAI_API_KEY`、`GEMINI_API_KEY` 等），流程會自動呼叫。`python3 skills/ppt-master/scripts/image_gen.py --list-backends` 檢視完整後端清單。`gpt-image-2` 目前綜合質量最佳。
+**A) AI 生圖與網頁簡報排版** — `image_gen.py` 與 `guizang_pipeline.py`。設定對應的環境變數（例如 `AGNES_API_KEY`、`OPENAI_API_KEY`、`GEMINI_API_KEY` 等），流程會自動呼叫。如果是使用 Agnes AI，系統會自動在文字任務呼叫 `agnes-2.0-flash`，影像任務呼叫 `agnes-image-2.1-flash`。`python3 skills/ppt-master/scripts/image_gen.py --list-backends` 可檢視完整影像後端清單。
 
 **B) 網路圖片搜尋** — `image_search.py`。**零配置**可用，但高質量使用建議配置 `PEXELS_API_KEY` / `PIXABAY_API_KEY`（都免費申請）。不配置時只使用 Openverse / Wikimedia Commons，適合作為兜底，但容易出現普通使用者上傳、構圖隨意、清晰度不穩定的圖片；配置後預設搜尋鏈會追加 Pexels / Pixabay，現代商業攝影、人物、辦公、生活方式和插畫類圖片質量會明顯更穩定。預設以圖片質量和匹配度優先，直接把 CC0、公有領域、Pexels / Pixabay 免署名許可、CC BY、CC BY-SA 一起納入候選；如果選中的圖片需要署名，Executor 會在該幻燈片自動新增小字署名。只有明確不能出現署名時，才使用 `--strict-no-attribution` 限制為免署名圖片。對視覺要求高的封面、產品圖、人物圖和品牌場景，優先順序建議是：使用者自帶高畫質素材 / AI 生圖 > 配置 Pexels / Pixabay 的網路搜尋 > 零配置網路搜尋。
 

@@ -3,6 +3,20 @@
 > 原專案名稱：PPTMaster → 重新命名為 NBLM_PPT_Pipeline（2026-05-21）
 > GitHub Remote 維持不變：`[Local Repository]`
 
+## 2026-07-10 — Agnes AI 雙模態智慧路由與專案全面清理
+
+### 1. 需求背景
+用戶要求將 Guizang HTML 生成技術（[guizang-ppt-skill](https://github.com/op7418/guizang-ppt-skill)）完全整合至 GUI 工作臺中，並導入其專屬的 Agnes AI 全模態基礎模型（`agnes-2.0-flash` 與 `agnes-image-2.1-flash`）來取代原本的 LLM 呼叫。同時，進行全專案目錄的垃圾清理與文件同步。
+
+### 2. 整合決策 (RCA)
+- **問題**：原有架構難以區分「網頁版簡報 (Guizang HTML)」與「原生 PPTX (DrawingML)」的流程，且尚未支援 Agnes AI（OpenAI-compatible）。
+- **根因**：`app.py` 缺乏對 HTML 輸出格式的路由機制，且影像與文字生成的 backend 尚未封裝 Agnes 的呼叫邏輯。
+- **矯正措施**：
+  1. 實作 `guizang_pipeline.py` 並掛載至 `app.py` 路由。
+  2. 新增 `backend_agnes.py` 至影像後端註冊表。
+  3. 導入自動路由機制：純文字與 HTML 排版自動分派至 `agnes-2.0-flash`，影像生成分派至 `agnes-image-2.1-flash`。
+  4. 同步更新使用者手冊 `usage_guide.html` 確保與最新功能對齊，並徹底移除專案內冗餘的 `__pycache__` 等暫存檔。
+
 ## 2026-06-30 — CyberPPT 核心功能整合
 
 ### 1. 需求背景

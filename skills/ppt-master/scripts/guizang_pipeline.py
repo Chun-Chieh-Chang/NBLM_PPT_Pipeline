@@ -41,9 +41,10 @@ def main():
     except Exception:
         pass
         
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        print("[ERROR] GEMINI_API_KEY is not set. Cannot generate HTML.")
+    agnes_api_key = os.environ.get("AGNES_API_KEY")
+    gemini_api_key = os.environ.get("GEMINI_API_KEY")
+    if not agnes_api_key and not gemini_api_key:
+        print("[ERROR] Neither AGNES_API_KEY nor GEMINI_API_KEY is set. Cannot generate HTML.")
         sys.exit(1)
 
     print(f"[START] Starting Guizang HTML Generation (Style: {args.style})")
@@ -76,16 +77,10 @@ def main():
     with open(template_path, 'r', encoding='utf-8') as f:
         template_html = f.read()
 
-    # Call Gemini
-    print("[INFO] Calling Gemini API to compile HTML presentation...")
+    # Call AI
+    print("[INFO] Calling AI API to compile HTML presentation...")
     try:
-        from google import genai
-        from google.genai import types
-        
-        client = genai.Client(api_key=api_key)
-        
         prompt = f"""
-You are an expert presentation designer.
 Below is a provided HTML template and some raw source content.
 Your task is to populate the HTML template with the source content, creating a beautiful and well-structured presentation.
 Keep the exact same styling, scripts, and CSS provided in the template. Just add/modify the <section class="slide"> elements in the <body>.
@@ -100,12 +95,30 @@ Keep the exact same styling, scripts, and CSS provided in the template. Just add
 
 Generate the final, complete HTML document. DO NOT include any markdown code blocks (e.g. ```html). Just output the raw HTML string starting with <!DOCTYPE html>.
 """
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-        )
-        
-        final_html = response.text.strip()
+        if agnes_api_key:
+            import openai
+            print("[INFO] Using Agnes AI (agnes-2.0-flash) for HTML compilation...")
+            client = openai.OpenAI(
+                api_key=agnes_api_key,
+                base_url="https://apihub.agnes-ai.com/v1"
+            )
+            response = client.chat.completions.create(
+                model="agnes-2.0-flash",
+                messages=[
+                    {"role": "system", "content": "You are an expert presentation designer."},
+                    {"role": "user", "content": prompt}
+                ]
+            )
+            final_html = response.choices[0].message.content.strip()
+        else:
+            from google import genai
+            print("[INFO] Using Gemini (gemini-2.5-flash) for HTML compilation...")
+            client = genai.Client(api_key=gemini_api_key)
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=f"You are an expert presentation designer.\n{prompt}",
+            )
+            final_html = response.text.strip()
         if final_html.startswith("```html"):
             final_html = final_html[7:]
         if final_html.endswith("```"):

@@ -100,6 +100,13 @@ BACKEND_REGISTRY = {
         "key_hint": "GEMINI_API_KEY",
         "aliases": ["google"],
     },
+    "agnes": {
+        "module": "backend_agnes",
+        "tier": "core",
+        "label": "Agnes AI",
+        "default_model": "agnes-image-2.1-flash",
+        "key_hint": "AGNES_API_KEY",
+    },
     "openai": {
         "module": "backend_openai",
         "tier": "core",
