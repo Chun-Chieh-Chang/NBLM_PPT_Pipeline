@@ -661,28 +661,45 @@ function updateGuidance(info) {
   // 1. Standard Pipeline Smart Guidance
   const standardTextEl = document.getElementById('guidance-text-standard');
   if (standardTextEl) {
-    if (!info.source_files || info.source_files.length === 0) {
-      standardTextEl.innerHTML = `⚠️ <strong>偵測到本專案尚無任何簡報素材。</strong><br>👉 <strong>指引與步驟：</strong>請點選下方的「步驟 2」區塊，將您的 Word (.docx)、PDF、Markdown (.md) 檔案拖曳上傳至此專案中！這是簡報生成的基礎素材。`;
-      
-      const dropzone = document.getElementById('upload-dropzone');
-      if (dropzone) {
-        dropzone.classList.add('pulse-glow-accent');
+    if (info.format && info.format.startsWith('guizang_')) {
+      // Custom guidance for guizang HTML formats
+      if (!info.source_files || info.source_files.length === 0) {
+        standardTextEl.innerHTML = `⚠️ <strong>偵測到本專案尚無任何簡報素材。</strong><br>👉 <strong>【網頁簡報流程】步驟一：</strong>請點選下方的「步驟 2」區塊，將您的 NotebookLM Markdown 或文字檔案拖曳上傳至此專案中。`;
+        const dropzone = document.getElementById('upload-dropzone');
+        if (dropzone) dropzone.classList.add('pulse-glow-accent');
+      } else if (!info.has_total_md) {
+        standardTextEl.innerHTML = `💡 <strong>素材檔案已成功載入！</strong><br>👉 <strong>【網頁簡報流程】步驟二：</strong>請直接點擊上方的<strong>「✨ 一鍵自動生成簡報」</strong>按鈕，系統將自動啟動 Gemini 生成極致美學的 HTML 網頁簡報！`;
+        const btnAuto = document.getElementById('btn-auto-standard');
+        if (btnAuto) btnAuto.classList.add('pulse-glow-accent');
+      } else {
+        standardTextEl.innerHTML = `🎉 <strong>恭喜！高質感的網頁簡報 (HTML) 已成功生成！</strong><br>👉 <strong>【網頁簡報流程】步驟三：</strong>請點擊右上角<strong>『下載簡報 (Download)』</strong>按鈕獲取該簡報！下載後請用瀏覽器開啟它，並使用左右方向鍵進行展演。`;
+        const downloadBtn = document.getElementById('btn-download-pptx');
+        if (downloadBtn) downloadBtn.classList.add('pulse-glow-success');
       }
-    } else if (!info.has_total_md) {
-      standardTextEl.innerHTML = `💡 <strong>素材檔案已成功載入！</strong><br>👉 <strong>指引與推薦操作：</strong>請直接點擊上方的<strong>「✨ 一鍵自動生成簡報」</strong>按鈕，系統將自動為您完成「步驟 3：分割大綱」並呼叫 AI 進行視覺佈局與 DrawingML 原生 PPTX 匯出！<br>若您希望微調簡報內容大綱，可以點擊「步驟 4」複製 AI 任務 Prompt 拷貝至您的 AI 聊天室，將大綱 total.md 重新定稿後上傳。`;
-      
-      const btnAuto = document.getElementById('btn-auto-standard');
-      if (btnAuto) {
-        btnAuto.classList.add('pulse-glow-accent');
-      }
-    } else if (info.svg_count === 0) {
-      standardTextEl.innerHTML = `🎨 <strong>瑞士格線系統與大綱結構分割已完成！</strong><br>👉 <strong>指引與推薦操作：</strong>請點擊上方的<strong>「✨ 一鍵自動生成簡報」</strong>按鈕以啟動 AI 配圖生成與 SVG 設計圖層定稿！`;
-      
-      const btnAuto = document.getElementById('btn-auto-standard');
-      if (btnAuto) {
-        btnAuto.classList.add('pulse-glow-accent');
-      }
-    } else if (!info.export_files || info.export_files.length === 0) {
+    } else {
+      // Existing logic for standard PPTX pipeline
+      if (!info.source_files || info.source_files.length === 0) {
+        standardTextEl.innerHTML = `⚠️ <strong>偵測到本專案尚無任何簡報素材。</strong><br>👉 <strong>指引與步驟：</strong>請點選下方的「步驟 2」區塊，將您的 Word (.docx)、PDF、Markdown (.md) 檔案拖曳上傳至此專案中！這是簡報生成的基礎素材。`;
+        
+        const dropzone = document.getElementById('upload-dropzone');
+        if (dropzone) {
+          dropzone.classList.add('pulse-glow-accent');
+        }
+      } else if (!info.has_total_md) {
+        standardTextEl.innerHTML = `💡 <strong>素材檔案已成功載入！</strong><br>👉 <strong>指引與推薦操作：</strong>請直接點擊上方的<strong>「✨ 一鍵自動生成簡報」</strong>按鈕，系統將自動為您完成「步驟 3：分割大綱」並呼叫 AI 進行視覺佈局與 DrawingML 原生 PPTX 匯出！<br>若您希望微調簡報內容大綱，可以點擊「步驟 4」複製 AI 任務 Prompt 拷貝至您的 AI 聊天室，將大綱 total.md 重新定稿後上傳。`;
+        
+        const btnAuto = document.getElementById('btn-auto-standard');
+        if (btnAuto) {
+          btnAuto.classList.add('pulse-glow-accent');
+        }
+      } else if (info.svg_count === 0) {
+        standardTextEl.innerHTML = `🎨 <strong>瑞士格線系統與大綱結構分割已完成！</strong><br>👉 <strong>指引與推薦操作：</strong>請點擊上方的<strong>「✨ 一鍵自動生成簡報」</strong>按鈕以啟動 AI 配圖生成與 SVG 設計圖層定稿！`;
+        
+        const btnAuto = document.getElementById('btn-auto-standard');
+        if (btnAuto) {
+          btnAuto.classList.add('pulse-glow-accent');
+        }
+      } else if (!info.export_files || info.export_files.length === 0) {
       standardTextEl.innerHTML = `⚡ <strong>設計圖層已完成編譯與定稿！</strong><br>👉 <strong>指引與指引操作：</strong><br>1. <strong>【推薦視覺微調】</strong>：您可以點選右上角的『編輯投影片 (SVG Editor)』按鈕進行視覺化互動調校（修改字體、形狀顏色、漸層、陰影邊框）；<br>2. <strong>【一鍵打包 PPTX】</strong>：如果您對當前版型滿意，請直接點擊上方的<strong>「✨ 一鍵自動生成簡報」</strong>按鈕，系統將完成 DrawingML 向量形狀編譯並自動打包下載！`;
       
       const btnAuto = document.getElementById('btn-auto-standard');
