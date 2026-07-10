@@ -494,7 +494,11 @@ def api_project_download_pptx(name):
         
     export_files = sorted(exports_dir.glob("*.pptx"))
     if not export_files:
-        return jsonify({'error': 'No PPTX export file found'}), 404
+        # Check for HTML exports (for guizang styles)
+        html_files = sorted(exports_dir.glob("*.html"))
+        if html_files:
+            return send_from_directory(str(exports_dir), html_files[-1].name, as_attachment=True)
+        return jsonify({'error': 'No PPTX or HTML export file found'}), 404
         
     # Return the latest compiled pptx
     latest_pptx = export_files[-1]
@@ -511,7 +515,31 @@ def api_project_run_step(name, step):
         
     cmd_args = []
     
-    if step == 'split':
+    # Read project format
+    info_file = project_path / "project_info.json"
+    project_format = ""
+    if info_file.exists():
+        try:
+            import json
+            with open(info_file, 'r', encoding='utf-8') as f:
+                info = json.load(f)
+                project_format = info.get('format', '')
+        except:
+            pass
+
+    if project_format.startswith('guizang_'):
+        if step == 'split':
+            cmd_args = [
+                get_python_executable(),
+                str(scripts_dir / "guizang_pipeline.py"),
+                str(project_path),
+                "--style", project_format.replace('guizang_', '')
+            ]
+        else:
+            def fake_success():
+                yield f"data: [SUCCESS] Bypassed step {step} for HTML presentation.\\n\\n"
+            return Response(stream_with_context(fake_success()), content_type='text/event-stream')
+    elif step == 'split':
         cmd_args = [
             get_python_executable(),
             str(scripts_dir / "total_md_split.py"),

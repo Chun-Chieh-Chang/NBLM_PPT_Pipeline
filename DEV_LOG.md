@@ -476,3 +476,15 @@ python3 skills/ppt-master/scripts/validate_cyberppt.py \
 - **測試結果**：自動化 E2E 整合測試 **100% 成功跑通，所有斷言（Assertions）均透過**，證明 PPT Master 本地 REST 與 SSE Pipeline 核心功能在與前端 UI 高度對齊的情況下具備絕對的健壯度（Robustness & Decoupling）。
 - **日誌反饋與 Console 清爽度**：Chrome Console 零紅字、零 404 報錯；後端子程式運作日誌完整記錄，無任何編碼異常或 Race Condition，成果完美！
 
+## 2026-07-10 — 整合 guizang-ppt-skill 作為並行 Skill
+
+### 1. 目標與背景
+- **需求**：將 `https://github.com/op7418/guizang-ppt-skill` 的網頁簡報產出能力（包含雜誌風、瑞士風 HTML 投影片與封面圖產生）整合進本專案中。
+- **決策**：為了保持現有 `ppt-master` (原生 PPTX 產出) 的獨立與純潔性，同時提供使用者更多的轉換選擇，採用「並行 Skill 獨立安裝」方案 (Option 1)。
+
+### 2. 矯正與執行措施
+- **環境部署**：直接將 `guizang-ppt-skill` 原始碼 clone 至 `skills/guizang-ppt-skill` 目錄。
+- **整合腳本優化**：重構 `integrate_skills.py`，加入清單迴圈機制 (`skills_to_sync = ["ppt-master", "guizang-ppt-skill"]`)。使得執行同步時，能一併將 `guizang-ppt-skill` 的符號連結 (Symlink) 建置到全域 `SkillsBuilder/skills/dev` 目錄下。
+
+### 3. 測試驗證
+- **執行結果**：整合腳本更新後能無縫處理多個 Skills 的自動部署。使用者現在可隨時透過 Agent 指定調用 `ppt-master` 產生 PPTX，或呼叫 `guizang-ppt-skill` 產生精美的 HTML 簡報。
