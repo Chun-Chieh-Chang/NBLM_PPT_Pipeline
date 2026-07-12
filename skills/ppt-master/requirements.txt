@@ -84,3 +84,36 @@ openai>=1.0.0
 # -------------------------------------------------------------
 # Localhost web editor for annotating SVG elements with edit instructions.
 flask>=3.0.0
+
+# -------------------------------------------------------------
+# Image to Markdown (OCR) — skills/ppt-master/scripts/source_to_md/image_to_md.py
+# -------------------------------------------------------------
+# Converts images (JPG/PNG/GIF/WebP/BMP/TIFF) and scanned PDFs to Markdown.
+# Uses Kreuzberg + Tesseract for intelligent OCR.
+kreuzberg>=2025.4.1
+
+# -------------------------------------------------------------
+# Media to Markdown (transcription) — skills/ppt-master/scripts/source_to_md/media_to_md.py
+# -------------------------------------------------------------
+# Transcribes video/audio files to Markdown using faster-whisper.
+faster-whisper>=1.0.0
+
+# -------------------------------------------------------------
+# Xiaohongshu to Markdown — skills/ppt-master/scripts/source_to_md/xhs_to_md.py
+# -------------------------------------------------------------
+# Extracts content from Xiaohongshu (小红书) notes via browser automation.
+playwright>=1.40.0
+beautifulsoup4>=4.12.0
+
+# -------------------------------------------------------------
+# TikTok to Markdown — skills/ppt-master/scripts/source_to_md/tiktok_to_md.py
+# -------------------------------------------------------------
+# Downloads TikTok videos and transcribes audio to Markdown.
+yt-dlp>=2024.1.0
+
+# -------------------------------------------------------------
+# Universal Converter (fallback) — skills/ppt-master/scripts/source_to_md/universal_to_md.py
+# -------------------------------------------------------------
+# Microsoft MarkItDown: handles ZIP archives, YouTube URLs, edge-case formats,
+# and optional LLM-powered image descriptions (requires OPENAI_API_KEY).
+markitdown[all]>=0.1.0

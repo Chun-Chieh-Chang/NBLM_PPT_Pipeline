@@ -148,6 +148,18 @@ pip install -r requirements.txt
 你：請根據以下內容製作成 PPT：[貼上你的文字內容...]
 ```
 
+**支援的來源格式：**
+
+| 類別 | 格式 | 轉換方式 |
+|------|------|----------|
+| **文件** | PDF / DOCX / PPTX / XLSX / EPUB / HTML / RTF / ODT | 內建腳本 |
+| **文字** | TXT / MD / CSV / TSV | 直接讀取 |
+| **影像** | JPG / PNG / GIF / WebP / BMP / TIFF / 掃描 PDF | Kreuzberg OCR |
+| **影音** | MP4 / MKV / MOV / AVI / MP3 / WAV / M4A / AAC / OGG / FLAC | faster-whisper 轉錄 |
+| **TikTok** | URL 或下載後的影片檔 | yt-dlp 下載 + Whisper 轉錄 |
+| **小紅書** | URL 或分享文字 | Playwright 瀏覽器自動化提取 |
+| **網頁** | URL（含微信公眾號） | web_to_md.py |
+
 兩種方式下 AI 都會先確認設計規範：
 
 ```
@@ -187,6 +199,80 @@ PPT Master 會優先讀取當前程式環境變數，然後按順序讀取第一
 
 ---
 
+### 6. NotebookLM 深度分析增強（可選）
+
+當你需要 Gemini 對源材料進行**引用式深度分析**、**多來源綜合**或**結構化產物生成**時，可在正式生成 PPT 之前啟動此步驟。它會利用 Google NotebookLM 的 grounded reasoning 能力，將你的原始資料轉換為帶引用的 Markdown 摘要，再餵入 PPT Master 主流程。
+
+**前置條件：**
+
+```bash
+# 安裝 notebooklm-py
+pip install "notebooklm-py[browser,mcp]"
+
+# 一次性 Google OAuth 認證
+notebooklm login   # 開啟瀏覽器登入 Google 帳號
+notebooklm list    # 確認认证成功
+```
+
+**使用方式：**
+
+在 AI IDE 對話中直接說：
+
+```
+你：請用 NotebookLM 先分析 projects/q3-report/sources/ 中的 PDF，
+    讓我看到關鍵洞察摘要，然後再做一份 PPT
+```
+
+AI 會自動執行以下流程：
+
+1. 建立專屬 NotebookLM notebook
+2. 將你的來源檔案（PDF / DOCX / URL）加入 notebook
+3. 執行 Gemini 深度分析（Q&A / 報告 / 洞察提取）
+4. 匯出帶引用的 Markdown 至 `projects/<name>/notebooklm_output/`
+5. 合併為 `enriched_sources.md` 餵入 SKILL.md Step 2
+
+**6 種增強動作：**
+
+| 動作 | 適用場景 | 輸出 |
+|------|----------|------|
+| **A. Cited Q&A** | 提取關鍵洞察、帶引用的摘要 | `qa_*.md` |
+| **B. Generate Report** | 完整簡報文件、學習指南 | `report.md` |
+| **C. Quiz / Flashcards** | 知識驗證、結構化內容 | `quiz.json`, `flashcards.json` |
+| **D. Slide Deck** | 快速獲得 PPTX 草稿（參考用） | `slides.pptx` |
+| **E. Web Research** | 補充最新網路資料 | 新增來源至 notebook |
+| **F. Source Fulltext** | 從處理過的來源提取原始文字 | `source_fulltext.md` |
+
+**進階手動操作：**
+
+```bash
+# 建立 notebook
+notebooklm create "PPT-Analysis: Q3 Report"
+
+# 加入來源
+notebooklm source add ./projects/q3-report/sources/report.pdf
+
+# 等待處理完成
+notebooklm source wait <source_id>
+
+# 提問取得結構化洞察
+notebooklm ask "What are the top 5 strategic recommendations?" --json
+
+# 或生成完整報告
+notebooklm generate report --format briefing-doc --wait
+notebooklm download report ./notebooklm_output/report.md
+```
+
+> **注意事項**：
+> - 需要 Google 帳號認證，cookies 過期需重新 `notebooklm login`
+> - 有速率限制，大量來源建議分批加入
+> - NotebookLM 不產生圖片——視覺資產仍由 PPT Master 的 `image_gen.py` / `image_search.py` 處理
+> - NotebookLM 生成的 PPTX 是獨立的參考稿，最終可編輯的 PPTX 仍由 PPT Master 產出
+>
+> 完整工作流文件：[`notebooklm-enhance.md`](./skills/ppt-master/workflows/notebooklm-enhance.md)
+> Trae IDE MCP 整合指南：[`notebooklm-mcp-integration.md`](./docs/zh-TW/notebooklm-mcp-integration.md)
+
+---
+
 ## 檔案導航
 
 | | 檔案 | 說明 |
@@ -199,6 +285,7 @@ PPT Master 會優先讀取當前程式環境變數，然後按順序讀取第一
 | 🎬 | [轉場與動畫](./docs/zh-TW/animations.md) | 頁間轉場和頁內元素入場動畫 |
 | 🎙️ | [音訊旁白與影片匯出](./docs/zh-TW/audio-narration.md) | 90+ 語種 TTS 旁白、音訊嵌入 PPTX、匯出為 MP4 |
 | � | [諮詢風格 PPT](./skills/ppt-master/workflows/consultant-ppt.md) | MBB 級證據分析、SCR 論證、8 種固定視覺風格、14 層門禁 QA |
+| 🤖 | [NotebookLM 增強](./skills/ppt-master/workflows/notebooklm-enhance.md) | Gemini 深度分析、引用式摘要、多格式產物生成，作為 PPT Master 的預處理層 |
 | �🛠️ | [指令碼與工具](./skills/ppt-master/scripts/README.md) | 所有指令碼和命令 |
 | 💼 | [示例](./examples/README.md) | 17 個專案，229 頁 |
 | 🏗️ | [技術路線](./docs/zh-TW/technical-design.md) | 架構、設計哲學、為什麼選 SVG |

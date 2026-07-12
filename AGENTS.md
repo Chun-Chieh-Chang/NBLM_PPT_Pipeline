@@ -27,6 +27,10 @@ PPT Master is an AI-driven presentation generation system. Multi-role collaborat
 > Visual self-check: only when the user explicitly requests a per-page visual review on the generated SVGs (e.g., "跑一下視覺自檢 / 視覺回看 / 視覺 rubric", "visual review", "check each page visually"), run the standalone [`visual-review`](skills/ppt-master/workflows/visual-review.md) workflow between the executor and post-processing steps. The main pipeline does NOT invoke it automatically; do not infer or recommend it from deck size, model identity, or any other signal — user request is the only trigger.
 >
 > Consulting-style PPT with MBB evidence analysis: when the user requests consulting-grade presentations with evidence traceability, SCR argumentation, and dual hard gates (editability + visual semantics), run the standalone [`consultant-ppt`](skills/ppt-master/workflows/consultant-ppt.md) workflow. This invokes CyberPPT's 14-layer QA门禁 including `validate_cyberppt.py --strict`.
+>
+> NotebookLM-powered research enhancement: when the user asks to "use notebooklm", "let Gemini analyze first", "run notebooklm-enhance", or wants grounded multi-source synthesis with citations before PPT generation, run the standalone [`notebooklm-enhance`](skills/ppt-master/workflows/notebooklm-enhance.md) workflow **before** SKILL.md Step 1. Output feeds directly into the source import step.
+>
+> Guizang HTML presentation: when the user requests HTML-based magazine-style or Swiss-style slide presentations (not PPTX), use the [`guizang-ppt-skill`](skills/guizang-ppt-skill/SKILL.md) which generates natively editable HTML decks with Agnes AI routing (`agnes-2.0-flash` for text/HTML layout, `agnes-image-2.1-flash` for images).
 
 ## Execution Requirements
 
@@ -57,6 +61,18 @@ python3 skills/ppt-master/scripts/source_to_md/doc_to_md.py <DOCX_or_other_file>
 python3 skills/ppt-master/scripts/source_to_md/excel_to_md.py <XLSX_or_XLSM_file>
 python3 skills/ppt-master/scripts/source_to_md/ppt_to_md.py <PPTX_file>
 python3 skills/ppt-master/scripts/source_to_md/web_to_md.py <URL>
+python3 skills/ppt-master/scripts/source_to_md/image_to_md.py <image_file_or_scanned_pdf>  # OCR via Kreuzberg
+python3 skills/ppt-master/scripts/source_to_md/media_to_md.py <video_or_audio_file>         # Transcription via faster-whisper
+python3 skills/ppt-master/scripts/source_to_md/tiktok_to_md.py <tiktok_url_or_video_file>   # TikTok download + transcription
+python3 skills/ppt-master/scripts/source_to_md/xhs_to_md.py <xhs_url_or_share_text>          # Xiaohongshu note extraction
+python3 skills/ppt-master/scripts/source_to_md/universal_to_md.py <file_or_url>                # ZIP / YouTube / edge-cases via MarkItDown
+
+# NotebookLM pipeline (Phase A/B orchestration)
+python3 skills/ppt-master/scripts/notebooklm_pipeline.py <project_path> --phase <setup|execute|full>
+python3 skills/ppt-master/scripts/notebooklm_podcast_sync.py <project_path>  # audio-to-slide alignment
+
+# Guizang HTML presentation pipeline
+python3 skills/ppt-master/scripts/guizang_pipeline.py <project_path>  # generates HTML magazine/Swiss-style decks
 
 # Project management
 python3 skills/ppt-master/scripts/project_manager.py init <project_name> --format ppt169
@@ -70,6 +86,7 @@ python3 skills/ppt-master/scripts/image_gen.py --manifest <project_path>/images/
 python3 skills/ppt-master/scripts/image_gen.py --render-md <project_path>/images/image_prompts.json
 # Out-of-pipeline one-off / debug / single-image fixup only (no manifest, no sidecar):
 python3 skills/ppt-master/scripts/image_gen.py "prompt" --aspect_ratio 16:9 --image_size 1K -o <project_path>/images
+python3 skills/ppt-master/scripts/image_gen.py --list-backends  # list available image backends
 python3 skills/ppt-master/scripts/svg_editor/server.py <project_path> --live
 python3 skills/ppt-master/scripts/svg_quality_checker.py <project_path>
 python3 skills/ppt-master/scripts/validate_cyberppt.py <pptx_path> --manifest <manifest.json> --visual-qa <visual_qa.json> --strict  # CyberPPT consulting-style strict QA
@@ -81,11 +98,21 @@ python3 skills/ppt-master/scripts/total_md_split.py <project_path>
 python3 skills/ppt-master/scripts/finalize_svg.py <project_path>
 python3 skills/ppt-master/scripts/svg_to_pptx.py <project_path>
 # Add --merge-paragraphs when the user wants paragraph-level editable text frames instead of one-per-line (default off, see SKILL.md Step 7.3).
+
+# OfficeCLI validation (optional — requires OfficeCLI binary installed)
+officecli validate <pptx_path>     # OpenXML schema check
+officecli view <pptx_path> issues  # Format/content/structure issue detection
+python3 skills/ppt-master/scripts/officecli_validate.py <project_path>  # Automated wrapper
+
+# GUI dashboard (Windows)
+python pptmaster_gui.py          # start Flask dashboard on port 7070
+start.bat                        # Windows one-click launcher with auto-deps
 ```
 
 ## Core Directories
 
-- `skills/ppt-master/SKILL.md` — main workflow authority.
+- `skills/ppt-master/SKILL.md` — main workflow authority (PPTX generation).
+- `skills/guizang-ppt-skill/SKILL.md` — HTML presentation skill (magazine/Swiss-style).
 - `skills/ppt-master/references/` — role definitions and technical specifications.
 - `skills/ppt-master/scripts/` — runnable tool scripts.
 - `skills/ppt-master/scripts/docs/` — topic-focused script docs.
@@ -95,3 +122,5 @@ python3 skills/ppt-master/scripts/svg_to_pptx.py <project_path>
 - `docs/rules/` — repo-wide style rules.
 - `examples/` — example projects.
 - `projects/` — user project workspace.
+- `gui/` — web-based dashboard (Flask backend + frontend SPA).
+- `SkillsBuilder/` — nested IDE skill builder subproject.

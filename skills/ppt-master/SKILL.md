@@ -82,6 +82,7 @@ For complete tool documentation, see `${SKILL_DIR}/scripts/README.md`.
 | `customize-animations` | `workflows/customize-animations.md` | Object-level PPTX animation customization — run only when the user explicitly asks to tune animation order/effects/timing |
 | `live-preview` | `workflows/live-preview.md` | Browser-based live preview — auto-started during generation and re-enterable any time the user mentions "live preview", "preview", "看效果", or wants to click/select a slide element |
 | `visual-review` | `workflows/visual-review.md` | Per-page rubric-based visual self-check — run only when the user explicitly asks for a visual re-pass on the generated SVGs (between Executor and post-processing). Opt-in only; never invoked by the main pipeline. |
+| `notebooklm-enhance` | `workflows/notebooklm-enhance.md` | Pre-pipeline enrichment — run before Step 1 when the user requests Gemini-powered grounded analysis, multi-source synthesis, or structured artifact generation via Google NotebookLM |
 
 ---
 
@@ -90,6 +91,8 @@ For complete tool documentation, see `${SKILL_DIR}/scripts/README.md`.
 ### Step 1: Source Content Processing
 
 🚧 **GATE**: User has provided source material (PDF / DOCX / EPUB / URL / Markdown file / text description / conversation content — any form is acceptable).
+
+> **NotebookLM enhancement?** When the user explicitly requests Gemini-powered analysis ("use notebooklm", "let Gemini analyze first"), run the [`notebooklm-enhance`](workflows/notebooklm-enhance.md) workflow **before** this step. Its output (`enriched_sources.md`) feeds directly into Step 2's `import-sources`.
 
 > **No source content?** When the user supplies only a topic name or requirements without any file or substantive description, run the [`topic-research`](workflows/topic-research.md) workflow first, then return here with its products as input.
 
@@ -106,6 +109,12 @@ When the user provides non-Markdown content, convert immediately:
 | Web link | `python3 ${SKILL_DIR}/scripts/source_to_md/web_to_md.py <URL>` |
 | WeChat / high-security site | `python3 ${SKILL_DIR}/scripts/source_to_md/web_to_md.py <URL>` (requires `curl_cffi`, included in `requirements.txt`) |
 | Markdown | Read directly |
+| TXT / plain text | Read directly |
+| Image file (JPG / PNG / GIF / WebP / BMP / TIFF) or scanned PDF | `python3 ${SKILL_DIR}/scripts/source_to_md/image_to_md.py <file>` |
+| Video / audio file (MP4 / MKV / MOV / AVI / MP3 / WAV / M4A / AAC / OGG / FLAC) | `python3 ${SKILL_DIR}/scripts/source_to_md/media_to_md.py <file>` |
+| TikTok URL or video file | `python3 ${SKILL_DIR}/scripts/source_to_md/tiktok_to_md.py <url_or_file>` |
+| Xiaohongshu (小红书) note URL or share text | `python3 ${SKILL_DIR}/scripts/source_to_md/xhs_to_md.py <url_or_share_text>` |
+| ZIP archive / YouTube URL / edge-case format | `python3 ${SKILL_DIR}/scripts/source_to_md/universal_to_md.py <file_or_url>` |
 
 > **Office vector assets (EMF/WMF) from DOCX/PPTX sources**:
 > `doc_to_md.py` / `ppt_to_md.py` extract embedded Office vector images (.emf/.wmf)

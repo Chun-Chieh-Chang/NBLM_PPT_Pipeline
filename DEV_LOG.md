@@ -3,7 +3,23 @@
 > 原專案名稱：PPTMaster → 重新命名為 NBLM_PPT_Pipeline（2026-05-21）
 > GitHub Remote 維持不變：`[Local Repository]`
 
-## 2026-07-10 — Agnes AI 雙模態智慧路由與專案全面清理
+## 2026-07-11 — 專案整體程式碼與檔案優化作業
+
+### 1. 全面盤點與清理
+- **移除重複的 GitHub Actions workflow**：刪除 `.github/workflows/static.yml`，保留 `deploy-pages.yml` 作為唯一部署流程（兩者功能重疊，皆部署整個 repo 至 Pages）
+- **清除 __pycache__ 編譯快取**：刪除 `gui/backend/__pycache__/app.cpython-314.pyc`（應被 .gitignore 忽略但遺漏）
+- **清理未引用的截圖資源**：刪除 `docs/assets/screenshots/archive/` 下 6 張已棄用截圖（preview_tech_claude_plans、preview_nature_wildlife、preview_magazine_garden、preview_launch_xiaomi、preview_dark_art_mv、preview_academic_medical），這些檔案已無任何文件引用
+
+### 2. 文檔同步更新
+- **AGENTS.md**：新增 Guizang HTML presentation 技能說明、NotebookLM pipeline 命令、Guizang pipeline 命令、`image_gen.py --list-backends`、GUI dashboard 啟動命令；補充 Core Directories 中的 guizang-ppt-skill、gui/、SkillsBuilder/ 目錄說明
+- **AGENTS.md 執行指引**：新增 Guizang HTML presentation 觸發條件說明（當使用者要求 HTML 雜誌風或瑞士風簡報時）
+
+### 3. MECE 整合
+- **GitHub Actions 去重**：確認單一 workflow 來源，消除部署配置模糊地帶
+- **檔案結構統一**：確保所有新新增腳本（source_to_md 子模組、workflows、scripts）已在 AGENTS.md Command Quick Reference 中完整記錄
+- **文檔一致性**：AGENTS.md 命令區段與實際可用腳本 100% 對齊
+
+---
 
 ### 1. 需求背景
 用戶要求將 Guizang HTML 生成技術（[guizang-ppt-skill](https://github.com/op7418/guizang-ppt-skill)）完全整合至 GUI 工作臺中，並導入其專屬的 Agnes AI 全模態基礎模型（`agnes-2.0-flash` 與 `agnes-image-2.1-flash`）來取代原本的 LLM 呼叫。同時，進行全專案目錄的垃圾清理與文件同步。
