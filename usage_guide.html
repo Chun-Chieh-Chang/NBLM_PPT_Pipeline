@@ -839,16 +839,10 @@
                         7. 常見故障排除
                     </a>
                 </li>
-                <li class="nav-item" data-section="skillsbuilder-integration">
-                    <a href="#skillsbuilder-integration">
-                        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                        8. SkillsBuilder 雙向整合
-                    </a>
-                </li>
                 <li class="nav-item" data-section="notebooklm-mcp">
                     <a href="#notebooklm-mcp">
                         <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        9. NotebookLM MCP 整合
+                        8. NotebookLM MCP 整合
                     </a>
                 </li>
             </ul>
@@ -1334,56 +1328,9 @@
                 </section>
 
                 <!-- 8. SKILLSBUILDER INTEGRATION -->
-                <section id="skillsbuilder-integration">
-                    <h2>8. SkillsBuilder 雙向整合與全域開發生態</h2>
-                    <p>PPT Master 已與全域 AI-Agentic 技能工廠 <strong>SkillsBuilder (ClawHub 全明星圖書館)</strong> 達成無縫的雙向整合。透過此整合，您不僅可以將簡報生成能力擴充套件為系統全域呼叫的「工業級技能」，更能引進外部智慧工具最佳化生成品質，並實作設計決策的「知識複利成長」。</p>
-
-                    <div class="alert-box success">
-                        <div class="alert-header">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" style="color: var(--success);"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                            <span>雙向整合三大核心價值 (Bidirectional Compounding)</span>
-                        </div>
-                        <div class="alert-content">
-                            <ul style="margin-top: 0.5rem; margin-left: 1rem; color: var(--text-secondary); margin-bottom: 0;">
-                                <li><strong>全域技能解鎖 (Global Skill Dispatch)</strong>：將 PPT Master 封裝為標準 Skill，使得 IDE 中的 AI 助理不論在您電腦的<strong>任何目錄、任何新專案中</strong>，都能一鍵呼叫它為您製作 DrawingML 原生簡報，擺脫目錄限制！</li>
-                                <li><strong>大腦智慧複利 (Karpathy LLM Wiki)</strong>：將 PPT Master 獨創的 <strong>Consulting Box 諮詢卡片風格排版</strong> 與 <strong>Color Master Palette 色彩大師規範</strong> 寫入 SkillsBuilder 全域知識庫 (<code>wiki/</code>)。後續其他開發技能 (如 <code>web-coder</code>) 生成網頁或 UI 時，會自動繼承此配色與留白哲學，實現跨專案智慧互通！</li>
-                                <li><strong>外部工具賦能 (Pipeline Enrichment)</strong>：完美引入 <code>tavily</code> (深度主題研調)、<code>youtube</code> (影音文稿提取) 以及 <code>vetter</code> (程式碼防迴歸安全審查)，大幅強化 Strategist 策略規劃與 Executor 視覺生成的資訊豐富度。</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <h3>🛠️ 自動化一鍵整合機制</h3>
-                    <p>我們在專案根目錄下內建了 <code>integrate_skills.py</code> 整合指令碼，具備高度的 Windows 系統相容性防護與健壯的容錯設計：</p>
-                    <ul>
-                        <li><strong>智慧 symbolic link 嘗試</strong>：預設會嘗試建立符號連結，使得兩邊程式碼同步更新。</li>
-                        <li><strong>無痛深層複製備援 (shutil.copytree Fallback)</strong>：若因 Windows 沙盒終端機無系統管理員許可權導致 mklink 失敗時，指令碼會<strong>自動切換為深層複製模式</strong>，排除 <code>.git</code> 與暫存檔，將 <code>ppt-master</code> 技能核心完整匯入 SkillsBuilder，確保 100% 整合成功！</li>
-                    </ul>
-
-                    <p>在 PowerShell 中執行以下命令啟動整合流：</p>
-                    <pre><button class="copy-btn" data-clipboard="python integrate_skills.py">複製</button><code>python integrate_skills.py</code></pre>
-
-                    <div class="alert-box">
-                        <div class="alert-header">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                            <span>環境繫結與系統對映 (System Mapping)</span>
-                        </div>
-                        <div class="alert-content">
-                            由於 Windows 對 Symbolic Link (符號連結) 有嚴格的管理員許可權安全閥限制，若指令碼輸出 <code>[ERROR] INSTALL.ps1 exited with error code 1</code> 提示，屬於 Windows 許可權沙盒的正常現象。此時您只需：
-                            <ol style="margin-top: 0.5rem; margin-left: 1.5rem; color: var(--text-secondary);">
-                                <li>點選 Windows 開始按鈕，搜尋 <strong>PowerShell</strong>，並選擇<strong>「以系統管理員身分執行」</strong>。</li>
-                                <li>切換至您的 SkillsBuilder 目錄並執行安裝同步：
-                                    <pre style="margin-top:0.5rem; padding: 0.75rem;"><code style="color: var(--text-primary);">cd C:\Users\USER\Downloads\SkillsBuilder
-.\INSTALL.ps1</code></pre>
-                                </li>
-                            </ol>
-                            執行完成後，所有的全明星技能（包含 PPT Master）將完美註冊進 Antigravity 全域系統池中，您隨時隨地都可以對 AI 助理大展簡報生成神技！
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 9. NOTEBOOKLM MCP INTEGRATION -->
+                <!-- 8. NOTEBOOKLM MCP INTEGRATION -->
                 <section id="notebooklm-mcp">
-                    <h2>9. NotebookLM MCP Server 整合指南</h2>
+                    <h2>8. NotebookLM MCP Server 整合指南</h2>
                     <p>除了 CLI 管道整合外，您還可透過 <strong>MCP (Model Context Protocol)</strong> 讓 AI agent 直接呼叫 NotebookLM 的 32 個工具，實現更流暢的端到端工作流。</p>
 
                     <h3>前置條件</h3>

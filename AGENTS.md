@@ -123,4 +123,3 @@ start.bat                        # Windows one-click launcher with auto-deps
 - `examples/` — example projects.
 - `projects/` — user project workspace.
 - `gui/` — web-based dashboard (Flask backend + frontend SPA).
-- `SkillsBuilder/` — nested IDE skill builder subproject.

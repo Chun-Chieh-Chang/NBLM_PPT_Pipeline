@@ -54,7 +54,7 @@
     <div style="margin-bottom: 32px;">
       <h1 style="font-family: var(--font-title); font-size: 28px; font-weight: 800;">全域環境配置與生態對齊</h1>
       <p style="color: var(--secondary-text); font-size: 15px; margin-top: 4px;">
-        配置您的 AI 生圖後端、音訊金鑰，以及本專案在 SkillsBuilder 生態圈中的雙向對齊狀態。
+        配置您的 AI 生圖後端、音訊金鑰與環境變數。
       </p>
     </div>
 
@@ -182,55 +182,13 @@
         </div>
       </div>
 
-      <!-- Right Column: SkillsBuilder sync alignment -->
-      <div class="sidebar-column">
-        
-        <!-- SkillsBuilder Alignment Card -->
-        <div class="card">
-          <h2 style="font-family: var(--font-title); font-size: 20px; font-weight: 700; margin-bottom: 8px;">SkillsBuilder 生態對齊</h2>
-          <p style="color: var(--secondary-text); font-size: 13px; margin-bottom: 20px;">
-            將本簡報流水線技能（ppt-master）打包註冊進全域開發者技能池中。
-          </p>
-          
-          <div class="skills-builder-card" style="margin-bottom: 24px;">
-            <div>
-              <span style="font-weight: 600; font-size: 14px; display: block;">對齊狀態</span>
-              <span id="sb-status-path" style="font-size: 12px; color: var(--secondary-text); font-family: var(--font-mono); margin-top: 4px;">C:\\Users\\USER\\Downloads\\SkillsBuilder</span>
-            </div>
-            <div id="sb-status-indicator" class="status-indicator">
-              <span class="status-dot inactive"></span>
-              <span style="font-size: 14px; font-weight: 600; color: var(--secondary-text);">偵測中</span>
-            </div>
-          </div>
-          
-          <button class="btn btn-primary" style="width: 100%;" onclick="syncSkillsBuilder()">
-            一鍵雙向同步對齊
-          </button>
-        </div>
-
-        <!-- Inline Console Viewer for SkillsBuilder synchronization -->
-        <div class="card console-card" style="height: 280px;">
-          <div class="console-header">
-            <h3 style="font-family: var(--font-title); font-size: 15px; font-weight: 700; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
-              <span id="sb-pulse" class="status-dot" style="background-color: var(--secondary-text); width: 8px; height: 8px;"></span>
-              同步執行終端機 (Log)
-            </h3>
-          </div>
-          <div class="console-terminal" id="sb-console">
-[SYSTEM] 對齊伺服器就緒。
-[SYSTEM] 點選上方「一鍵對齊」按鈕以開始...
-          </div>
-        </div>
-
-      </div>
-
     </div>
 
   </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>NBLM PPT Pipeline © 2026 PPT Master Engine & SkillsBuilder Developer. All rights reserved.</p>
+    <p>NBLM PPT Pipeline © 2026 PPT Master Engine. All rights reserved.</p>
   </footer>
 
   <script src="/static/js/shared.js"></script>
@@ -239,7 +197,6 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       loadSettings();
-      checkSkillsBuilderStatus();
     });
 
     // Fetch env settings from API
@@ -342,101 +299,6 @@
       } catch (err) {
         alert('連線伺服器發生異常，無法儲存設定。');
       }
-    }
-
-    // Skills builder API check
-    async function checkSkillsBuilderStatus() {
-      const container = document.getElementById('sb-status-indicator');
-      const pathLabel = document.getElementById('sb-status-path');
-      if (!container) return;
-      
-      try {
-        const response = await fetch('/api/skillsbuilder/status');
-        const status = await response.json();
-        
-        if (status.path) {
-          pathLabel.innerText = status.path;
-        }
-        
-        if (status.integrated) {
-          container.innerHTML = `
-            <span class="status-dot active"></span>
-            <span style="font-size: 14px; font-weight: 600; color: var(--success);">對齊連結正常</span>
-          `;
-        } else if (status.skills_builder_exists) {
-          container.innerHTML = `
-            <span class="status-dot inactive"></span>
-            <span style="font-size: 14px; font-weight: 600; color: var(--accent);">已偵測 (未連結)</span>
-          `;
-        } else {
-          container.innerHTML = `
-            <span class="status-dot inactive" style="background-color: var(--warning);"></span>
-            <span style="font-size: 14px; font-weight: 600; color: var(--secondary-text);">資料夾未尋獲</span>
-          `;
-        }
-      } catch (e) {
-        container.innerHTML = `
-          <span class="status-dot inactive" style="background-color: var(--warning);"></span>
-          <span style="font-size: 14px; font-weight: 600; color: var(--secondary-text);">連線中斷</span>
-        `;
-      }
-    }
-
-    // Launch symbolic linking script
-    let sbEventSource = null;
-    function syncSkillsBuilder() {
-      if (sbEventSource) return;
-      
-      const terminal = document.getElementById('sb-console');
-      const pulse = document.getElementById('sb-pulse');
-      
-      terminal.innerHTML = '[SYSTEM] 開始同步對齊任務...\n';
-      pulse.className = 'status-dot';
-      pulse.style.backgroundColor = 'var(--accent)';
-      pulse.style.boxShadow = '0 0 10px var(--accent)';
-      
-      sbEventSource = new EventSource(`/api/projects/noop/run/skills_sync`);
-      
-      sbEventSource.onmessage = (event) => {
-        const data = event.data;
-        
-        const div = document.createElement('div');
-        div.className = 'console-line';
-        
-        if (data.startsWith('[START]')) {
-          div.className = 'console-line system';
-        } else if (data.startsWith('[SUCCESS]')) {
-          div.className = 'console-line success';
-          pulse.style.backgroundColor = 'var(--success)';
-          pulse.style.boxShadow = '0 0 10px var(--success)';
-          finishSbSync();
-        } else if (data.startsWith('[ERROR]') || data.startsWith('[EXCEPTION]')) {
-          div.className = 'console-line error';
-          pulse.style.backgroundColor = 'var(--warning)';
-          pulse.style.boxShadow = '0 0 10px var(--warning)';
-          finishSbSync();
-        }
-        
-        div.innerHTML = parseAnsiColor(data);
-        terminal.appendChild(div);
-        terminal.scrollTop = terminal.scrollHeight;
-      };
-      
-      sbEventSource.onerror = () => {
-        const div = document.createElement('div');
-        div.className = 'console-line error';
-        div.innerText = '[SYSTEM ERROR] 即時日誌通道連線異常中斷。';
-        terminal.appendChild(div);
-        finishSbSync();
-      };
-    }
-
-    function finishSbSync() {
-      if (sbEventSource) {
-        sbEventSource.close();
-        sbEventSource = null;
-      }
-      checkSkillsBuilderStatus();
     }
   </script>
 </body>

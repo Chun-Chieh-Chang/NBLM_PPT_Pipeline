@@ -969,22 +969,6 @@ def api_save_settings():
     except Exception as e:
         return jsonify({'error': f'Failed to write to .env: {str(e)}'}), 500
 
-@app.route('/api/skillsbuilder/status', methods=['GET'])
-def api_skillsbuilder_status():
-    skills_builder_dir = Path("C:\\Users\\USER\\Downloads\\SkillsBuilder")
-    exists = skills_builder_dir.exists()
-    integrated = False
-    
-    if exists:
-        dest_skill_dir = skills_builder_dir / "skills" / "dev" / "ppt-master"
-        integrated = dest_skill_dir.exists()
-        
-    return jsonify({
-        'skills_builder_exists': exists,
-        'integrated': integrated,
-        'path': str(skills_builder_dir) if exists else None
-    })
-
 def start_server(port=7070):
     app.run(host="127.0.0.1", port=port, debug=False)
 
