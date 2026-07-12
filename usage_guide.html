@@ -845,10 +845,16 @@
                         8. SkillsBuilder 雙向整合
                     </a>
                 </li>
+                <li class="nav-item" data-section="notebooklm-mcp">
+                    <a href="#notebooklm-mcp">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        9. NotebookLM MCP 整合
+                    </a>
+                </li>
             </ul>
 
             <div class="sidebar-footer">
-                <div>專案版本：v2.7.0</div>
+                <div>專案版本：v2.8.0</div>
                 <div>開發者：Hugo He</div>
                 <div>許可證：MIT License</div>
             </div>
@@ -1030,6 +1036,65 @@
                             <div class="command-desc">如投影片中包含豐富的數字柱狀圖/折線圖，可單獨執行此指令碼來精確校準資料標籤和坐標系原點。</div>
                             <pre class="command-syntax"><button class="copy-btn" data-clipboard="python3 skills/ppt-master/scripts/verify-charts.py projects/my_project">複製</button><code>python3 skills/ppt-master/scripts/verify-charts.py projects/my_project</code></pre>
                         </div>
+                        <!-- Command 9: New source_to_md converters -->
+                        <div class="command-card" data-category="pipeline">
+                            <span class="command-tag pipeline">素材轉換</span>
+                            <h4 style="margin-top:0;">影像轉 Markdown（OCR 掃描檔解析）</h4>
+                            <div class="command-desc">使用 Kreuzberg OCR 引擎將圖片或掃描 PDF 轉為結構化 Markdown，支援多語言文字識別。</div>
+                            <pre class="command-syntax"><button class="copy-btn" data-clipboard="python3 skills/ppt-master/scripts/source_to_md/image_to_md.py scanned_document.png">複製</button><code>python3 skills/ppt-master/scripts/source_to_md/image_to_md.py &lt;image_file_or_scanned_pdf&gt;</code></pre>
+                        </div>
+                        <div class="command-card" data-category="pipeline">
+                            <span class="command-tag pipeline">素材轉換</span>
+                            <h4 style="margin-top:0;">影音轉錄（影片/音訊語音轉文字）</h4>
+                            <div class="command-desc">透過 faster-whisper 進行高準確率語音轉錄，支援 MP4、MP3、WAV 等多種格式。</div>
+                            <pre class="command-syntax"><button class="copy-btn" data-clipboard="python3 skills/ppt-master/scripts/source_to_md/media_to_md.py video.mp4">複製</button><code>python3 skills/ppt-master/scripts/source_to_md/media_to_md.py &lt;video_or_audio_file&gt;</code></pre>
+                        </div>
+                        <div class="command-card" data-category="pipeline">
+                            <span class="command-tag pipeline">素材轉換</span>
+                            <h4 style="margin-top:0;">TikTok 短片下載與轉錄</h4>
+                            <div class="command-desc">自動下載 TikTok 影片並進行語音轉錄，輸出為 Markdown 大綱。</div>
+                            <pre class="command-syntax"><button class="copy-btn" data-clipboard="python3 skills/ppt-master/scripts/source_to_md/tiktok_to_md.py https://www.tiktok.com/@user/video/xxx">複製</button><code>python3 skills/ppt-master/scripts/source_to_md/tiktok_to_md.py &lt;tiktok_url_or_video_file&gt;</code></pre>
+                        </div>
+                        <div class="command-card" data-category="pipeline">
+                            <span class="command-tag pipeline">素材轉換</span>
+                            <h4 style="margin-top:0;">小紅書筆記擷取</h4>
+                            <div class="command-desc">從分享文字或連結中提取小紅書筆記內容，轉為 Markdown 格式。</div>
+                            <pre class="command-syntax"><button class="copy-btn" data-clipboard="python3 skills/ppt-master/scripts/source_to_md/xhs_to_md.py 分享文字或連結">複製</button><code>python3 skills/ppt-master/scripts/source_to_md/xhs_to_md.py &lt;xhs_url_or_share_text&gt;</code></pre>
+                        </div>
+                        <div class="command-card" data-category="pipeline">
+                            <span class="command-tag pipeline">素材轉換</span>
+                            <h4 style="margin-top:0;">通用轉換器（ZIP / YouTube / 邊緣案例）</h4>
+                            <div class="command-desc">基於 MarkItDown 引擎，處理 ZIP 壓縮檔、YouTube 影片、以及其他特殊格式的統一轉換入口。</div>
+                            <pre class="command-syntax"><button class="copy-btn" data-clipboard="python3 skills/ppt-master/scripts/source_to_md/universal_to_md.py archive.zip">複製</button><code>python3 skills/ppt-master/scripts/source_to_md/universal_to_md.py &lt;file_or_url&gt;</code></pre>
+                        </div>
+                        <!-- Command 10: CyberPPT -->
+                        <div class="command-card" data-category="enhancement">
+                            <span class="command-tag enhancement">諮詢級 PPT</span>
+                            <h4 style="margin-top:0;">CyberPPT 嚴格 QA 驗證</h4>
+                            <div class="command-desc">MBB 級別諮詢簡報的 14 層門禁驗證，包含證據追溯、SCR 論證結構、可編輯性檢查與視覺語意檢查。需搭配 --strict 參數執行。</div>
+                            <pre class="command-syntax"><button class="copy-btn" data-clipboard="python3 skills/ppt-master/scripts/validate_cyberppt.py output.pptx --manifest slide_manifest.json --visual-qa visual_qa.json --strict">複製</button><code>python3 skills/ppt-master/scripts/validate_cyberppt.py &lt;pptx_path&gt; --manifest &lt;manifest.json&gt; --visual-qa &lt;visual_qa.json&gt; --strict</code></pre>
+                        </div>
+                        <!-- Command 11: OfficeCLI -->
+                        <div class="command-card" data-category="enhancement">
+                            <span class="command-tag enhancement">OpenXML 驗證</span>
+                            <h4 style="margin-top:0;">OfficeCLI 自動化驗證包裝</h4>
+                            <div class="command-desc">自動對專案目錄執行 OpenXML Schema 檢查與格式/內容/結構問題檢測（需安裝 OfficeCLI 二進位檔案）。</div>
+                            <pre class="command-syntax"><button class="copy-btn" data-clipboard="python3 skills/ppt-master/scripts/officecli_validate.py projects/my_project">複製</button><code>python3 skills/ppt-master/scripts/officecli_validate.py &lt;project_path&gt;</code></pre>
+                        </div>
+                        <!-- Command 12: Animation config -->
+                        <div class="command-card" data-category="enhancement">
+                            <span class="command-tag enhancement">動畫配置</span>
+                            <h4 style="margin-top:0;">物件級動畫配置與驗證</h4>
+                            <div class="command-desc">當需要自訂動畫順序、效果、時機或特定物件的呈現行為時，使用 scaffold 建立 animations.json，validate 檢查無誤後重新匯出。</div>
+                            <pre class="command-syntax"><button class="copy-btn" data-clipboard="python3 skills/ppt-master/scripts/animation_config.py scaffold projects/my_project">複製</button><code>python3 skills/ppt-master/scripts/animation_config.py scaffold &lt;project_path&gt;<br/>python3 skills/ppt-master/scripts/animation_config.py validate &lt;project_path&gt;</code></pre>
+                        </div>
+                        <!-- Command 13: Image backends list -->
+                        <div class="command-card" data-category="enhancement">
+                            <span class="command-tag enhancement">影像後端</span>
+                            <h4 style="margin-top:0;">列出所有可用的影像生成後端</h4>
+                            <div class="command-desc">查詢系統已註冊的所有 AI 繪圖後端（16 個供應商：OpenAI、Gemini、Agnes、Stability 等）及其狀態。</div>
+                            <pre class="command-syntax"><button class="copy-btn" data-clipboard="python3 skills/ppt-master/scripts/image_gen.py --list-backends">複製</button><code>python3 skills/ppt-master/scripts/image_gen.py --list-backends</code></pre>
+                        </div>
                     </div>
                 </section>
 
@@ -1148,6 +1213,8 @@
                             <button class="tab-header-btn" onclick="switchTab(event, 'tab-preview')">Live Preview 與視覺註釋</button>
                             <button class="tab-header-btn" onclick="switchTab(event, 'tab-audio')">AI 語音克隆與視訊</button>
                             <button class="tab-header-btn" onclick="switchTab(event, 'tab-agnes')">Agnes AI 雙模態路由</button>
+                            <button class="tab-header-btn" onclick="switchTab(event, 'tab-guizang')">Guizang HTML 簡報</button>
+                            <button class="tab-header-btn" onclick="switchTab(event, 'tab-visual-review')">視覺自檢工作流</button>
                         </div>
 
                         <!-- Tab 1 -->
@@ -1189,6 +1256,30 @@
                                 <li><strong>文字與網頁排版：</strong>只要在 <code>.env</code> 中配置了 <code>AGNES_API_KEY</code>，當您進行 Guizang 網頁版簡報 (Magazine / Swiss 格式) 生成時，系統會自動呼叫 <code>agnes-2.0-flash</code> 模型來處理複雜的文本與 HTML 邏輯。</li>
                                 <li><strong>自動插畫生成：</strong>對於 PPTX 的視覺化影像，系統後端預設會自動切換並對接 <code>agnes-image-2.1-flash</code>，為您的簡報產生高解析度的精美背景或插圖。</li>
                                 <li><strong>零手動切換：</strong>您不需要頻繁更改模型參數設定，Pipeline 已經完全理解何種任務該分配給哪一個模態，實現了真正意義上的全自動 AI 協同工作流程。</li>
+                            </ul>
+                        </div>
+
+                        <!-- Tab 5: Guizang HTML -->
+                        <div id="tab-guizang" class="tab-content">
+                            <h4>Guizang HTML 簡報生成（雜誌風 / 瑞士風）</h4>
+                            <p>除了原生 PPTX 輸出，本專案還整合了 <strong>Guizang PPT Skill</strong>（位於 <code>skills/guizang-ppt-skill/</code>），可生成精美的 HTML 格式簡報：</p>
+                            <ul>
+                                <li><strong>觸發條件</strong>：當使用者要求「HTML 簡報」、「雜誌風」、「瑞士風」或明確指定不生成 PPTX 時。</li>
+                                <li><strong>輸出格式</strong>：可選 Magazine（雜誌排版）或 Swiss（瑞士網格系統）風格的 HTML 簡報。</li>
+                                <li><strong>Agnes AI 路由</strong>：文字排版使用 <code>agnes-2.0-flash</code>，影像生成使用 <code>agnes-image-2.1-flash</code>，自動分派無需手動設定。</li>
+                                <li><strong>執行方式</strong>：在 AI IDE 對話中指示 AI 讀取 <code>skills/guizang-ppt-skill/SKILL.md</code>，或手動執行 <code>python3 skills/ppt-master/scripts/guizang_pipeline.py &lt;project_path&gt;</code>。</li>
+                            </ul>
+                        </div>
+
+                        <!-- Tab 6: Visual Review -->
+                        <div id="tab-visual-review" class="tab-content">
+                            <h4>視覺自檢工作流（Visual Self-Check）</h4>
+                            <p>僅在使用者明確要求時啟動的每頁視覺審查工作流，用於檢查 SVG 輸出的視覺品質：</p>
+                            <ul>
+                                <li><strong>觸發條件</strong>：當使用者要求「跑一下視覺自檢」、「視覺回看」、「visual review」或「check each page visually」時。</li>
+                                <li><strong>執行時機</strong>：在 Executor 生成 SVG 之後、後處理步驟之前執行。</li>
+                                <li><strong>審查內容</strong>：基於 rubric 的逐頁檢查，包含色彩對比、文字清晰度、圖形完整性等指標。</li>
+                                <li><strong>注意</strong>：主流程不會自動啟動此工作流；僅依使用者請求觸發。</li>
                             </ul>
                         </div>
                     </div>
@@ -1286,6 +1377,96 @@
                                 </li>
                             </ol>
                             執行完成後，所有的全明星技能（包含 PPT Master）將完美註冊進 Antigravity 全域系統池中，您隨時隨地都可以對 AI 助理大展簡報生成神技！
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 9. NOTEBOOKLM MCP INTEGRATION -->
+                <section id="notebooklm-mcp">
+                    <h2>9. NotebookLM MCP Server 整合指南</h2>
+                    <p>除了 CLI 管道整合外，您還可透過 <strong>MCP (Model Context Protocol)</strong> 讓 AI agent 直接呼叫 NotebookLM 的 32 個工具，實現更流暢的端到端工作流。</p>
+
+                    <h3>前置條件</h3>
+                    <ol style="margin-top: 0.5rem; margin-left: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
+                        <li>Trae IDE（基於 VS Code 架構）已安裝</li>
+                        <li>Python 3.10+ 已安裝</li>
+                        <li>uv 已安裝：<code>pip install uv</code></li>
+                    </ol>
+
+                    <h3>Step 1: 安裝 notebooklm-py</h3>
+                    <pre><button class="copy-btn" data-clipboard='pip install "notebooklm-py[browser,mcp]"'>複製</button><code>pip install "notebooklm-py[browser,mcp]"</code></pre>
+
+                    <h3>Step 2: 認證</h3>
+                    <pre><button class="copy-btn" data-clipboard="notebooklm login && notebooklm list">複製</button><code>notebooklm login   # 開啟瀏覽器進行 Google OAuth
+notebooklm list    # 驗證認證是否成功</code></pre>
+
+                    <h3>Step 3: 在 Trae IDE 中註冊 MCP Server</h3>
+                    <p>Trae IDE 使用 VS Code 的 MCP 配置格式。開啟設定 (<code>Ctrl+,</code>)，搜尋 "mcp"，新增以下設定：</p>
+                    <pre><button class="copy-btn" data-clipboard='{
+  "mcpServers": {
+    "notebooklm": {
+      "command": "uvx",
+      "args": ["--from", "notebooklm-py[mcp]", "notebooklm-mcp"]
+    }
+  }
+}'>複製</button><code>{
+  "mcpServers": {
+    "notebooklm": {
+      "command": "uvx",
+      "args": ["--from", "notebooklm-py[mcp]", "notebooklm-mcp"]
+    }
+  }
+}</code></pre>
+
+                    <h3>Step 4: 重啟 IDE 並驗證</h3>
+                    <p>重新啟動 Trae IDE 後，在 AI 對話中測試：</p>
+                    <pre><code>使用者：用 NotebookLM 先分析 projects/my-project/sources/ 中的檔案
+
+AI：
+1. [透過 MCP] notebook_create("PPT-Analysis")
+2. [透過 MCP] source_add(notebook="PPT-Analysis", source_type="file", path="./sources/report.pdf")
+3. [透過 MCP] chat_ask(notebook="PPT-Analysis", question="請整理出 5 個關鍵洞察")
+4. [結果] 將 Gemini 的分析結果餵入 SKILL.md Step 2</code></pre>
+
+                    <h3>可用工具類別</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>類別</th>
+                                <th>主要工具</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Notebook 管理</strong></td>
+                                <td>create / list / rename / delete</td>
+                            </tr>
+                            <tr>
+                                <td><strong>來源管理</strong></td>
+                                <td>source_add / source_list / source_fulltext</td>
+                            </tr>
+                            <tr>
+                                <td><strong>聊天與研究</strong></td>
+                                <td>chat_ask / research_start / research_status</td>
+                            </tr>
+                            <tr>
+                                <td><strong>產物生成</strong></td>
+                                <td>studio_generate (podcast/video/slide-deck/report)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="alert-box">
+                        <div class="alert-header">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            <span>疑難排解</span>
+                        </div>
+                        <div class="alert-content">
+                            <ul style="margin-top: 0.5rem; margin-left: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                                <li><strong>MCP Server 無法啟動</strong>：確認 <code>uvx</code> 可在 PATH 中找到：<code>where uvx</code>（Windows）</li>
+                                <li><strong>認證過期</strong>：執行 <code>notebooklm auth refresh</code> 刷新</li>
+                                <li><strong>IDE 看不到工具</strong>：確認設定檔路徑正確，且 IDE 已完全重啟（非僅重新載視窗）</li>
+                            </ul>
                         </div>
                     </div>
                 </section>
