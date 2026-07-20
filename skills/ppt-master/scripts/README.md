@@ -5,11 +5,13 @@ This directory contains user-facing scripts for conversion, project setup, SVG p
 ## Directory Layout
 
 - Top-level `scripts/`: runnable entry scripts
-- `scripts/source_to_md/`: source-document → Markdown converters (`pdf_to_md.py`, `doc_to_md.py`, `excel_to_md.py`, `ppt_to_md.py`, `web_to_md.py`)
-- `scripts/image_backends/`: internal provider implementations used by `image_gen.py`
-- `scripts/tts_backends/`: internal TTS provider implementations used by `notes_to_audio.py`
+- `scripts/source_to_md/`: source-document → Markdown converters (`pdf_to_md.py`, `doc_to_md.py`, `excel_to_md.py`, `ppt_to_md.py`, `web_to_md.py`, `image_to_md.py`, `media_to_md.py`, `tiktok_to_md.py`, `xhs_to_md.py`, `universal_to_md.py`, `notebooklm_to_md.py`)
+- `scripts/image_backends/`: internal provider implementations used by `image_gen.py` (OpenAI, Gemini, Agnes, Stability, Fal, BFL, Ideogram, Replicate, etc.)
+- `scripts/tts_backends/`: internal TTS provider implementations used by `notes_to_audio.py` (Edge, ElevenLabs, MiniMax, CosyVoice, Qwen)
 - `scripts/template_import/`: internal PPTX reference-preparation helpers used by `pptx_template_import.py`
 - `scripts/svg_finalize/`: internal post-processing helpers used by `finalize_svg.py`
+- `scripts/svg_editor/`: live SVG preview server (`server.py`)
+- `scripts/svg_to_pptx/`: internal DrawingML conversion modules
 - `scripts/docs/`: topic-focused script documentation
 - `scripts/assets/`: static assets consumed by scripts
 
@@ -40,11 +42,14 @@ python3 scripts/update_repo.py
 
 | Area | Primary scripts | Documentation |
 |------|-----------------|---------------|
-| Conversion | `source_to_md/pdf_to_md.py`, `source_to_md/doc_to_md.py`, `source_to_md/excel_to_md.py`, `source_to_md/ppt_to_md.py`, `source_to_md/web_to_md.py` | [docs/conversion.md](./docs/conversion.md) |
-| Project management | `project_manager.py`, `batch_validate.py`, `generate_examples_index.py`, `error_helper.py`, `pptx_template_import.py` | [docs/project.md](./docs/project.md) |
-| SVG pipeline | `finalize_svg.py`, `svg_to_pptx.py`, `total_md_split.py`, `svg_quality_checker.py`, `animation_config.py`, `notes_to_audio.py` | [docs/svg-pipeline.md](./docs/svg-pipeline.md) |
+| Conversion | `source_to_md/pdf_to_md.py`, `source_to_md/doc_to_md.py`, `source_to_md/excel_to_md.py`, `source_to_md/ppt_to_md.py`, `source_to_md/web_to_md.py`, `source_to_md/image_to_md.py`, `source_to_md/media_to_md.py`, `source_to_md/tiktok_to_md.py`, `source_to_md/xhs_to_md.py`, `source_to_md/universal_to_md.py`, `source_to_md/notebooklm_to_md.py` | [docs/conversion.md](./docs/conversion.md) |
+| Project management | `project_manager.py`, `batch_validate.py`, `generate_examples_index.py`, `error_helper.py`, `pptx_template_import.py`, `register_template.py` | [docs/project.md](./docs/project.md) |
+| SVG pipeline | `finalize_svg.py`, `svg_to_pptx.py`, `total_md_split.py`, `svg_quality_checker.py`, `animation_config.py`, `notes_to_audio.py`, `svg_position_calculator.py`, `visual_review.py` | [docs/svg-pipeline.md](./docs/svg-pipeline.md) |
 | Spec maintenance | `update_spec.py` | [docs/update_spec.md](./docs/update_spec.md) |
-| Image tools | `image_gen.py`, `analyze_images.py`, `gemini_watermark_remover.py` | [docs/image.md](./docs/image.md) |
+| Image tools | `image_gen.py`, `image_search.py`, `analyze_images.py`, `gemini_watermark_remover.py`, `rotate_images.py` | [docs/image.md](./docs/image.md) |
+| NotebookLM | `notebooklm_pipeline.py`, `notebooklm_podcast_sync.py` | [docs/notebooklm.md](./docs/notebooklm.md) |
+| Guizang HTML | `guizang_pipeline.py` | — |
+| Consulting QA | `validate_cyberppt.py` | — |
 | Repo maintenance | `update_repo.py` | README install/update section |
 | Troubleshooting | validation, preview, export, dependency issues | [docs/troubleshooting.md](./docs/troubleshooting.md) |
 
@@ -115,4 +120,4 @@ python3 scripts/update_repo.py --skip-pip
 - [Troubleshooting](./docs/troubleshooting.md)
 - [Skill Entry](../SKILL.md)
 
-_Last updated: 2026-04-09_
+_Last updated: 2026-07-20_

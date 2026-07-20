@@ -167,10 +167,21 @@ yarn.lock
 *.sqlite
 *.sqlite3
 
+# Logs directory
+logs/
+
 # Cache and locks
 .cache/
 *.lock
 .lock
+
+# Planning and working files
+task_plan.md
+findings.md
+progress.md
+
+# .omo directory (skill framework artifacts)
+.omo/
 
 # Personal notes
 TODO.md

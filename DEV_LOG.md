@@ -3,6 +3,25 @@
 > 原專案名稱：PPTMaster → 重新命名為 NBLM_PPT_Pipeline（2026-05-21）
 > GitHub Remote 維持不變：`[Local Repository]`
 
+## 2026-07-20 — 第二次專案整體程式碼與檔案優化作業
+
+### 1. 全面盤點與清理
+- **Gitignore 強化**：補加 `logs/` 目錄忽略規則，確保日誌目錄不會意外被追蹤
+- **全專案盤點驗證**：逐一比對 git ls-files 與實際磁碟結構，確認無 `__pycache__`、`*.pyc`、`*.log` 等暫存檔被意外提交
+- **文件腳本對齊檢查**：比對 AGENTS.md 命令區段、SKILL.md 腳本索引與實際 `scripts/` 目錄，確認所有 100+ 腳本皆已正確對應
+
+### 2. 文檔同步更新
+- **AGENTS.md**：補遺 `image_search.py`（網路圖片搜尋）、`notes_to_audio.py`（TTS 旁白生成）、`visual_review.py`（視覺自檢）、`update_repo.py`（倉庫更新）等使用者面向命令至 Quick Reference 區段
+- **scripts/README.md**：擴充 Directory Layout 說明（svg_editor、svg_to_pptx 子模組、source_to_md 10 個轉換器），更新 Script Index 涵蓋 image_search、notebooklm、guizang_pipeline、validate_cyberppt、visual_review、svg_position_calculator、rotate_images 等；時間戳同步至 2026-07-20
+- **DEV_LOG.md**：記錄本次全流程優化作業
+
+### 3. MECE 整合
+- **文件目錄結構一致性**：確認 AGENTS.md Core Directories 所列路徑（8 個核心目錄）與實際磁碟結構完全吻合
+- **命令分類層次清晰**：AGENTS.md 命令區段依功能分類（來源轉換 → NotebookLM → Guizang → 專案管理 → 圖片工具 → SVG → 後處理 → OfficeCLI → GUI），職責互不重疊
+- **docs/ 目錄雙語對稱**：en 與 zh-TW 文件對數一致（8 對 8），無缺漏或孤兒文件
+
+---
+
 ## 2026-07-11 — 專案整體程式碼與檔案優化作業
 
 ### 1. 全面盤點與清理

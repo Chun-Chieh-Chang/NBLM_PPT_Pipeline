@@ -93,6 +93,19 @@ python3 skills/ppt-master/scripts/validate_cyberppt.py <pptx_path> --manifest <m
 python3 skills/ppt-master/scripts/animation_config.py scaffold <project_path>  # optional, only for custom object-level animation
 python3 skills/ppt-master/scripts/animation_config.py validate <project_path>  # optional, before re-export
 
+# Web image search
+python3 skills/ppt-master/scripts/image_search.py "search query"  # zero-config, Pexels/Pixabay keys for better results
+
+# TTS narration / audio generation
+python3 skills/ppt-master/scripts/notes_to_audio.py <project_path>  # per-slide narration from speaker notes
+
+# Visual self-check (opt-in, user-requested only)
+python3 skills/ppt-master/scripts/visual_review.py <project_path>
+
+# Repository update
+python3 skills/ppt-master/scripts/update_repo.py
+python3 skills/ppt-master/scripts/update_repo.py --skip-pip
+
 # Post-processing pipeline: run sequentially, one command at a time
 python3 skills/ppt-master/scripts/total_md_split.py <project_path>
 python3 skills/ppt-master/scripts/finalize_svg.py <project_path>
